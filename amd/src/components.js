@@ -263,6 +263,20 @@ const components = [
             " Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
         variants: ["full-width"],
     },
+    {
+        id: "18",
+        name: "table",
+        type: "others",
+        imageClass: "c4l-allpurposecard-icon",
+        code:
+            `<p class="c4l-spacer"></p><div class="c4lv-allpurposecard {{VARIANTS}}"
+            aria-label="{{#allpurposecard}}"><p>{{PLACEHOLDER}}</p></div>`,
+        text:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus a posuere nibh, eu mollis lacus." +
+            " Praesent dictum in velit sed dapibus." +
+            " Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+        variants: ["table-grey", "table-yellow"],
+    },
 ];
 
 export default {
