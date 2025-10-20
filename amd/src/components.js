@@ -265,17 +265,17 @@ const components = [
     },
     {
         id: "18",
-        name: "table",
-        type: "others",
+        name: "mu-table",
+        type: "mu-others",
         imageClass: "c4l-allpurposecard-icon",
         code:
-            `<p class="c4l-spacer"></p><div class="c4lv-allpurposecard {{VARIANTS}}"
-            aria-label="{{#allpurposecard}}"><p>{{PLACEHOLDER}}</p></div>`,
+            `<p class="c4l-spacer"></p><div class="mu-c4l mu-table {{VARIANTS}}"
+            aria-label="{{#allpurposecard}}"><table>
+            <thead><tr><td>{{PLACEHOLDER}}</td><td>Heading</td><td>Heading</td></tr></thead>
+            <tbody><tr><td>content</td><td>content</td><td>content</td></tr></tbody></table></div>`,
         text:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus a posuere nibh, eu mollis lacus." +
-            " Praesent dictum in velit sed dapibus." +
-            " Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-        variants: ["table-grey", "table-yellow"],
+            "Heading 1",
+        variants: ["mu-table-grey"],
     },
 ];
 
