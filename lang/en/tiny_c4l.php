@@ -106,10 +106,17 @@ $string['proceduralcontext'] = 'Procedural context';
 $string['quote'] = 'Quote';
 $string['readingcontext'] = 'Reading context';
 $string['reminder'] = 'Reminder';
-$string['mu-table'] = 'Table';
-$string['mu-table-grey'] = 'Grey';
-$string['mu-table-yellow'] = 'Yellow';
+$string['mu-table'] = 'Table (Yellow)';
+$string['mu-tables'] = 'Tables';
+$string['mu-table-grey-variant'] = 'Table (Grey)';
 $string['mu-others'] = 'Other';
 $string['tag'] = 'Tag';
 $string['textplaceholder'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
 $string['tip'] = 'Tip';
+$string['mu-aiassessmentscale'] = 'AI Assessment Scale';
+$string['mu-aiasl1'] = 'No AI';
+$string['mu-aiasl2'] = 'Planning';
+$string['mu-aiasl3'] = 'Collaboration';
+$string['mu-aiasl4'] = 'Exploration';
+
+

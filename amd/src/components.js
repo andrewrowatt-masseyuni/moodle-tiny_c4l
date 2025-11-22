@@ -1,3 +1,4 @@
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -20,6 +21,8 @@
  * @copyright   2022 Marc Català <reskit@gmail.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+/* eslint-disable max-len */
 
 const components = [
     {
@@ -266,16 +269,179 @@ const components = [
     {
         id: "18",
         name: "mu-table",
-        type: "mu-others",
+        type: "mu-tables",
         imageClass: "c4l-allpurposecard-icon",
         code:
-            `<p class="c4l-spacer"></p><div class="mu-c4l mu-table {{VARIANTS}}"
+            `<p class="c4l-spacer"></p><div class="mu-c4l mu-table"
             aria-label="{{#allpurposecard}}"><table>
             <thead><tr><td>{{PLACEHOLDER}}</td><td>Heading</td><td>Heading</td></tr></thead>
             <tbody><tr><td>content</td><td>content</td><td>content</td></tr></tbody></table></div>`,
         text:
             "Heading 1",
-        variants: ["mu-table-grey"],
+        variants: [],
+    },
+    {
+        id: "19",
+        name: "mu-table-grey-variant",
+        type: "mu-tables",
+        imageClass: "c4l-allpurposecard-icon",
+        code:
+            `<p class="c4l-spacer"></p><div class="mu-c4l mu-table mu-table-grey-variant"
+            aria-label="{{#allpurposecard}}"><table>
+            <thead><tr><td>{{PLACEHOLDER}}</td><td>Heading</td><td>Heading</td></tr></thead>
+            <tbody><tr><td>content</td><td>content</td><td>content</td></tr></tbody></table></div>`,
+        text:
+            "Heading 1",
+        variants: [],
+    },
+
+    {
+        id: "20",
+        name: "mu-aiasl1",
+        type: "mu-aiassessmentscale",
+        imageClass: "c4l-allpurposecard-icon",
+        code:
+            `<div class="mu-fc mu-fc-aias1 mu-fc-aias-l1">
+            <div class="mu-fc-inner">
+            <p></p>
+            <h5>No AI</h5>
+            <p>You must not use AI at any point during the assessment. You must demonstrate your core skills and knowledge.</p>
+            <p class="findoutmorelink"><a href="https://stream.massey.ac.nz/course/view.php?id=10" target="_blank"
+            >Find out more about AI at Massey</a></p>
+            <p></p>
+            </div>
+            </div>`,
+        text:
+            "",
+        variants: [],
+    },
+
+    {
+        id: "21",
+        name: "mu-aiasl2",
+        type: "mu-aiassessmentscale",
+        imageClass: "c4l-allpurposecard-icon",
+        code:
+            `<div class="mu-fc mu-fc-aias1 mu-fc-aias-l2">
+            <div class="mu-fc-inner">
+            <h5>AI Planning</h5>
+            <p>You may use AI for planning, idea development and research. Your final submission should show how you have developed and refined these ideas.</p>
+            <p></p>
+            <details><summary>See what this means for this assessment</summary>
+            <p></p>
+            <p>Depending on the requirements of your assessment, you may use AI to:</p>
+            <ul>
+            <li>generate ideas for the <a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339419" target="_blank" title="Opens in a new tab">content</a>&nbsp;and&nbsp;<a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339421" target="_blank" title="Opens in a new tab">structure</a> of a piece of work<a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339419" target="_blank" title="Opens in a new tab"></a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339425" target="_blank" title="Opens in a new tab">organise your thoughts</a> when creating a draft<a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339425" target="_blank" title="Opens in a new tab"></a><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339421" target="_blank"></a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340248" target="_blank" title="Opens in a new tab">look for</a> and <a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340249" target="_blank">summarise</a> relevant literature</li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340398" target="_blank" title="Opens in a new tab">conduct market research</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340399" target="_blank" title="Opens in a new tab">conduct exploratory data analysis</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340413" target="_blank" title="Opens in a new tab">suggest counterarguments</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339435" target="_blank" title="Opens in a new tab">provoke reflection</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339422" target="_blank" title="Opens in a new tab">understand the marking rubric</a></li>
+            </ul>
+            <p></p>
+            </details>
+            <p></p>
+            <p>The prompts and outputs of any AI used must be provided in an appendix to your submitted assessment. See these <a href="https://stream.massey.ac.nz/mod/book/view.php?id=5430644&amp;chapterid=1354035" target="_blank">guidelines for writing your appendix</a>.</p>
+            <p><a href="https://stream.massey.ac.nz/mod/resource/view.php?id=5469872" target="_blank">Download this Word document</a> to guide you in creating your AI use statement.</p>
+            <p class="findoutmorelink"><a href="https://stream.massey.ac.nz/course/view.php?id=10" target="_blank">Find out more about AI at Massey</a></p>
+            <p></p>
+            </div>
+            </div>
+            <p>&nbsp;</p>`,
+        text:
+            "",
+        variants: [],
+    },
+
+    {
+        id: "22",
+        name: "mu-aiasl3",
+        type: "mu-aiassessmentscale",
+        imageClass: "c4l-allpurposecard-icon",
+        code:
+            `<div class="mu-fc mu-fc-aias1 mu-fc-aias-l3">
+            <div class="mu-fc-inner">
+            <h5>AI Collaboration</h5>
+            <p>You may use AI to assist with specific tasks, such as drafting text, refining and evaluating your work.</p>
+            <p></p>
+            <p></p>
+            <details><summary>See what this means for this assessment</summary>
+            <p></p>
+            <p>Depending on the requirements of your assessment, you may use AI to:</p>
+            <ul>
+            <li>generate ideas for the&nbsp;<a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339419" target="_blank" title="Opens in a new tab">content</a>&nbsp;and&nbsp;<a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339421" target="_blank" title="Opens in a new tab">structure</a>&nbsp;of a piece of work</li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339425" target="_blank" title="Opens in a new tab">organise your thoughts</a>&nbsp;when creating a draft</li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340248" target="_blank" title="Opens in a new tab">look for</a>&nbsp;and&nbsp;<a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340249" target="_blank" title="Opens in a new tab">summarise</a>&nbsp;relevant literature</li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340398" target="_blank" title="Opens in a new tab">conduct market research</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340398" target="_blank" title="Opens in a new tab"></a><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340399" target="_blank" title="Opens in a new tab">conduct exploratory data analysis</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340399" target="_blank" title="Opens in a new tab"></a><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340413" target="_blank" title="Opens in a new tab">suggest counterarguments</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340413" target="_blank" title="Opens in a new tab"></a><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339435" target="_blank" title="Opens in a new tab">provoke reflection</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339435" target="_blank" title="Opens in a new tab"></a><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339422" target="_blank" title="Opens in a new tab">understand the marking rubric</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340611" target="_blank" title="Opens in a new tab">generate images</a><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340611" target="_blank"><br></a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340956" target="_blank" title="Opens in a new tab">draft presentations</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1341223" target="_blank" title="Opens in a new tab">improve your writing</a>&nbsp;and <a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1341245" target="_blank">proofread your work</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1341248" target="_blank" title="Opens in a new tab">ask for feedback on your work</a></li>
+            </ul>
+            <p></p>
+            <p></p>
+            </details>
+            <p></p>
+            <p>You must critically evaluate and modify any AI generated content you use, and the prompts and outputs of any AI used must be provided in an appendix to your submitted assessment. See these&nbsp;<a href="https://stream.massey.ac.nz/mod/book/view.php?id=5430644&amp;chapterid=1354035" target="_blank">guidelines for writing your appendix</a>.</p>
+            <p><a href="https://stream.massey.ac.nz/mod/resource/view.php?id=5469872" target="_blank">Download this Word document</a> to guide you in creating your AI use statement.</p>
+            <p class="findoutmorelink"><a href="https://stream.massey.ac.nz/course/view.php?id=10" target="_blank">Find out more about AI at Massey</a></p>
+            <p></p>
+            </div>
+            </div>
+            <p>&nbsp;</p>`,
+        text:
+            "",
+        variants: [],
+    },
+
+    {
+        id: "23",
+        name: "mu-aiasl4",
+        type: "mu-aiassessmentscale",
+        imageClass: "c4l-allpurposecard-icon",
+        code:
+            `<div class="mu-fc mu-fc-aias1 mu-fc-aias-l5">
+            <div class="mu-fc-inner">
+            <p></p>
+            <h5>AI Exploration</h5>
+            <p>You should use AI creatively to solve the task, potentially co-designing new approaches with your instructor.</p>
+            <details><summary>See what this means for this assessment</summary>
+            <p></p>
+            <p>Depending on the requirements of your assessment, you may use AI to:</p>
+            <ul>
+            <li>generate ideas for the&nbsp;<a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339419" target="_blank" title="Opens in a new tab">content</a>&nbsp;and&nbsp;<a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339421" target="_blank" title="Opens in a new tab">structure</a>&nbsp;of a piece of work</li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339425" target="_blank" title="Opens in a new tab">organise your thoughts</a>&nbsp;when creating a draft</li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340248" target="_blank" title="Opens in a new tab">look for</a>&nbsp;and&nbsp;<a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340249" target="_blank" title="Opens in a new tab">summarise</a>&nbsp;relevant literature</li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340398" target="_blank" title="Opens in a new tab">conduct market research</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340399" target="_blank" title="Opens in a new tab">conduct exploratory data analysis</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340413" target="_blank" title="Opens in a new tab">suggest counterarguments</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339435" target="_blank" title="Opens in a new tab">provoke reflection</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339422" target="_blank" title="Opens in a new tab">understand the marking rubric</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340611" target="_blank" title="Opens in a new tab">generate images</a><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340611" target="_blank" title="Opens in a new tab"><br></a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1340956" target="_blank" title="Opens in a new tab">draft presentations</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1341223" target="_blank" title="Opens in a new tab">improve your writing</a>&nbsp;and <a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1341245" target="_blank" title="Opens in a new tab">proofread your work</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1341248" target="_blank" title="Opens in a new tab">ask for feedback on your work</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5353915&amp;chapterid=1335656" target="_blank" title="Opens in a new tab">apply concepts to current events</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5353915&amp;chapterid=1335655" target="_blank" title="Opens in a new tab">assist with creative problem solving</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5353915&amp;chapterid=1335672" target="_blank" title="Opens in a new tab">connect abstract concepts to concrete scenarios</a></li>
+            <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5353915&amp;chapterid=1335726" target="_blank" title="Opens in a new tab">train with simulated scenarios</a></li>
+            </ul>
+            </details>
+            <p><a href="https://stream.massey.ac.nz/mod/resource/view.php?id=5469872" target="_blank">Download this Word document</a> to guide you in creating your AI use statement.</p>
+            <p class="findoutmorelink"><a href="https://stream.massey.ac.nz/course/view.php?id=10" target="_blank">Find out more about AI at Massey</a></p>
+            <p></p>
+            </div>
+            </div>
+            <p>&nbsp;</p>`,
+        text:
+            "",
+        variants: [],
     },
 ];
 

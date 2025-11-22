@@ -31,14 +31,146 @@ div.mu-c4l {
             }
         }
 
-        &.c4l-mu-table-grey-variant {
+        &.mu-table-grey-variant {
             thead td, th {
                 background-color: #f1f1f1;
             }
         }
     }
 }
-
 /* End Table*/
+
+/* LMS0261 start */
+:root {
+    --aias-default-primary-color:#A5FBFD;
+    --aias-l1-primary-color:var(--aias-default-primary-color);
+    --aias-l2-primary-color:#E1FFEF;
+    --aias-l3-primary-color:#C1CFFF;
+    --aias-l4-primary-color:#FFECAF;
+    --aias-l5-primary-color:#F8D4EF;
+}
+
+span.badge.badge-aias {
+    font-weight: 300;
+    &.badge-aias-l2 {
+        background-color: var(--aias-l2-primary-color);
+    }
+
+    &.badge-aias-l3 {
+        background-color: var(--aias-l3-primary-color);
+    }
+}
+
+div.mu-fc.mu-fc-aias1 {
+
+
+    border-style: solid;
+    border-color: #0003 #0003 #0003 #0006;
+    border-radius: 1em;
+    border-width: 1px 1px 1px 8px;
+
+    padding:20px;
+
+    .mu-fc-inner::before {
+        font: normal normal normal 14px / 1 var(--fa-style-family, "Font Awesome 6 Free");
+        content:"\f058";
+        position: absolute;
+        font-size:40px;
+        left:-55px;
+        opacity: 0.3;
+        font-weight: 900;
+    }
+
+    .mu-fc-inner {
+        position: relative;
+        margin-left: 55px;
+    }
+    
+    h5, p {
+        color:black;
+    }
+
+    &.mu-fc-aias-l1 {
+        --primary-color:var(--aias-l1-primary-color);
+
+        .mu-fc-inner::before {
+            content:"\f071";
+        }
+    }
+
+
+
+    &.mu-fc-aias-l2 {
+        --primary-color:var(--aias-l2-primary-color);
+    }
+
+    &.mu-fc-aias-l3 {
+        --primary-color:var(--aias-l3-primary-color);
+    }
+
+    &.mu-fc-aias-l4 {
+        --primary-color:var(--aias-l4-primary-color);
+    }
+
+    &.mu-fc-aias-l5 {
+        --primary-color:var(--aias-l5-primary-color);
+    }
+
+    background-color: var(--primary-color, --aias-default-primary-color, #A5FBFD);
+
+    h5 {
+        text-transform: uppercase;
+        font-size: smaller;
+        
+    }
+}
+/* LMS0261 end */
+/* LMS0261b start */
+div.mu-fc.mu-fc-aias1 {
+    details {
+        border: 1px solid #0001;
+        padding: .5em .5em 0;
+        background-color:#0001;
+        border-radius: 8px;
+        margin-bottom:0.5em;
+
+        ul {
+            margin-top: 0.5em!important;
+        }
+    }
+    
+    details[open] {
+        padding: .5em;
+    }
+    
+    details[open] > summary + p + p
+     {
+        padding-top: .5em;
+    }
+    
+    details > summary {
+        margin: -.5em -.5em 0;
+        padding: .5em;
+        font-weight:400;
+        background-color:#0001;
+        border-radius: 8px;
+    }
+
+    /* LMS0261c start */
+    p.findoutmorelink:has(a[href$="id=10"])  {
+        margin-left:-55px;
+        margin-top:2em;
+        font-size: smaller;
+        a {
+            display:block;
+            background-color:#0001;
+            padding:0.5em;
+            border-radius:8px;
+            text-align:center;
+        }
+    }
+    /* LMS0261c end */
+}
+/* LMS0261b end */
 
 /* End mu */
