@@ -270,7 +270,7 @@ const components = [
         id: "18",
         name: "mu-table",
         type: "mu-tables",
-        imageClass: "c4l-allpurposecard-icon",
+        imageClass: "c4l-mu-table-icon c4l-mu-no-variants",
         code:
             `<p class="c4l-spacer"></p><div class="mu-c4l mu-table"
             aria-label="{{#allpurposecard}}"><table>
@@ -284,7 +284,7 @@ const components = [
         id: "19",
         name: "mu-table-grey-variant",
         type: "mu-tables",
-        imageClass: "c4l-allpurposecard-icon",
+        imageClass: "c4l-mu-table-icon c4l-mu-no-variants",
         code:
             `<p class="c4l-spacer"></p><div class="mu-c4l mu-table mu-table-grey-variant"
             aria-label="{{#allpurposecard}}"><table>
@@ -299,7 +299,7 @@ const components = [
         id: "20",
         name: "mu-aiasl1",
         type: "mu-aiassessmentscale",
-        imageClass: "c4l-allpurposecard-icon",
+        imageClass: "c4l-mu-aiassessmentscale-icon aiasl1 c4l-mu-no-variants",
         code:
             `<div class="mu-fc mu-fc-aias1 mu-fc-aias-l1">
             <div class="mu-fc-inner">
@@ -320,7 +320,7 @@ const components = [
         id: "21",
         name: "mu-aiasl2",
         type: "mu-aiassessmentscale",
-        imageClass: "c4l-allpurposecard-icon",
+        imageClass: "c4l-mu-aiassessmentscale-icon aiasl2 c4l-mu-no-variants",
         code:
             `<div class="mu-fc mu-fc-aias1 mu-fc-aias-l2">
             <div class="mu-fc-inner">
@@ -359,7 +359,7 @@ const components = [
         id: "22",
         name: "mu-aiasl3",
         type: "mu-aiassessmentscale",
-        imageClass: "c4l-allpurposecard-icon",
+        imageClass: "c4l-mu-aiassessmentscale-icon aiasl3 c4l-mu-no-variants",
         code:
             `<div class="mu-fc mu-fc-aias1 mu-fc-aias-l3">
             <div class="mu-fc-inner">
@@ -402,9 +402,9 @@ const components = [
 
     {
         id: "23",
-        name: "mu-aiasl4",
+        name: "mu-aiasl5",
         type: "mu-aiassessmentscale",
-        imageClass: "c4l-allpurposecard-icon",
+        imageClass: "c4l-mu-aiassessmentscale-icon aiasl5 c4l-mu-no-variants",
         code:
             `<div class="mu-fc mu-fc-aias1 mu-fc-aias-l5">
             <div class="mu-fc-inner">
