@@ -61,6 +61,11 @@ ls -la lib/editor/tiny/plugins/c4l/tests/behat/*.feature
 /home/arowatt/moodle-docker/bin/moodle-docker-compose exec -u www-data webserver php admin/tool/behat/cli/run.php --tags=@tiny_c4l --format progress --format moodle_screenshot
 ```
 
+**IMPORTANT: If behat tests fail:**
+1. **First, check the latest faildumps folder** to determine what the fault is
+2. Use the commands below to inspect the failure screenshots and HTML dumps
+3. The screenshots show the exact state of the page when the test failed
+
 **Behat test files:**
 - `tests/behat/basic.feature` - Original scenario testing C4L Tip component embedding
 - `tests/behat/basic.massey.feature` - Massey customizations testing AI Assessment Scale component
@@ -103,9 +108,20 @@ http://webserver/_/faildumps/
     └── ...
 ```
 
-**Access screenshots from container:**
+**Commands to inspect failures:**
+
 ```bash
-/home/arowatt/moodle-docker/bin/moodle-docker-compose exec webserver curl -s http://localhost/_/faildumps/
+# Get list of recent failure timestamps (last 5)
+/home/arowatt/moodle-docker/bin/moodle-docker-compose exec webserver curl -s http://localhost/_/faildumps/ | grep -o '[0-9]\{8\}_[0-9]\{6\}' | tail -5
+
+# Check latest failure folder (replace YYYYMMDD_HHMMSS with actual timestamp)
+/home/arowatt/moodle-docker/bin/moodle-docker-compose exec webserver curl -s "http://localhost/_/faildumps/YYYYMMDD_HHMMSS/"
+
+# View HTML content of a specific failure step
+/home/arowatt/moodle-docker/bin/moodle-docker-compose exec webserver curl -s "http://localhost/_/faildumps/YYYYMMDD_HHMMSS/folder/filename.html"
+
+# Search for specific text in failure HTML (e.g., button names)
+/home/arowatt/moodle-docker/bin/moodle-docker-compose exec webserver curl -s "http://localhost/_/faildumps/YYYYMMDD_HHMMSS/folder/filename.html" | grep -i "search term"
 ```
 
 ## Plugin Structure
@@ -213,9 +229,10 @@ Currently **no open or closed issues** in the fork.
 1. Make changes to plugin files
 2. Clear Moodle caches: `php admin/cli/purge_caches.php`
 3. Run behat tests to verify functionality
-4. Check behat screenshots for failures
-5. Commit changes and push to GitHub
-6. Create pull request to main branch
+4. **If tests fail: Check the latest faildumps folder FIRST to diagnose the issue**
+5. Review screenshots and HTML dumps to understand failure context
+6. Commit changes and push to GitHub
+7. Create pull request to main branch
 
 ## Useful Commands
 
@@ -242,6 +259,7 @@ Currently **no open or closed issues** in the fork.
 ## Notes for Claude
 
 - **ALWAYS check for new behat test files before running tests** - Use Glob tool to find `lib/editor/tiny/plugins/c4l/tests/behat/*.feature`
+- **If behat tests fail: FIRST check the latest faildumps folder** - Use curl commands to inspect HTML/screenshots and determine the exact failure cause
 - All behat tests use the `@tiny_c4l` tag
 - Screenshots are accessible via curl from within the webserver container
 - Plugin follows Moodle coding standards (check with local/codechecker)
