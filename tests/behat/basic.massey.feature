@@ -23,6 +23,7 @@ Feature: Tiny editor components for learning - Massey customisations
     And I press "Save and display"
     And I should see "You must not use AI at any point during the assessment"
 
+  @javascript @external
   Scenario: TinyMCE can be used to embed other Massey C4L Content
     And I am on the PageName1 "page activity editing" page logged in as admin
     And I click on the "C4L" button for the "Page content" TinyMCE editor
