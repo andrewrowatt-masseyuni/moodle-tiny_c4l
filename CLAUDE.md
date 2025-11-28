@@ -227,12 +227,17 @@ Currently **no open or closed issues** in the fork.
 ## Development Workflow
 
 1. Make changes to plugin files
-2. Clear Moodle caches: `php admin/cli/purge_caches.php`
-3. Run behat tests to verify functionality
-4. **If tests fail: Check the latest faildumps folder FIRST to diagnose the issue**
-5. Review screenshots and HTML dumps to understand failure context
-6. Commit changes and push to GitHub
-7. Create pull request to main branch
+2. **If you modified any JavaScript files (.js) in `amd/src/`**: Run grunt to compile AMD modules
+   ```bash
+   cd /home/arowatt/moodle405_c4l/lib/editor/tiny/plugins/c4l
+   grunt --max-lint-warnings=14 amd
+   ```
+3. Clear Moodle caches: `php admin/cli/purge_caches.php`
+4. Run behat tests to verify functionality
+5. **If tests fail: Check the latest faildumps folder FIRST to diagnose the issue**
+6. Review screenshots and HTML dumps to understand failure context
+7. Commit changes and push to GitHub
+8. Create pull request to main branch
 
 ## Useful Commands
 
@@ -256,10 +261,18 @@ Currently **no open or closed issues** in the fork.
 /home/arowatt/moodle-docker/bin/moodle-docker-compose logs -f webserver
 ```
 
+**Build JavaScript AMD modules (after modifying .js files):**
+```bash
+cd /home/arowatt/moodle405_c4l/lib/editor/tiny/plugins/c4l
+grunt --max-lint-warnings=14 amd
+```
+Note: This compiles JavaScript files from `amd/src/` into AMD modules that Moodle can use. Must be run after any changes to JavaScript source files.
+
 ## Notes for Claude
 
 - **ALWAYS check for new behat test files before running tests** - Use Glob tool to find `lib/editor/tiny/plugins/c4l/tests/behat/*.feature`
 - **If behat tests fail: FIRST check the latest faildumps folder** - Use curl commands to inspect HTML/screenshots and determine the exact failure cause
+- **After modifying JavaScript files in `amd/src/`: ALWAYS run `grunt --max-lint-warnings=14 amd`** - JavaScript must be compiled to AMD format before changes take effect
 - All behat tests use the `@tiny_c4l` tag
 - Screenshots are accessible via curl from within the webserver container
 - Plugin follows Moodle coding standards (check with local/codechecker)
