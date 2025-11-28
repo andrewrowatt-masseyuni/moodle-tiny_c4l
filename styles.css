@@ -40,6 +40,21 @@
     background-color: var(--aias-l5-primary-color);
 }
 
+.c4l-mu-read-icon .c4l-button-text::before {
+    content: url([[pix:tiny_c4l|mu_icons/c4l_mu_read_icon]]);
+    display: block;
+}
+
+.c4l-mu-watch-icon .c4l-button-text::before {
+    content: url([[pix:tiny_c4l|mu_icons/c4l_mu_watch_icon]]);
+    display: block;
+}
+
+.c4l-mu-activity-icon .c4l-button-text::before {
+    content: url([[pix:tiny_c4l|mu_icons/c4l_mu_activity_icon]]);
+    display: block;
+}
+
 
 /* Start mu */
 /* Styling - Based on work by Bruce MacKay CoHSS */

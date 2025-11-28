@@ -443,6 +443,42 @@ const components = [
             "",
         variants: [],
     },
+
+    {
+        id: "24",
+        name: "mu-read",
+        type: "mu-others",
+        imageClass: "c4l-mu-read-icon c4l-mu-no-variants",
+        code:
+            `<p>Donec lectus felis, pretium porttitor facilisis et, rhoncus quis ipsum</p>`,
+        text:
+            "",
+        variants: [],
+    },
+
+    {
+        id: "25",
+        name: "mu-watch",
+        type: "mu-others",
+        imageClass: "c4l-mu-watch-icon c4l-mu-no-variants",
+        code:
+            `<p>Donec lectus felis, pretium porttitor facilisis et, rhoncus quis ipsum</p>`,
+        text:
+            "",
+        variants: [],
+    },
+
+    {
+        id: "26",
+        name: "mu-activity",
+        type: "mu-others",
+        imageClass: "c4l-mu-activity-icon c4l-mu-no-variants",
+        code:
+            `<p>Donec lectus felis, pretium porttitor facilisis et, rhoncus quis ipsum</p>`,
+        text:
+            "",
+        variants: [],
+    },
 ];
 
 export default {
