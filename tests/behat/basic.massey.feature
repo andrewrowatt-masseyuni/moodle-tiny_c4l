@@ -28,6 +28,6 @@ Feature: Tiny editor components for learning - Massey customisations
     And I am on the PageName1 "page activity editing" page logged in as admin
     And I click on the "C4L" button for the "Page content" TinyMCE editor
     And I click on "Massey (Other)" "button"
-    And I click on "Read" "button"
+    And I click on "Watch" "button"
     And I press "Save and display"
     And I should see "Donec lectus felis, pretium porttitor facilisis et, rhoncus quis ipsum"
