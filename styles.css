@@ -72,12 +72,13 @@
 .c4l-mu-important-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/triangle-exclamation]]); display: block; }
 .c4l-mu-information-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/circle-exclamation]]); display: block; }
 
-.c4l-button-variant.mu-blue-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-blue]])}.c4l-button-variant.mu-blue-variant-on::before,.c4l-button-variant.mu-blue-variant-on:hover::before,.c4l-button-variant.mu-blue-variant-off:hover::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-blue]])}
-.c4l-button-variant.mu-green-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-green]])}.c4l-button-variant.mu-green-variant-on::before,.c4l-button-variant.mu-green-variant-on:hover::before,.c4l-button-variant.mu-green-variant-off:hover::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-green]])}
-.c4l-button-variant.mu-grey-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-grey]])}.c4l-button-variant.mu-grey-variant-on::before,.c4l-button-variant.mu-grey-variant-on:hover::before,.c4l-button-variant.mu-grey-variant-off:hover::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-grey]])}
-.c4l-button-variant.mu-teal-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-teal]])}.c4l-button-variant.mu-teal-variant-on::before,.c4l-button-variant.mu-teal-variant-on:hover::before,.c4l-button-variant.mu-teal-variant-off:hover::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-teal]])}
-.c4l-button-variant.mu-voilet-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-voilet]])}.c4l-button-variant.mu-voilet-variant-on::before,.c4l-button-variant.mu-voilet-variant-on:hover::before,.c4l-button-variant.mu-voilet-variant-off:hover::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-voilet]])}
-.c4l-button-variant.mu-yellow-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-yellow]])}.c4l-button-variant.mu-yellow-variant-on::before,.c4l-button-variant.mu-yellow-variant-on:hover::before,.c4l-button-variant.mu-yellow-variant-off:hover::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-yellow]])}
+/* variants off = duotone thin, on = solid */
+.c4l-button-variant.mu-blue-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-blue-off]])}.c4l-button-variant.mu-blue-variant-on::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-blue-on]])}
+.c4l-button-variant.mu-green-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-green-off]])}.c4l-button-variant.mu-green-variant-on::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-green-on]])}
+.c4l-button-variant.mu-grey-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-grey-off]])}.c4l-button-variant.mu-grey-variant-on::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-grey-on]])}
+.c4l-button-variant.mu-teal-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-teal-off]])}.c4l-button-variant.mu-teal-variant-on::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-teal-on]])}
+.c4l-button-variant.mu-voilet-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-voilet-off]])}.c4l-button-variant.mu-voilet-variant-on::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-voilet-on]])}
+.c4l-button-variant.mu-yellow-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-yellow-off]])}.c4l-button-variant.mu-yellow-variant-on::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-yellow-on]])}
 
 
 button[data-type="mu-activities"] {
@@ -86,17 +87,27 @@ button[data-type="mu-activities"] {
         height: 24px;
     }
 
-    .c4l-button-variants .c4l-button-variant.on {
-        background-color: red;
+    .c4l-button-variants {
+        .c4l-button-variant {
+            &:hover {
+                background-color: #e6f0ff;
+            }
+
+            &.on {
+                background-color: #ecf3ff;
+            }
+        }
     }
 }
 
+/* Display styles */
 div.c4l-mu-activities {
     --icon_size: 36px;
     --icon_margin: 8px;
+    --base-color: #4c81af;
 
-    border-left: calc( var(--icon_margin) + var(--icon_size) + var(--icon_margin)) solid #4c81af;
-    background-color: #f4f7f9;
+    border-left: calc( var(--icon_margin) + var(--icon_size) + var(--icon_margin)) solid var(--base-color);
+    background-color: color-mix(in srgb, var(--base-color) 10%, white);
     padding: var(--icon_margin);
     position: relative;
 
@@ -113,21 +124,25 @@ div.c4l-mu-activities {
 
     /* Duotone light */
 
-&.c4l-mu-watch { &::before { content: url([[pix:tiny_c4l|mu/video]]); } }
-&.c4l-mu-read { &::before { content: url([[pix:tiny_c4l|mu/book]]); } }
-&.c4l-mu-write { &::before { content: url([[pix:tiny_c4l|mu/pencil]]); } }
-&.c4l-mu-explore { &::before { content: url([[pix:tiny_c4l|mu/telescope]]); } }
-&.c4l-mu-listen { &::before { content: url([[pix:tiny_c4l|mu/headphones]]); } }
-&.c4l-mu-group { &::before { content: url([[pix:tiny_c4l|mu/user-group]]); } }
-&.c4l-mu-comment { &::before { content: url([[pix:tiny_c4l|mu/comments]]); } }
-&.c4l-mu-checkmark { &::before { content: url([[pix:tiny_c4l|mu/check]]); } }
-&.c4l-mu-guidance { &::before { content: url([[pix:tiny_c4l|mu/signs-post]]); } }
-&.c4l-mu-process { &::before { content: url([[pix:tiny_c4l|mu/gears]]); } }
-&.c4l-mu-map { &::before { content: url([[pix:tiny_c4l|mu/map]]); } }
-&.c4l-mu-questionmark { &::before { content: url([[pix:tiny_c4l|mu/circle-question]]); } }
-&.c4l-mu-important { &::before { content: url([[pix:tiny_c4l|mu/triangle-exclamation]]); } }
-&.c4l-mu-information { &::before { content: url([[pix:tiny_c4l|mu/circle-exclamation]]); } }
+    &.c4l-mu-watch { &::before { content: url([[pix:tiny_c4l|mu/video]]); } }
+    &.c4l-mu-read { &::before { content: url([[pix:tiny_c4l|mu/book]]); } }
+    &.c4l-mu-write { &::before { content: url([[pix:tiny_c4l|mu/pencil]]); } }
+    &.c4l-mu-explore { &::before { content: url([[pix:tiny_c4l|mu/telescope]]); } }
+    &.c4l-mu-listen { &::before { content: url([[pix:tiny_c4l|mu/headphones]]); } }
+    &.c4l-mu-group { &::before { content: url([[pix:tiny_c4l|mu/user-group]]); } }
+    &.c4l-mu-comment { &::before { content: url([[pix:tiny_c4l|mu/comments]]); } }
+    &.c4l-mu-checkmark { &::before { content: url([[pix:tiny_c4l|mu/check]]); } }
+    &.c4l-mu-guidance { &::before { content: url([[pix:tiny_c4l|mu/signs-post]]); } }
+    &.c4l-mu-process { &::before { content: url([[pix:tiny_c4l|mu/gears]]); } }
+    &.c4l-mu-map { &::before { content: url([[pix:tiny_c4l|mu/map]]); } }
+    &.c4l-mu-questionmark { &::before { content: url([[pix:tiny_c4l|mu/circle-question]]); } }
+    &.c4l-mu-important { &::before { content: url([[pix:tiny_c4l|mu/triangle-exclamation]]); } }
+    &.c4l-mu-information { &::before { content: url([[pix:tiny_c4l|mu/circle-exclamation]]); } }
 
+    /* variants */
+    &.c4l-mu-green-variant {
+        --base-color: #4ca64c;
+    }
 
 }
 
