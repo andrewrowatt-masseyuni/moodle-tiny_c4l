@@ -55,6 +55,66 @@
     display: block;
 }
 
+/* Duotone thin currentColor = #1679F9, opacity = .2 */
+
+.c4l-mu-watch-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/video]]); display: block; }
+.c4l-mu-read-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/book]]); display: block; }
+.c4l-mu-write-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/pencil]]); display: block; }
+.c4l-mu-explore-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/telescope]]); display: block; }
+.c4l-mu-listen-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/headphones]]); display: block; }
+.c4l-mu-group-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/user-group]]); display: block; }
+.c4l-mu-comment-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/comments]]); display: block; }
+.c4l-mu-checkmark-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/check]]); display: block; }
+.c4l-mu-guidance-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/signs-post]]); display: block; }
+.c4l-mu-process-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/gears]]); display: block; }
+.c4l-mu-map-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/map]]); display: block; }
+.c4l-mu-questionmark-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/circle-question]]); display: block; }
+.c4l-mu-important-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/triangle-exclamation]]); display: block; }
+.c4l-mu-information-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/circle-exclamation]]); display: block; }
+
+
+div.c4l-mu-activities {
+    --icon_size: 36px;
+    --icon_margin: 8px;
+
+    border-left: calc( var(--icon_margin) + var(--icon_size) + var(--icon_margin)) solid #4c81af;
+    background-color: #f4f7f9;
+    padding: var(--icon_margin);
+    position: relative;
+
+    &::before {
+        display: block;
+        width: var(--icon_size);
+        height: var(--icon_size);
+        position: absolute;
+        top: var(--icon_margin);
+        left: calc(0px - var(--icon_margin) - var(--icon_size));
+
+        filter: invert(100%);
+    }
+
+    /* Duotone light */
+
+&.c4l-mu-watch { &::before { content: url([[pix:tiny_c4l|mu/video]]); } }
+&.c4l-mu-read { &::before { content: url([[pix:tiny_c4l|mu/book]]); } }
+&.c4l-mu-write { &::before { content: url([[pix:tiny_c4l|mu/pencil]]); } }
+&.c4l-mu-explore { &::before { content: url([[pix:tiny_c4l|mu/telescope]]); } }
+&.c4l-mu-listen { &::before { content: url([[pix:tiny_c4l|mu/headphones]]); } }
+&.c4l-mu-group { &::before { content: url([[pix:tiny_c4l|mu/user-group]]); } }
+&.c4l-mu-comment { &::before { content: url([[pix:tiny_c4l|mu/comments]]); } }
+&.c4l-mu-checkmark { &::before { content: url([[pix:tiny_c4l|mu/check]]); } }
+&.c4l-mu-guidance { &::before { content: url([[pix:tiny_c4l|mu/signs-post]]); } }
+&.c4l-mu-process { &::before { content: url([[pix:tiny_c4l|mu/gears]]); } }
+&.c4l-mu-map { &::before { content: url([[pix:tiny_c4l|mu/map]]); } }
+&.c4l-mu-questionmark { &::before { content: url([[pix:tiny_c4l|mu/circle-question]]); } }
+&.c4l-mu-important { &::before { content: url([[pix:tiny_c4l|mu/triangle-exclamation]]); } }
+&.c4l-mu-information { &::before { content: url([[pix:tiny_c4l|mu/circle-exclamation]]); } }
+
+
+}
+
+
+
 
 /* Start mu */
 /* Styling - Based on work by Bruce MacKay CoHSS */
