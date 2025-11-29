@@ -72,6 +72,24 @@
 .c4l-mu-important-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/triangle-exclamation]]); display: block; }
 .c4l-mu-information-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/circle-exclamation]]); display: block; }
 
+.c4l-button-variant.mu-blue-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-blue]])}.c4l-button-variant.mu-blue-variant-on::before,.c4l-button-variant.mu-blue-variant-on:hover::before,.c4l-button-variant.mu-blue-variant-off:hover::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-blue]])}
+.c4l-button-variant.mu-green-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-green]])}.c4l-button-variant.mu-green-variant-on::before,.c4l-button-variant.mu-green-variant-on:hover::before,.c4l-button-variant.mu-green-variant-off:hover::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-green]])}
+.c4l-button-variant.mu-grey-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-grey]])}.c4l-button-variant.mu-grey-variant-on::before,.c4l-button-variant.mu-grey-variant-on:hover::before,.c4l-button-variant.mu-grey-variant-off:hover::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-grey]])}
+.c4l-button-variant.mu-teal-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-teal]])}.c4l-button-variant.mu-teal-variant-on::before,.c4l-button-variant.mu-teal-variant-on:hover::before,.c4l-button-variant.mu-teal-variant-off:hover::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-teal]])}
+.c4l-button-variant.mu-voilet-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-voilet]])}.c4l-button-variant.mu-voilet-variant-on::before,.c4l-button-variant.mu-voilet-variant-on:hover::before,.c4l-button-variant.mu-voilet-variant-off:hover::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-voilet]])}
+.c4l-button-variant.mu-yellow-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-yellow]])}.c4l-button-variant.mu-yellow-variant-on::before,.c4l-button-variant.mu-yellow-variant-on:hover::before,.c4l-button-variant.mu-yellow-variant-off:hover::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-yellow]])}
+
+
+button[data-type="mu-activities"] {
+    .c4l-button-variant::before {
+        width: 24px;
+        height: 24px;
+    }
+
+    .c4l-button-variants .c4l-button-variant.on {
+        background-color: red;
+    }
+}
 
 div.c4l-mu-activities {
     --icon_size: 36px;
