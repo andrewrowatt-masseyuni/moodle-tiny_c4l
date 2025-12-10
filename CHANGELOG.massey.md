@@ -4,6 +4,7 @@ This file records fork-specific changes. All notable changes to this fork will b
 
 ## [Unreleased]
 ### Added
+- Added AI Assessment Framework options
 - Describe new features added in this fork. (Link to commit/PR: https://github.com/<your>/moodle-tiny_c4l/commit/abcd1234)
 
 ### Changed
