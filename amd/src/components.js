@@ -266,34 +266,6 @@ const components = [
             " Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
         variants: ["full-width"],
     },
-    {
-        id: "18",
-        name: "mu-table",
-        type: "mu-tables",
-        imageClass: "c4l-mu-table-icon c4l-mu-no-variants",
-        code:
-            `<p class="c4l-spacer"></p><div class="mu-c4l mu-table"
-            aria-label="{{#allpurposecard}}"><table>
-            <thead><tr><td>{{PLACEHOLDER}}</td><td>Heading</td><td>Heading</td></tr></thead>
-            <tbody><tr><td>content</td><td>content</td><td>content</td></tr></tbody></table></div>`,
-        text:
-            "Heading 1",
-        variants: [],
-    },
-    {
-        id: "19",
-        name: "mu-table-grey-variant",
-        type: "mu-tables",
-        imageClass: "c4l-mu-table-icon c4l-mu-no-variants",
-        code:
-            `<p class="c4l-spacer"></p><div class="mu-c4l mu-table mu-table-grey-variant"
-            aria-label="{{#allpurposecard}}"><table>
-            <thead><tr><td>{{PLACEHOLDER}}</td><td>Heading</td><td>Heading</td></tr></thead>
-            <tbody><tr><td>content</td><td>content</td><td>content</td></tr></tbody></table></div>`,
-        text:
-            "Heading 1",
-        variants: [],
-    },
 
     {
         id: "20",
@@ -444,34 +416,67 @@ const components = [
         variants: [],
     },
 
-{id: "31", name: "mu-watch1", type: "mu-activities", imageClass: "c4l-mu-watch-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-watch c4lv-mu-watch1 {{VARIANTS}}" aria-label="{{#mu-watch1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "32", name: "mu-watch2", type: "mu-activities", imageClass: "c4l-mu-watch-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-watch c4lv-mu-watch2 {{VARIANTS}}" aria-label="{{#mu-watch2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "33", name: "mu-read1", type: "mu-activities", imageClass: "c4l-mu-read-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-read c4lv-mu-read1 {{VARIANTS}}" aria-label="{{#mu-read1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "34", name: "mu-read2", type: "mu-activities", imageClass: "c4l-mu-read-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-read c4lv-mu-read2 {{VARIANTS}}" aria-label="{{#mu-read2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "35", name: "mu-write1", type: "mu-activities", imageClass: "c4l-mu-write-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-write c4lv-mu-write1 {{VARIANTS}}" aria-label="{{#mu-write1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "36", name: "mu-write2", type: "mu-activities", imageClass: "c4l-mu-write-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-write c4lv-mu-write2 {{VARIANTS}}" aria-label="{{#mu-write2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "37", name: "mu-explore1", type: "mu-activities", imageClass: "c4l-mu-explore-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-explore c4lv-mu-explore1 {{VARIANTS}}" aria-label="{{#mu-explore1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "38", name: "mu-explore2", type: "mu-activities", imageClass: "c4l-mu-explore-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-explore c4lv-mu-explore2 {{VARIANTS}}" aria-label="{{#mu-explore2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "39", name: "mu-listen1", type: "mu-activities", imageClass: "c4l-mu-listen-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-listen c4lv-mu-listen1 {{VARIANTS}}" aria-label="{{#mu-listen1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "40", name: "mu-listen2", type: "mu-activities", imageClass: "c4l-mu-listen-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-listen c4lv-mu-listen2 {{VARIANTS}}" aria-label="{{#mu-listen2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "41", name: "mu-group1", type: "mu-activities", imageClass: "c4l-mu-group-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-group c4lv-mu-group1 {{VARIANTS}}" aria-label="{{#mu-group1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "42", name: "mu-group2", type: "mu-activities", imageClass: "c4l-mu-group-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-group c4lv-mu-group2 {{VARIANTS}}" aria-label="{{#mu-group2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "43", name: "mu-comment1", type: "mu-activities", imageClass: "c4l-mu-comment-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-comment c4lv-mu-comment1 {{VARIANTS}}" aria-label="{{#mu-comment1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "44", name: "mu-comment2", type: "mu-activities", imageClass: "c4l-mu-comment-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-comment c4lv-mu-comment2 {{VARIANTS}}" aria-label="{{#mu-comment2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "45", name: "mu-checkmark1", type: "mu-activities", imageClass: "c4l-mu-checkmark-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-checkmark c4lv-mu-checkmark1 {{VARIANTS}}" aria-label="{{#mu-checkmark1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "46", name: "mu-checkmark2", type: "mu-activities", imageClass: "c4l-mu-checkmark-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-checkmark c4lv-mu-checkmark2 {{VARIANTS}}" aria-label="{{#mu-checkmark2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "47", name: "mu-guidance1", type: "mu-activities", imageClass: "c4l-mu-guidance-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-guidance c4lv-mu-guidance1 {{VARIANTS}}" aria-label="{{#mu-guidance1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "48", name: "mu-guidance2", type: "mu-activities", imageClass: "c4l-mu-guidance-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-guidance c4lv-mu-guidance2 {{VARIANTS}}" aria-label="{{#mu-guidance2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "49", name: "mu-process1", type: "mu-activities", imageClass: "c4l-mu-process-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-process c4lv-mu-process1 {{VARIANTS}}" aria-label="{{#mu-process1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "50", name: "mu-process2", type: "mu-activities", imageClass: "c4l-mu-process-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-process c4lv-mu-process2 {{VARIANTS}}" aria-label="{{#mu-process2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "51", name: "mu-map1", type: "mu-activities", imageClass: "c4l-mu-map-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-map c4lv-mu-map1 {{VARIANTS}}" aria-label="{{#mu-map1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "52", name: "mu-map2", type: "mu-activities", imageClass: "c4l-mu-map-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-map c4lv-mu-map2 {{VARIANTS}}" aria-label="{{#mu-map2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "53", name: "mu-questionmark1", type: "mu-activities", imageClass: "c4l-mu-questionmark-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-questionmark c4lv-mu-questionmark1 {{VARIANTS}}" aria-label="{{#mu-questionmark1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "54", name: "mu-questionmark2", type: "mu-activities", imageClass: "c4l-mu-questionmark-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-questionmark c4lv-mu-questionmark2 {{VARIANTS}}" aria-label="{{#mu-questionmark2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "55", name: "mu-important1", type: "mu-activities", imageClass: "c4l-mu-important-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-important c4lv-mu-important1 {{VARIANTS}}" aria-label="{{#mu-important1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "56", name: "mu-important2", type: "mu-activities", imageClass: "c4l-mu-important-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-important c4lv-mu-important2 {{VARIANTS}}" aria-label="{{#mu-important2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "57", name: "mu-information1", type: "mu-activities", imageClass: "c4l-mu-information-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-information c4lv-mu-information1 {{VARIANTS}}" aria-label="{{#mu-information1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "58", name: "mu-information2", type: "mu-activities", imageClass: "c4l-mu-information-icon", code: `<p class="c4l-spacer"></p><div class="c4l-mu-activities c4lv-mu-information c4lv-mu-information2 {{VARIANTS}}" aria-label="{{#mu-information2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "31", name: "mu-watch1", type: "mu-activities", imageClass: "c4l-mu-watch-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-watch c4lv-mu-watch1 {{VARIANTS}}" aria-label="{{#mu-watch1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "32", name: "mu-watch2", type: "mu-activities", imageClass: "c4l-mu-watch-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-watch c4lv-mu-watch2 {{VARIANTS}}" aria-label="{{#mu-watch2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "33", name: "mu-read1", type: "mu-activities", imageClass: "c4l-mu-read-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-read c4lv-mu-read1 {{VARIANTS}}" aria-label="{{#mu-read1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "34", name: "mu-read2", type: "mu-activities", imageClass: "c4l-mu-read-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-read c4lv-mu-read2 {{VARIANTS}}" aria-label="{{#mu-read2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "35", name: "mu-write1", type: "mu-activities", imageClass: "c4l-mu-write-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-write c4lv-mu-write1 {{VARIANTS}}" aria-label="{{#mu-write1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "36", name: "mu-write2", type: "mu-activities", imageClass: "c4l-mu-write-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-write c4lv-mu-write2 {{VARIANTS}}" aria-label="{{#mu-write2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "37", name: "mu-explore1", type: "mu-activities", imageClass: "c4l-mu-explore-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-explore c4lv-mu-explore1 {{VARIANTS}}" aria-label="{{#mu-explore1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "38", name: "mu-explore2", type: "mu-activities", imageClass: "c4l-mu-explore-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-explore c4lv-mu-explore2 {{VARIANTS}}" aria-label="{{#mu-explore2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "39", name: "mu-listen1", type: "mu-activities", imageClass: "c4l-mu-listen-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-listen c4lv-mu-listen1 {{VARIANTS}}" aria-label="{{#mu-listen1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "40", name: "mu-listen2", type: "mu-activities", imageClass: "c4l-mu-listen-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-listen c4lv-mu-listen2 {{VARIANTS}}" aria-label="{{#mu-listen2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "41", name: "mu-group1", type: "mu-activities", imageClass: "c4l-mu-group-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-group c4lv-mu-group1 {{VARIANTS}}" aria-label="{{#mu-group1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "42", name: "mu-group2", type: "mu-activities", imageClass: "c4l-mu-group-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-group c4lv-mu-group2 {{VARIANTS}}" aria-label="{{#mu-group2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "43", name: "mu-comment1", type: "mu-activities", imageClass: "c4l-mu-comment-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-comment c4lv-mu-comment1 {{VARIANTS}}" aria-label="{{#mu-comment1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "44", name: "mu-comment2", type: "mu-activities", imageClass: "c4l-mu-comment-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-comment c4lv-mu-comment2 {{VARIANTS}}" aria-label="{{#mu-comment2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "45", name: "mu-checkmark1", type: "mu-activities", imageClass: "c4l-mu-checkmark-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-checkmark c4lv-mu-checkmark1 {{VARIANTS}}" aria-label="{{#mu-checkmark1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "46", name: "mu-checkmark2", type: "mu-activities", imageClass: "c4l-mu-checkmark-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-checkmark c4lv-mu-checkmark2 {{VARIANTS}}" aria-label="{{#mu-checkmark2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "47", name: "mu-guidance1", type: "mu-activities", imageClass: "c4l-mu-guidance-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-guidance c4lv-mu-guidance1 {{VARIANTS}}" aria-label="{{#mu-guidance1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "48", name: "mu-guidance2", type: "mu-activities", imageClass: "c4l-mu-guidance-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-guidance c4lv-mu-guidance2 {{VARIANTS}}" aria-label="{{#mu-guidance2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "49", name: "mu-process1", type: "mu-activities", imageClass: "c4l-mu-process-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-process c4lv-mu-process1 {{VARIANTS}}" aria-label="{{#mu-process1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "50", name: "mu-process2", type: "mu-activities", imageClass: "c4l-mu-process-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-process c4lv-mu-process2 {{VARIANTS}}" aria-label="{{#mu-process2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "51", name: "mu-map1", type: "mu-activities", imageClass: "c4l-mu-map-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-map c4lv-mu-map1 {{VARIANTS}}" aria-label="{{#mu-map1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "52", name: "mu-map2", type: "mu-activities", imageClass: "c4l-mu-map-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-map c4lv-mu-map2 {{VARIANTS}}" aria-label="{{#mu-map2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "53", name: "mu-questionmark1", type: "mu-activities", imageClass: "c4l-mu-questionmark-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-questionmark c4lv-mu-questionmark1 {{VARIANTS}}" aria-label="{{#mu-questionmark1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "54", name: "mu-questionmark2", type: "mu-activities", imageClass: "c4l-mu-questionmark-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-questionmark c4lv-mu-questionmark2 {{VARIANTS}}" aria-label="{{#mu-questionmark2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "55", name: "mu-important1", type: "mu-activities", imageClass: "c4l-mu-important-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-important c4lv-mu-important1 {{VARIANTS}}" aria-label="{{#mu-important1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "56", name: "mu-important2", type: "mu-activities", imageClass: "c4l-mu-important-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-important c4lv-mu-important2 {{VARIANTS}}" aria-label="{{#mu-important2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "57", name: "mu-information1", type: "mu-activities", imageClass: "c4l-mu-information-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-information c4lv-mu-information1 {{VARIANTS}}" aria-label="{{#mu-information1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "58", name: "mu-information2", type: "mu-activities", imageClass: "c4l-mu-information-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-information c4lv-mu-information2 {{VARIANTS}}" aria-label="{{#mu-information2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+
+    {
+        id: "18",
+        name: "mu-table",
+        type: "mu-others",
+        imageClass: "c4l-mu-table-icon c4l-mu-no-variants",
+        code:
+            `<p class="c4l-spacer"></p><div class="mu-c4l mu-table"
+            aria-label="{{#allpurposecard}}"><table>
+            <thead><tr><td>{{PLACEHOLDER}}</td><td>Heading</td><td>Heading</td></tr></thead>
+            <tbody><tr><td>content</td><td>content</td><td>content</td></tr></tbody></table></div>`,
+        text:
+            "Heading 1",
+        variants: [],
+    },
+    {
+        id: "19",
+        name: "mu-table-grey-variant",
+        type: "mu-others",
+        imageClass: "c4l-mu-table-icon c4l-mu-no-variants",
+        code:
+            `<p class="c4l-spacer"></p><div class="mu-c4l mu-table mu-table-grey-variant"
+            aria-label="{{#allpurposecard}}"><table>
+            <thead><tr><td>{{PLACEHOLDER}}</td><td>Heading</td><td>Heading</td></tr></thead>
+            <tbody><tr><td>content</td><td>content</td><td>content</td></tr></tbody></table></div>`,
+        text:
+            "Heading 1",
+        variants: [],
+    },
+
+{id: "59", name: "mu-emphasis1", type: "mu-others", imageClass: "c4l-mu-emphasis-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-others c4lv-mu-emphasis c4lv-mu-emphasis1 {{VARIANTS}}" aria-label="{{#mu-emphasis1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "60", name: "mu-emphasis2", type: "mu-others", imageClass: "c4l-mu-emphasis-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-others c4lv-mu-emphasis c4lv-mu-emphasis2 {{VARIANTS}}" aria-label="{{#mu-emphasis2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+
 ];
 
 export default {
