@@ -7,6 +7,15 @@
 }
 
 div.mu-c4l {
+    --mu-shadow-lw: 0 1px 2px 0 #0000001a;
+    --base-color-blue: #4c81af;
+    --base-color-green: #81ab5f;
+    --base-color-grey: #757575;
+    --base-color-teal: #44a4ad;
+    --base-color-violet: #7561aa;
+    --base-color-yellow: #c3a542;
+
+
     p {
         margin: 0;
 
@@ -26,6 +35,7 @@ div.mu-c4l {
         position: relative;
         min-height: calc(var(--icon_margin) + var(--icon_size) + var(--icon_margin));
         border-radius: 0.3em;
+        box-shadow: var(--mu-shadow-lw);
 
         &::before {
             display: block;
@@ -37,8 +47,6 @@ div.mu-c4l {
 
             filter: invert(100%);
         }
-
-
 
         /* Duotone light */
 
@@ -64,6 +72,7 @@ div.mu-c4l {
         border-left: var(--border-size) solid var(--base-color);
         background-color: color-mix(in srgb, var(--base-color) 10%, white);
         padding: var(--border-size);
+        box-shadow: var(--mu-shadow-lw);
 
         p {
             margin: 0;
@@ -75,12 +84,13 @@ div.mu-c4l {
     }
 
     /* variants */
-    &.c4l-mu-color-blue-variant { --base-color: #4c81af;}
-    &.c4l-mu-color-green-variant { --base-color: #81ab5f;}
-    &.c4l-mu-color-grey-variant { --base-color: #757575;}
-    &.c4l-mu-color-teal-variant { --base-color: #44a4ad;}
-    &.c4l-mu-color-violet-variant { --base-color: #7561aa;}
-    &.c4l-mu-color-yellow-variant { --base-color: #c3a542;}
+    &.c4l-mu-color-blue-variant { --base-color: var(--base-color-blue);}
+    &.c4l-mu-color-green-variant { --base-color: var(--base-color-green);}
+    &.c4l-mu-color-grey-variant { --base-color: var(--base-color-grey);}
+    &.c4l-mu-color-teal-variant { --base-color: var(--base-color-teal);}
+    &.c4l-mu-color-violet-variant { --base-color: var(--base-color-violet);}
+    &.c4l-mu-color-yellow-variant { --base-color: var(--base-color-yellow);}
+
 
     /* Styling - Based on work by Bruce MacKay CoHSS */
     &.mu-table {
@@ -120,6 +130,7 @@ div.mu-c4l {
     /* End Table*/
 }
 /* End display styles */
+
 
 /* LMS0261 start */
 :root {
