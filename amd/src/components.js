@@ -273,14 +273,12 @@ const components = [
         type: "mu-aiassessmentscale",
         imageClass: "c4l-mu-aiassessmentscale-icon aiasl1 c4l-mu-no-variants",
         code:
-            `<div class="mu-fc mu-fc-aias1 mu-fc-aias-l1">
+            `<p class="c4l-spacer"></p><div class="mu-fc mu-fc-aias1 mu-fc-aias-l1">
             <div class="mu-fc-inner">
-            <p></p>
             <h5>No AI</h5>
             <p>You must not use AI at any point during the assessment. You must demonstrate your core skills and knowledge.</p>
             <p class="findoutmorelink"><a href="https://stream.massey.ac.nz/course/view.php?id=10" target="_blank"
             >Find out more about AI at Massey</a></p>
-            <p></p>
             </div>
             </div>`,
         text:
@@ -294,13 +292,11 @@ const components = [
         type: "mu-aiassessmentscale",
         imageClass: "c4l-mu-aiassessmentscale-icon aiasl2 c4l-mu-no-variants",
         code:
-            `<div class="mu-fc mu-fc-aias1 mu-fc-aias-l2">
+            `<p class="c4l-spacer"></p><div class="mu-fc mu-fc-aias1 mu-fc-aias-l2">
             <div class="mu-fc-inner">
             <h5>AI Planning</h5>
             <p>You may use AI for planning, idea development and research. Your final submission should show how you have developed and refined these ideas.</p>
-            <p></p>
             <details><summary>See what this means for this assessment</summary>
-            <p></p>
             <p>Depending on the requirements of your assessment, you may use AI to:</p>
             <ul>
             <li>generate ideas for the <a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339419" target="_blank" title="Opens in a new tab">content</a>&nbsp;and&nbsp;<a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339421" target="_blank" title="Opens in a new tab">structure</a> of a piece of work<a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339419" target="_blank" title="Opens in a new tab"></a></li>
@@ -312,16 +308,12 @@ const components = [
             <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339435" target="_blank" title="Opens in a new tab">provoke reflection</a></li>
             <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339422" target="_blank" title="Opens in a new tab">understand the marking rubric</a></li>
             </ul>
-            <p></p>
             </details>
-            <p></p>
             <p>The prompts and outputs of any AI used must be provided in an appendix to your submitted assessment. See these <a href="https://stream.massey.ac.nz/mod/book/view.php?id=5430644&amp;chapterid=1354035" target="_blank">guidelines for writing your appendix</a>.</p>
             <p><a href="https://stream.massey.ac.nz/mod/resource/view.php?id=5469872" target="_blank">Download this Word document</a> to guide you in creating your AI use statement.</p>
             <p class="findoutmorelink"><a href="https://stream.massey.ac.nz/course/view.php?id=10" target="_blank">Find out more about AI at Massey</a></p>
-            <p></p>
             </div>
-            </div>
-            <p>&nbsp;</p>`,
+            </div>`,
         text:
             "",
         variants: [],
@@ -333,14 +325,11 @@ const components = [
         type: "mu-aiassessmentscale",
         imageClass: "c4l-mu-aiassessmentscale-icon aiasl3 c4l-mu-no-variants",
         code:
-            `<div class="mu-fc mu-fc-aias1 mu-fc-aias-l3">
+            `<p class="c4l-spacer"></p><div class="mu-fc mu-fc-aias1 mu-fc-aias-l3">
             <div class="mu-fc-inner">
             <h5>AI Collaboration</h5>
             <p>You may use AI to assist with specific tasks, such as drafting text, refining and evaluating your work.</p>
-            <p></p>
-            <p></p>
             <details><summary>See what this means for this assessment</summary>
-            <p></p>
             <p>Depending on the requirements of your assessment, you may use AI to:</p>
             <ul>
             <li>generate ideas for the&nbsp;<a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339419" target="_blank" title="Opens in a new tab">content</a>&nbsp;and&nbsp;<a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339421" target="_blank" title="Opens in a new tab">structure</a>&nbsp;of a piece of work</li>
@@ -356,17 +345,12 @@ const components = [
             <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1341223" target="_blank" title="Opens in a new tab">improve your writing</a>&nbsp;and <a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1341245" target="_blank">proofread your work</a></li>
             <li><a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1341248" target="_blank" title="Opens in a new tab">ask for feedback on your work</a></li>
             </ul>
-            <p></p>
-            <p></p>
             </details>
-            <p></p>
             <p>You must critically evaluate and modify any AI generated content you use, and the prompts and outputs of any AI used must be provided in an appendix to your submitted assessment. See these&nbsp;<a href="https://stream.massey.ac.nz/mod/book/view.php?id=5430644&amp;chapterid=1354035" target="_blank">guidelines for writing your appendix</a>.</p>
             <p><a href="https://stream.massey.ac.nz/mod/resource/view.php?id=5469872" target="_blank">Download this Word document</a> to guide you in creating your AI use statement.</p>
             <p class="findoutmorelink"><a href="https://stream.massey.ac.nz/course/view.php?id=10" target="_blank">Find out more about AI at Massey</a></p>
-            <p></p>
             </div>
-            </div>
-            <p>&nbsp;</p>`,
+            </div>`,
         text:
             "",
         variants: [],
@@ -378,13 +362,11 @@ const components = [
         type: "mu-aiassessmentscale",
         imageClass: "c4l-mu-aiassessmentscale-icon aiasl5 c4l-mu-no-variants",
         code:
-            `<div class="mu-fc mu-fc-aias1 mu-fc-aias-l5 {{VARIANTS}}">
+            `<p class="c4l-spacer"></p><div class="mu-fc mu-fc-aias1 mu-fc-aias-l5 {{VARIANTS}}">
             <div class="mu-fc-inner">
-            <p></p>
             <h5>AI Exploration</h5>
             <p>You should use AI creatively to solve the task, potentially co-designing new approaches with your instructor.</p>
             <details><summary>See what this means for this assessment</summary>
-            <p></p>
             <p>Depending on the requirements of your assessment, you may use AI to:</p>
             <ul>
             <li>generate ideas for the&nbsp;<a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339419" target="_blank" title="Opens in a new tab">content</a>&nbsp;and&nbsp;<a href="https://stream.massey.ac.nz/mod/book/view.php?id=5385617&amp;chapterid=1339421" target="_blank" title="Opens in a new tab">structure</a>&nbsp;of a piece of work</li>
@@ -407,10 +389,8 @@ const components = [
             </details>
             <p><a href="https://stream.massey.ac.nz/mod/resource/view.php?id=5469872" target="_blank">Download this Word document</a> to guide you in creating your AI use statement.</p>
             <p class="findoutmorelink"><a href="https://stream.massey.ac.nz/course/view.php?id=10" target="_blank">Find out more about AI at Massey</a></p>
-            <p></p>
             </div>
-            </div>
-            <p>&nbsp;</p>`,
+            </div>`,
         text:
             "",
         variants: [],
