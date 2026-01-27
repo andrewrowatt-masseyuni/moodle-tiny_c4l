@@ -148,6 +148,21 @@ const displayDialogue = async(editor) => {
             });
         }
     });
+
+    // Event listeners for information icons and links.
+    const infoIcons = modal.getRoot()[0].querySelectorAll('.c4l-info-icon');
+    infoIcons.forEach(node => {
+        node.addEventListener('click', (event) => {
+            handleInfoClick(event);
+        });
+    });
+
+    const infoLinks = modal.getRoot()[0].querySelectorAll('.c4l-more-info-link');
+    infoLinks.forEach(node => {
+        node.addEventListener('click', (event) => {
+            handleInfoClick(event);
+        });
+    });
 };
 
 /**
@@ -323,6 +338,37 @@ const handleVariantClick = (event, modal) => {
 };
 
 /**
+ * Handle click on information icon or link.
+ *
+ * @param {MouseEvent} event The click event
+ */
+const handleInfoClick = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const link = event.target.closest('a');
+    if (link) {
+        const url = link.dataset.url;
+        const componentId = link.dataset.component;
+
+        // Get the active variant from the button or preview
+        let variantFragment = '';
+        const button = document.querySelector(`button[data-id="${componentId}"]`);
+        if (button) {
+            const activeVariant = button.querySelector('.c4l-button-variant.on');
+            if (activeVariant) {
+                const variantName = activeVariant.dataset.variant;
+                // Convert variant name to URL fragment format (e.g., "full-width" stays "full-width")
+                variantFragment = '#' + variantName;
+            }
+        }
+
+        // Open the URL with the variant fragment in a new tab
+        window.open(url + variantFragment, '_blank');
+    }
+};
+
+/**
  * Get the template context for the dialogue.
  *
  * @param {Editor} editor
@@ -415,6 +461,7 @@ const getButtons = (editor) => {
                 htmlcode: componentCode,
                 css: component.css ?? '',
                 variants: getVariantsState(component.name, component.variants),
+                moreinformation: component.moreinformation ?? '',
             });
 
             // Add class to hide button.

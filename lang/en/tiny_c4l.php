@@ -94,6 +94,7 @@ $string['keyconcept'] = 'Key concept';
 $string['learningoutcomes'] = 'Learning outcomes';
 $string['menuitem_c4l'] = 'Components for Learning (C4L)';
 $string['min'] = 'min';
+$string['moreinformation'] = 'More information';
 $string['mu-activities'] = 'Activities';
 $string['mu-activity'] = 'Activity';
 $string['mu-aiasl1'] = 'No AI';

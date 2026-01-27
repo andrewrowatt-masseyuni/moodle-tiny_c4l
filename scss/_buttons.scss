@@ -145,6 +145,39 @@
     padding-left: 62px;
 }
 
+/* Information icon on button */
+.c4l-info-icon {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 16px;
+    height: 16px;
+    background-color: #1679f9;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    z-index: 10;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    i {
+        font-style: normal;
+        font-size: 10px;
+        line-height: 1;
+    }
+
+    &:hover {
+        background-color: #0d5bc7;
+        text-decoration: none;
+    }
+}
+
 .c4l-code-preview {
     display: none;
     overflow: hidden;
@@ -163,6 +196,28 @@
     -webkit-transform: translateY(-15px);
     -ms-transform: translateY(-15px);
     transform: translateY(-15px);
+}
+
+/* More information link in preview */
+.c4l-more-info-link {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: 10px;
+    font-weight: 500;
+    color: #1679f9;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    z-index: 10;
+
+    &:hover {
+        background-color: #1679f9;
+        color: #fff;
+        text-decoration: none;
+    }
 }
 
 /* Contextual components buttons */
