@@ -148,6 +148,21 @@ const displayDialogue = async(editor) => {
             });
         }
     });
+
+    // Event listeners for information icons and links.
+    const infoIcons = modal.getRoot()[0].querySelectorAll('.c4l-info-icon');
+    infoIcons.forEach(node => {
+        node.addEventListener('click', (event) => {
+            handleInfoClick(event, modal);
+        });
+    });
+
+    const infoLinks = modal.getRoot()[0].querySelectorAll('.c4l-more-info-link');
+    infoLinks.forEach(node => {
+        node.addEventListener('click', (event) => {
+            handleInfoClick(event, modal);
+        });
+    });
 };
 
 /**
@@ -220,6 +235,11 @@ const handleModalHidden = (editor) => {
  * @param {obj} modal
  */
 const handleButtonClick = (event, editor, modal) => {
+    // Ignore clicks on info icon - let handleInfoClick handle those
+    if (event.target.closest('.c4l-info-icon')) {
+        return;
+    }
+
     const selectedButton = event.target.closest('button').dataset.id;
 
     // Component button.
@@ -323,6 +343,42 @@ const handleVariantClick = (event, modal) => {
 };
 
 /**
+ * Handle click on information icon or link.
+ *
+ * @param {MouseEvent} event The click event
+ * @param {obj} modal
+ */
+const handleInfoClick = (event, modal) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const link = event.target.closest('a');
+    if (link) {
+        const url = link.dataset.url;
+        const componentId = link.dataset.component;
+
+        // Get the active variant from the button or preview
+        let variantFragment = '';
+        const button = modal.getRoot()[0].querySelector(`button[data-id="${componentId}"]`);
+        if (button) {
+            const activeVariant = button.querySelector('.c4l-button-variant.on');
+            if (activeVariant) {
+                const variantName = activeVariant.dataset.variant;
+                // Convert variant name to URL fragment format (e.g., "full-width" stays "full-width")
+                variantFragment = '#' + variantName;
+            }
+        }
+
+        // Validate URL is from expected domain
+        if (url && (url.startsWith('https://componentsforlearning.org/') ||
+                    url.startsWith('https://masseyuni.sharepoint.com/'))) {
+            // Open the URL with the variant fragment in a new tab
+            window.open(url + variantFragment, '_blank', 'noopener,noreferrer');
+        }
+    }
+};
+
+/**
  * Get the template context for the dialogue.
  *
  * @param {Editor} editor
@@ -415,6 +471,7 @@ const getButtons = (editor) => {
                 htmlcode: componentCode,
                 css: component.css ?? '',
                 variants: getVariantsState(component.name, component.variants),
+                moreinformation: component.moreinformation ?? '',
             });
 
             // Add class to hide button.
