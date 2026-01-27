@@ -166,7 +166,7 @@
     cursor: pointer;
     transition: background-color 0.2s;
 
-    i {
+    span {
         font-style: normal;
         font-size: 10px;
         line-height: 1;
@@ -199,6 +199,10 @@
 }
 
 /* More information link in preview */
+.c4l-component-preview-wrapper {
+    position: relative;
+}
+
 .c4l-more-info-link {
     position: absolute;
     bottom: 8px;
