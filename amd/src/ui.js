@@ -44,6 +44,14 @@ import {
     saveVariantPreferences,
     variantExists
 } from './variantslib';
+import {
+    isCursorInC4LComponent,
+    copyC4LComponent,
+    cutC4LComponent,
+    pasteC4LComponent,
+    hasClipboardContent
+} from './clipboard';
+import Notification from 'core/notification';
 
 let userStudent = false;
 let previewC4L = true;
@@ -148,6 +156,9 @@ const displayDialogue = async(editor) => {
             });
         }
     });
+
+    // Event clipboard listeners.
+    setupClipboardButtons(editor, modal);
 };
 
 /**
@@ -173,6 +184,129 @@ const handleSelectFilterChange = (event, modal) => {
             // Show/hide component buttons.
             showContextButtons(modal, currentContext);
         }
+    }
+};
+
+/**
+ * Setup clipboard buttons event listeners and initial state.
+ *
+ * @param {TinyMCE.Editor} editor The TinyMCE editor instance
+ * @param {obj} modal The modal object
+ */
+const setupClipboardButtons = (editor, modal) => {
+    const cutButton = modal.getRoot()[0].querySelector('#c4l-clipboard-cut');
+    const copyButton = modal.getRoot()[0].querySelector('#c4l-clipboard-copy');
+    const pasteButton = modal.getRoot()[0].querySelector('#c4l-clipboard-paste');
+
+    // Update button states based on current context
+    updateClipboardButtonStates(editor, cutButton, copyButton, pasteButton);
+
+    // Add event listeners
+    if (cutButton) {
+        cutButton.addEventListener('click', () => {
+            handleClipboardCut(editor, modal);
+        });
+    }
+
+    if (copyButton) {
+        copyButton.addEventListener('click', () => {
+            handleClipboardCopy(editor, modal);
+        });
+    }
+
+    if (pasteButton) {
+        pasteButton.addEventListener('click', () => {
+            handleClipboardPaste(editor, modal);
+        });
+    }
+};
+
+/**
+ * Update clipboard button enabled/disabled states.
+ *
+ * @param {TinyMCE.Editor} editor The TinyMCE editor instance
+ * @param {Element} cutButton The cut button element
+ * @param {Element} copyButton The copy button element
+ * @param {Element} pasteButton The paste button element
+ */
+const updateClipboardButtonStates = (editor, cutButton, copyButton, pasteButton) => {
+    const hasComponent = isCursorInC4LComponent(editor);
+    const hasClipboard = hasClipboardContent();
+
+    if (cutButton) {
+        cutButton.disabled = !hasComponent;
+    }
+
+    if (copyButton) {
+        copyButton.disabled = !hasComponent;
+    }
+
+    if (pasteButton) {
+        pasteButton.disabled = !hasClipboard;
+    }
+};
+
+/**
+ * Handle cut operation.
+ *
+ * @param {TinyMCE.Editor} editor The TinyMCE editor instance
+ * @param {obj} modal The modal object
+ */
+const handleClipboardCut = async(editor, modal) => {
+    if (cutC4LComponent(editor)) {
+        await Notification.addNotification({
+            message: langStrings.get('clipboard_cut_success'),
+            type: 'success'
+        });
+        editor.focus();
+    } else {
+        await Notification.addNotification({
+            message: langStrings.get('clipboard_no_component'),
+            type: 'error'
+        });
+    }
+};
+
+/**
+ * Handle copy operation.
+ *
+ * @param {TinyMCE.Editor} editor The TinyMCE editor instance
+ * @param {obj} modal The modal object
+ */
+const handleClipboardCopy = async(editor, modal) => {
+    if (copyC4LComponent(editor)) {
+        await Notification.addNotification({
+            message: langStrings.get('clipboard_copy_success'),
+            type: 'success'
+        });
+        editor.focus();
+    } else {
+        await Notification.addNotification({
+            message: langStrings.get('clipboard_no_component'),
+            type: 'error'
+        });
+    }
+};
+
+/**
+ * Handle paste operation.
+ *
+ * @param {TinyMCE.Editor} editor The TinyMCE editor instance
+ * @param {obj} modal The modal object
+ */
+const handleClipboardPaste = async(editor, modal) => {
+    if (pasteC4LComponent(editor)) {
+        await Notification.addNotification({
+            message: langStrings.get('clipboard_paste_success'),
+            type: 'success'
+        });
+        modal.destroy();
+        editor.focus();
+    } else {
+        await Notification.addNotification({
+            message: langStrings.get('clipboard_empty'),
+            type: 'error'
+        });
     }
 };
 
@@ -644,6 +778,20 @@ const getAllStrings = async() => {
                 keys.push(strLang[1]);
             }
         });
+    });
+
+    // Add clipboard strings
+    const clipboardKeys = [
+        'clipboard_copy_success',
+        'clipboard_cut_success',
+        'clipboard_paste_success',
+        'clipboard_no_component',
+        'clipboard_empty'
+    ];
+    clipboardKeys.forEach(key => {
+        if (keys.indexOf(key) === -1) {
+            keys.push(key);
+        }
     });
 
     const stringValues = await getStrings(keys.map((key) => ({key, component})));

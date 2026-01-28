@@ -116,6 +116,19 @@
             </div>
         </div>
     {{/body}}
+    {{$footer}}
+        <div class="c4l-clipboard-buttons">
+            <button type="button" class="btn btn-secondary c4l-clipboard-cut" id="c4l-clipboard-cut">
+                {{#str}} clipboard_cut, tiny_c4l {{/str}}
+            </button>
+            <button type="button" class="btn btn-secondary c4l-clipboard-copy" id="c4l-clipboard-copy">
+                {{#str}} clipboard_copy, tiny_c4l {{/str}}
+            </button>
+            <button type="button" class="btn btn-secondary c4l-clipboard-paste" id="c4l-clipboard-paste">
+                {{#str}} clipboard_paste, tiny_c4l {{/str}}
+            </button>
+        </div>
+    {{/footer}}
 {{/ core/modal }}
 {{#js}}
     require(['jquery'], function($) {
