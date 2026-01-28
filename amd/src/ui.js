@@ -254,16 +254,14 @@ const updateClipboardButtonStates = (editor, cutButton, copyButton, pasteButton)
 const handleClipboardCut = async(editor) => {
     if (cutC4LComponent(editor)) {
         Notification.alert(
-            '',
-            langStrings.get('mu-clipboard_cut_success'),
-            ''
+            langStrings.get('mu-clipboard_alert_title'),
+            langStrings.get('mu-clipboard_cut_success')
         );
         editor.focus();
     } else {
         Notification.alert(
-            '',
-            langStrings.get('mu-clipboard_no_component'),
-            ''
+            langStrings.get('mu-clipboard_alert_title'),
+            langStrings.get('mu-clipboard_no_component')
         );
     }
 };
@@ -276,16 +274,14 @@ const handleClipboardCut = async(editor) => {
 const handleClipboardCopy = async(editor) => {
     if (copyC4LComponent(editor)) {
         Notification.alert(
-            '',
-            langStrings.get('mu-clipboard_copy_success'),
-            ''
+            langStrings.get('mu-clipboard_alert_title'),
+            langStrings.get('mu-clipboard_copy_success')
         );
         editor.focus();
     } else {
         Notification.alert(
-            '',
-            langStrings.get('mu-clipboard_no_component'),
-            ''
+            langStrings.get('mu-clipboard_alert_title'),
+            langStrings.get('mu-clipboard_no_component')
         );
     }
 };
@@ -299,17 +295,15 @@ const handleClipboardCopy = async(editor) => {
 const handleClipboardPaste = async(editor, modal) => {
     if (pasteC4LComponent(editor)) {
         Notification.alert(
-            '',
-            langStrings.get('mu-clipboard_paste_success'),
-            ''
+            langStrings.get('mu-clipboard_alert_title'),
+            langStrings.get('mu-clipboard_paste_success')
         );
         modal.destroy();
         editor.focus();
     } else {
         Notification.alert(
-            '',
-            langStrings.get('mu-clipboard_empty'),
-            ''
+            langStrings.get('mu-clipboard_alert_title'),
+            langStrings.get('mu-clipboard_empty')
         );
     }
 };
@@ -797,7 +791,8 @@ const getAllStrings = async() => {
         'mu-clipboard_cut_success',
         'mu-clipboard_paste_success',
         'mu-clipboard_no_component',
-        'mu-clipboard_empty'
+        'mu-clipboard_empty',
+        'mu-clipboard_alert_title',
     ];
     clipboardKeys.forEach(key => {
         if (keys.indexOf(key) === -1) {
