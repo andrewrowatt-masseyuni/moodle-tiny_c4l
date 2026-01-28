@@ -22,7 +22,6 @@
  */
 
 const C4L_CLIPBOARD_KEY = 'c4lClipboard';
-const C4L_COMPONENT_SELECTOR = '[class*="c4lv-"]';
 
 /**
  * Find the nearest C4L component relative to the current selection.
@@ -86,12 +85,12 @@ export const copyC4LComponent = (editor) => {
     }
 
     try {
-        localStorage.setItem(C4L_CLIPBOARD_KEY, JSON.stringify(html));
+        localStorage.setItem(C4L_CLIPBOARD_KEY, html);
         return true;
     } catch (e) {
         // Fallback to sessionStorage if localStorage is not available
         try {
-            sessionStorage.setItem(C4L_CLIPBOARD_KEY, JSON.stringify(html));
+            sessionStorage.setItem(C4L_CLIPBOARD_KEY, html);
             return true;
         } catch (e2) {
             return false;
@@ -116,8 +115,10 @@ export const cutC4LComponent = (editor) => {
         return false;
     }
 
-    // Then remove it from the editor
-    editor.dom.remove(component);
+    // Wrap removal in undo transaction so it can be undone
+    editor.undoManager.transact(() => {
+        editor.dom.remove(component);
+    });
     return true;
 };
 
@@ -158,22 +159,16 @@ export const pasteC4LComponent = (editor) => {
     let html = null;
 
     try {
-        const content = localStorage.getItem(C4L_CLIPBOARD_KEY);
-        if (content) {
-            html = JSON.parse(content);
-        }
+        html = localStorage.getItem(C4L_CLIPBOARD_KEY);
     } catch (e) {
-        // Ignore localStorage errors
+        // Try sessionStorage if localStorage fails
     }
 
     if (!html) {
         try {
-            const content = sessionStorage.getItem(C4L_CLIPBOARD_KEY);
-            if (content) {
-                html = JSON.parse(content);
-            }
+            html = sessionStorage.getItem(C4L_CLIPBOARD_KEY);
         } catch (e) {
-            // Ignore sessionStorage errors
+            // Both storage methods failed
         }
     }
 
@@ -181,8 +176,10 @@ export const pasteC4LComponent = (editor) => {
         return false;
     }
 
-    // Insert the HTML at the current cursor position
-    editor.selection.setContent(html);
+    // Wrap insertion in undo transaction so it can be undone
+    editor.undoManager.transact(() => {
+        editor.selection.setContent(html);
+    });
     return true;
 };
 

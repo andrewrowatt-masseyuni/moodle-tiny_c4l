@@ -157,7 +157,7 @@ const displayDialogue = async(editor) => {
         }
     });
 
-    // Event clipboard listeners.
+    // Initialize clipboard event listeners.
     setupClipboardButtons(editor, modal);
 };
 
@@ -204,13 +204,13 @@ const setupClipboardButtons = (editor, modal) => {
     // Add event listeners
     if (cutButton) {
         cutButton.addEventListener('click', () => {
-            handleClipboardCut(editor, modal);
+            handleClipboardCut(editor);
         });
     }
 
     if (copyButton) {
         copyButton.addEventListener('click', () => {
-            handleClipboardCopy(editor, modal);
+            handleClipboardCopy(editor);
         });
     }
 
@@ -250,9 +250,8 @@ const updateClipboardButtonStates = (editor, cutButton, copyButton, pasteButton)
  * Handle cut operation.
  *
  * @param {TinyMCE.Editor} editor The TinyMCE editor instance
- * @param {obj} modal The modal object
  */
-const handleClipboardCut = async(editor, modal) => {
+const handleClipboardCut = async(editor) => {
     if (cutC4LComponent(editor)) {
         await Notification.addNotification({
             message: langStrings.get('clipboard_cut_success'),
@@ -271,9 +270,8 @@ const handleClipboardCut = async(editor, modal) => {
  * Handle copy operation.
  *
  * @param {TinyMCE.Editor} editor The TinyMCE editor instance
- * @param {obj} modal The modal object
  */
-const handleClipboardCopy = async(editor, modal) => {
+const handleClipboardCopy = async(editor) => {
     if (copyC4LComponent(editor)) {
         await Notification.addNotification({
             message: langStrings.get('clipboard_copy_success'),
