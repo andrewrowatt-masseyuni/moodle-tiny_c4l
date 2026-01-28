@@ -148,21 +148,6 @@ const displayDialogue = async(editor) => {
             });
         }
     });
-
-    // Event listeners for information icons and links.
-    const infoIcons = modal.getRoot()[0].querySelectorAll('.c4l-info-icon');
-    infoIcons.forEach(node => {
-        node.addEventListener('click', (event) => {
-            handleInfoClick(event, modal);
-        });
-    });
-
-    const infoLinks = modal.getRoot()[0].querySelectorAll('.c4l-more-info-link');
-    infoLinks.forEach(node => {
-        node.addEventListener('click', (event) => {
-            handleInfoClick(event, modal);
-        });
-    });
 };
 
 /**
@@ -340,42 +325,6 @@ const handleVariantClick = (event, modal) => {
     const variant = event.target.closest('span');
     const button = event.target.closest('button');
     updateVariantComponentState(variant, button, modal, false, true);
-};
-
-/**
- * Handle click on information icon or link.
- *
- * @param {MouseEvent} event The click event
- * @param {obj} modal
- */
-const handleInfoClick = (event, modal) => {
-    event.preventDefault();
-    event.stopPropagation();
-
-    const link = event.target.closest('a');
-    if (link) {
-        const url = link.dataset.url;
-        const componentId = link.dataset.component;
-
-        // Get the active variant from the button or preview
-        let variantFragment = '';
-        const button = modal.getRoot()[0].querySelector(`button[data-id="${componentId}"]`);
-        if (button) {
-            const activeVariant = button.querySelector('.c4l-button-variant.on');
-            if (activeVariant) {
-                const variantName = activeVariant.dataset.variant;
-                // Convert variant name to URL fragment format (e.g., "full-width" stays "full-width")
-                variantFragment = '#' + variantName;
-            }
-        }
-
-        // Validate URL is from expected domain
-        if (url && (url.startsWith('https://componentsforlearning.org/') ||
-                    url.startsWith('https://masseyuni.sharepoint.com/'))) {
-            // Open the URL with the variant fragment in a new tab
-            window.open(url + variantFragment, '_blank', 'noopener,noreferrer');
-        }
-    }
 };
 
 /**

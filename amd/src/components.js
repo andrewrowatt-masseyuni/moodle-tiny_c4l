@@ -300,6 +300,7 @@ const components = [
         text:
             "",
         variants: [],
+        moreinformation: "https://masseyuni.sharepoint.com/sites/DigitalInnovationProject/SitePages/Applying-the-Artificial-Intelligence-Assessment-Scale-(AIAS)-to-assessments.aspx",
     },
 
     {
@@ -333,6 +334,7 @@ const components = [
         text:
             "",
         variants: [],
+        moreinformation: "https://masseyuni.sharepoint.com/sites/DigitalInnovationProject/SitePages/Applying-the-Artificial-Intelligence-Assessment-Scale-(AIAS)-to-assessments.aspx",
     },
 
     {
@@ -370,6 +372,7 @@ const components = [
         text:
             "",
         variants: [],
+        moreinformation: "https://masseyuni.sharepoint.com/sites/DigitalInnovationProject/SitePages/Applying-the-Artificial-Intelligence-Assessment-Scale-(AIAS)-to-assessments.aspx",
     },
 
     {
@@ -410,6 +413,7 @@ const components = [
         text:
             "",
         variants: [],
+        moreinformation: "https://masseyuni.sharepoint.com/sites/DigitalInnovationProject/SitePages/Applying-the-Artificial-Intelligence-Assessment-Scale-(AIAS)-to-assessments.aspx",
     },
 
 {id: "31", name: "mu-watch1", type: "mu-activities", imageClass: "c4l-mu-watch-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-watch c4lv-mu-watch1 {{VARIANTS}}" aria-label="{{#mu-watch1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
