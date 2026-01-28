@@ -8,14 +8,16 @@ The clipboard feature allows users to cut, copy, and paste C4L components within
 ### Cut Component
 - **Button**: Cut
 - **When Enabled**: When the cursor is positioned inside a C4L component
-- **Action**: Removes the component from the editor and stores it in the clipboard
+- **Action**: Removes the component from the editor and stores it in both the private clipboard and system clipboard
 - **User Feedback**: "Component cut! Close this dialog, move to the new location, click C4L, and select Paste."
+- **Note**: Can be pasted using the Paste button or directly with Ctrl+V (Cmd+V)
 
 ### Copy Component
 - **Button**: Copy
 - **When Enabled**: When the cursor is positioned inside a C4L component
-- **Action**: Copies the component to the clipboard while leaving the original in place
+- **Action**: Copies the component to both the private clipboard and system clipboard while leaving the original in place
 - **User Feedback**: "Component copied! Close this dialog, move to the new location, click C4L, and select Paste."
+- **Note**: Can be pasted using the Paste button or directly with Ctrl+V (Cmd+V)
 
 ### Paste Component
 - **Button**: Paste
@@ -31,9 +33,12 @@ The clipboard feature intelligently handles nested components:
 ## Technical Details
 
 ### Storage
-- Uses **localStorage** as the primary storage mechanism
+- Uses **localStorage** as the primary storage mechanism for the C4L paste button
 - Falls back to **sessionStorage** if localStorage is unavailable
 - Data persists across browser sessions when using localStorage
+- **Also copies to system clipboard** for Ctrl+V (Cmd+V) pasting directly in the editor
+  - Uses modern Clipboard API when available
+  - Falls back to legacy execCommand for older browsers
 
 ### Component Detection
 - Components are identified by CSS classes starting with `c4lv-`

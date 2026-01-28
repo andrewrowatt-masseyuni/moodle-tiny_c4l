@@ -253,16 +253,18 @@ const updateClipboardButtonStates = (editor, cutButton, copyButton, pasteButton)
  */
 const handleClipboardCut = async(editor) => {
     if (cutC4LComponent(editor)) {
-        await Notification.addNotification({
-            message: langStrings.get('mu-clipboard_cut_success'),
-            type: 'success'
-        });
+        Notification.alert(
+            '',
+            langStrings.get('mu-clipboard_cut_success'),
+            ''
+        );
         editor.focus();
     } else {
-        await Notification.addNotification({
-            message: langStrings.get('mu-clipboard_no_component'),
-            type: 'error'
-        });
+        Notification.alert(
+            '',
+            langStrings.get('mu-clipboard_no_component'),
+            ''
+        );
     }
 };
 
@@ -273,16 +275,18 @@ const handleClipboardCut = async(editor) => {
  */
 const handleClipboardCopy = async(editor) => {
     if (copyC4LComponent(editor)) {
-        await Notification.addNotification({
-            message: langStrings.get('mu-clipboard_copy_success'),
-            type: 'success'
-        });
+        Notification.alert(
+            '',
+            langStrings.get('mu-clipboard_copy_success'),
+            ''
+        );
         editor.focus();
     } else {
-        await Notification.addNotification({
-            message: langStrings.get('mu-clipboard_no_component'),
-            type: 'error'
-        });
+        Notification.alert(
+            '',
+            langStrings.get('mu-clipboard_no_component'),
+            ''
+        );
     }
 };
 
@@ -294,17 +298,19 @@ const handleClipboardCopy = async(editor) => {
  */
 const handleClipboardPaste = async(editor, modal) => {
     if (pasteC4LComponent(editor)) {
-        await Notification.addNotification({
-            message: langStrings.get('mu-clipboard_paste_success'),
-            type: 'success'
-        });
+        Notification.alert(
+            '',
+            langStrings.get('mu-clipboard_paste_success'),
+            ''
+        );
         modal.destroy();
         editor.focus();
     } else {
-        await Notification.addNotification({
-            message: langStrings.get('mu-clipboard_empty'),
-            type: 'error'
-        });
+        Notification.alert(
+            '',
+            langStrings.get('mu-clipboard_empty'),
+            ''
+        );
     }
 };
 

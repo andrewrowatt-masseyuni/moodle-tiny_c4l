@@ -85,17 +85,65 @@ export const copyC4LComponent = (editor) => {
     }
 
     try {
+        // Store in localStorage/sessionStorage for internal paste button
         localStorage.setItem(C4L_CLIPBOARD_KEY, html);
-        return true;
     } catch (e) {
         // Fallback to sessionStorage if localStorage is not available
         try {
             sessionStorage.setItem(C4L_CLIPBOARD_KEY, html);
-            return true;
         } catch (e2) {
-            return false;
+            // Continue anyway to try system clipboard
         }
     }
+
+    // Also copy to system clipboard for Ctrl+V pasting
+    try {
+        if (navigator.clipboard && navigator.clipboard.write) {
+            // Modern Clipboard API
+            const blob = new Blob([html], {type: 'text/html'});
+            const clipboardItem = new ClipboardItem({'text/html': blob});
+            navigator.clipboard.write([clipboardItem]).catch(() => {
+                // Fallback if write fails
+                fallbackCopyToClipboard(html);
+            });
+        } else {
+            // Fallback for older browsers
+            fallbackCopyToClipboard(html);
+        }
+    } catch (e) {
+        // If system clipboard fails, still return true if localStorage worked
+    }
+
+    return true;
+};
+
+/**
+ * Fallback method to copy HTML to clipboard.
+ *
+ * @param {string} html The HTML to copy
+ */
+const fallbackCopyToClipboard = (html) => {
+    const tempDiv = document.createElement('div');
+    tempDiv.contentEditable = true;
+    tempDiv.innerHTML = html;
+    tempDiv.style.position = 'fixed';
+    tempDiv.style.opacity = '0';
+    document.body.appendChild(tempDiv);
+
+    // Select the content
+    const range = document.createRange();
+    range.selectNodeContents(tempDiv);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+    try {
+        document.execCommand('copy');
+    } catch (e) {
+        // Ignore if execCommand fails
+    }
+
+    document.body.removeChild(tempDiv);
 };
 
 /**
