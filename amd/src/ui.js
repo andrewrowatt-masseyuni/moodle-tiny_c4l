@@ -254,13 +254,13 @@ const updateClipboardButtonStates = (editor, cutButton, copyButton, pasteButton)
 const handleClipboardCut = async(editor) => {
     if (cutC4LComponent(editor)) {
         await Notification.addNotification({
-            message: langStrings.get('clipboard_cut_success'),
+            message: langStrings.get('mu-clipboard_cut_success'),
             type: 'success'
         });
         editor.focus();
     } else {
         await Notification.addNotification({
-            message: langStrings.get('clipboard_no_component'),
+            message: langStrings.get('mu-clipboard_no_component'),
             type: 'error'
         });
     }
@@ -274,13 +274,13 @@ const handleClipboardCut = async(editor) => {
 const handleClipboardCopy = async(editor) => {
     if (copyC4LComponent(editor)) {
         await Notification.addNotification({
-            message: langStrings.get('clipboard_copy_success'),
+            message: langStrings.get('mu-clipboard_copy_success'),
             type: 'success'
         });
         editor.focus();
     } else {
         await Notification.addNotification({
-            message: langStrings.get('clipboard_no_component'),
+            message: langStrings.get('mu-clipboard_no_component'),
             type: 'error'
         });
     }
@@ -295,14 +295,14 @@ const handleClipboardCopy = async(editor) => {
 const handleClipboardPaste = async(editor, modal) => {
     if (pasteC4LComponent(editor)) {
         await Notification.addNotification({
-            message: langStrings.get('clipboard_paste_success'),
+            message: langStrings.get('mu-clipboard_paste_success'),
             type: 'success'
         });
         modal.destroy();
         editor.focus();
     } else {
         await Notification.addNotification({
-            message: langStrings.get('clipboard_empty'),
+            message: langStrings.get('mu-clipboard_empty'),
             type: 'error'
         });
     }
@@ -780,11 +780,11 @@ const getAllStrings = async() => {
 
     // Add clipboard strings
     const clipboardKeys = [
-        'clipboard_copy_success',
-        'clipboard_cut_success',
-        'clipboard_paste_success',
-        'clipboard_no_component',
-        'clipboard_empty'
+        'mu-clipboard_copy_success',
+        'mu-clipboard_cut_success',
+        'mu-clipboard_paste_success',
+        'mu-clipboard_no_component',
+        'mu-clipboard_empty'
     ];
     clipboardKeys.forEach(key => {
         if (keys.indexOf(key) === -1) {

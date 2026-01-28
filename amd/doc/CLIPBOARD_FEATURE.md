@@ -72,14 +72,14 @@ The clipboard feature intelligently handles nested components:
 
 ## Language Strings
 The following language strings are used:
-- `clipboard_cut` - Button label for Cut
-- `clipboard_copy` - Button label for Copy
-- `clipboard_paste` - Button label for Paste
-- `clipboard_cut_success` - Success message for cut operation
-- `clipboard_copy_success` - Success message for copy operation
-- `clipboard_paste_success` - Success message for paste operation
-- `clipboard_no_component` - Error when no component is found at cursor
-- `clipboard_empty` - Error when clipboard is empty
+- `mu-clipboard_cut` - Button label for Cut
+- `mu-clipboard_copy` - Button label for Copy
+- `mu-clipboard_paste` - Button label for Paste
+- `mu-clipboard_cut_success` - Success message for cut operation
+- `mu-clipboard_copy_success` - Success message for copy operation
+- `mu-clipboard_paste_success` - Success message for paste operation
+- `mu-clipboard_no_component` - Error when no component is found at cursor
+- `mu-clipboard_empty` - Error when clipboard is empty
 
 ## Files Modified/Created
 
