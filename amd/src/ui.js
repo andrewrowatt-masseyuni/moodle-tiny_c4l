@@ -220,6 +220,11 @@ const handleModalHidden = (editor) => {
  * @param {obj} modal
  */
 const handleButtonClick = (event, editor, modal) => {
+    // Ignore clicks on info icon - let handleInfoClick handle those
+    if (event.target.closest('.c4l-info-icon')) {
+        return;
+    }
+
     const selectedButton = event.target.closest('button').dataset.id;
 
     // Component button.
@@ -415,6 +420,7 @@ const getButtons = (editor) => {
                 htmlcode: componentCode,
                 css: component.css ?? '',
                 variants: getVariantsState(component.name, component.variants),
+                moreinformation: component.moreinformation ?? '',
             });
 
             // Add class to hide button.

@@ -72,7 +72,11 @@
                             data-id="{{id}}"
                             data-type="{{type}}"
                             data-classcomponent="{{classComponent}}"
+                            data-moreinformation="{{moreinformation}}"
                         >
+                            {{#moreinformation}}
+                            <a href="{{moreinformation}}" target="_blank" class="c4l-info-icon" title="{{#str}} mu-moreinformationabout, tiny_c4l,{{name}}{{/str}}" aria-label="{{#str}} mu-moreinformationabout, tiny_c4l,{{name}}{{/str}}"><span class="sr-only">{{#str}} mu-moreinformationabout, tiny_c4l,{{name}}{{/str}}</span></a>
+                            {{/moreinformation}}
                             <span class="c4l-button-text">
                                 {{#icon}}
                                     <i class="icon" style="background-image: url({{icon}});"></i>
@@ -101,7 +105,11 @@
                             <div class="c4l-preview-default">{{#str}} previewdefault, tiny_c4l {{/str}}</div>
                         </div>
                         {{#buttons}}
-                            <div data-id="code-preview-{{id}}" class="c4l-component-code {{#css}}c4l-component-custom-code{{/css}} c4l-hidden" role="presentation" style="{{css}}">{{{htmlcode}}}</div>
+                            <div data-id="code-preview-{{id}}" data-moreinformation="{{moreinformation}}" class="c4l-component-code {{#css}}c4l-component-custom-code{{/css}} c4l-hidden" role="presentation" style="{{css}}">
+                                <div class="c4l-component-preview-wrapper">
+                                    {{{htmlcode}}}
+                                </div>
+                            </div>
                         {{/buttons}}
                     </div>
                 {{/preview}}

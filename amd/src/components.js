@@ -35,6 +35,7 @@ const components = [
             "{{PLACEHOLDER}}</div>",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempor odio vel turpis consequat sodales.",
         variants: ["full-width"],
+        moreinformation: "https://componentsforlearning.org/components/key-concept",
     },
     {
         id: "1",
@@ -46,6 +47,7 @@ const components = [
             {{PLACEHOLDER}}</div>`,
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempor odio vel turpis consequat sodales.",
         variants: ["full-width"],
+        moreinformation: "https://componentsforlearning.org/components/tip",
     },
     {
         id: "2",
@@ -58,6 +60,7 @@ const components = [
             {{PLACEHOLDER}}</div>`,
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempor odio vel turpis consequat sodales.",
         variants: ["full-width"],
+        moreinformation: "https://componentsforlearning.org/components/reminder",
     },
     {
         id: "3",
@@ -76,6 +79,7 @@ const components = [
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus a posuere nibh, eu mollis lacus." +
             " Praesent dictum in velit sed dapibus.",
         variants: ["full-width", "quote"],
+        moreinformation: "https://componentsforlearning.org/components/quote",
     },
     {
         id: "4",
@@ -96,6 +100,7 @@ const components = [
             " Praesent dictum in velit sed dapibus." +
             "Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
         variants: ["full-width"],
+        moreinformation: "https://componentsforlearning.org/components/do-dont-cards",
     },
     {
         id: "5",
@@ -111,6 +116,7 @@ const components = [
             " posuere egestas nisi. Lorem ipsum dolor sit amet. " +
             "Phasellus leo, hendrerit ac sem vitae, posuere egestas nisi.",
         variants: ["full-width", "quote", "comfort-reading"],
+        moreinformation: "https://componentsforlearning.org/components/reading-context",
     },
     {
         id: "6",
@@ -127,6 +133,7 @@ const components = [
             " Praesent dictum in velit sed dapibus. Orci varius natoque penatibus et magnis dis parturient montes," +
             " nascetur ridiculus mus.",
         variants: ["full-width"],
+        moreinformation: "https://componentsforlearning.org/components/example",
     },
     {
         id: "7",
@@ -139,6 +146,7 @@ const components = [
             {{VARIANTSHTML}}</figure>`,
         text: "Consectetur adipiscing elit.",
         variants: ["full-width", "caption"],
+        moreinformation: "https://componentsforlearning.org/components/figure",
     },
     {
         id: "8",
@@ -170,6 +178,7 @@ const components = [
             {{PLACEHOLDER}}</div>`,
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempor odio vel turpis consequat sodales.",
         variants: ["full-width"],
+        moreinformation: "https://componentsforlearning.org/components/attention",
     },
     {
         id: "11",
@@ -181,6 +190,7 @@ const components = [
             aria-label="{{#estimatedtime}}">{{PLACEHOLDER}} <span>{{#min}}</span></div></div>`,
         text: "15",
         variants: ["align-left"],
+        moreinformation: "https://componentsforlearning.org/components/estimated-time",
     },
     {
         id: "12",
@@ -192,6 +202,7 @@ const components = [
             aria-label="{{#duedate}}">{{PLACEHOLDER}}</div></div>`,
         text: "November 17th",
         variants: ["align-left"],
+        moreinformation: "https://componentsforlearning.org/components/due-date",
     },
     {
         id: "13",
@@ -208,6 +219,7 @@ const components = [
             " Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla quis lorem aliquet," +
             " fermentum dolor ac, venenatis turpis.",
         variants: ["full-width"],
+        moreinformation: "https://componentsforlearning.org/components/procedural-context",
     },
     {
         id: "14",
@@ -226,6 +238,7 @@ const components = [
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porta, neque id feugiat consectetur, " +
             "enim ipsum tincidunt nunc, id suscipit mauris urna sit amet lectus.",
         variants: ["full-width", "ordered-list"],
+        moreinformation: "https://componentsforlearning.org/components/learning-outcomes",
     },
     {
         id: "15",
@@ -237,6 +250,7 @@ const components = [
              aria-label="{{#gradingvalue}}"><span>{{#gradingvalue}}: </span>{{PLACEHOLDER}}</div></div>`,
         text: "33.3%",
         variants: ["align-left"],
+        moreinformation: "https://componentsforlearning.org/components/grading-value",
     },
     {
         id: "16",
@@ -251,6 +265,7 @@ const components = [
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus a posuere nibh, eu mollis lacus." +
             " Praesent dictum in velit sed dapibus.",
         variants: ["full-width"],
+        moreinformation: "https://componentsforlearning.org/components/expected-feedback",
     },
     {
         id: "17",
@@ -265,6 +280,7 @@ const components = [
             " Praesent dictum in velit sed dapibus." +
             " Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
         variants: ["full-width"],
+        moreinformation: "https://componentsforlearning.org/components/all-purpose-card",
     },
 
     {
@@ -284,6 +300,7 @@ const components = [
         text:
             "",
         variants: [],
+        moreinformation: "https://masseyuni.sharepoint.com/sites/DigitalInnovationProject/SitePages/Applying-the-Artificial-Intelligence-Assessment-Scale-(AIAS)-to-assessments.aspx",
     },
 
     {
@@ -317,6 +334,7 @@ const components = [
         text:
             "",
         variants: [],
+        moreinformation: "https://masseyuni.sharepoint.com/sites/DigitalInnovationProject/SitePages/Applying-the-Artificial-Intelligence-Assessment-Scale-(AIAS)-to-assessments.aspx",
     },
 
     {
@@ -354,6 +372,7 @@ const components = [
         text:
             "",
         variants: [],
+        moreinformation: "https://masseyuni.sharepoint.com/sites/DigitalInnovationProject/SitePages/Applying-the-Artificial-Intelligence-Assessment-Scale-(AIAS)-to-assessments.aspx",
     },
 
     {
@@ -394,6 +413,7 @@ const components = [
         text:
             "",
         variants: [],
+        moreinformation: "https://masseyuni.sharepoint.com/sites/DigitalInnovationProject/SitePages/Applying-the-Artificial-Intelligence-Assessment-Scale-(AIAS)-to-assessments.aspx",
     },
 
 {id: "31", name: "mu-watch1", type: "mu-activities", imageClass: "c4l-mu-watch-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-watch c4lv-mu-watch1 {{VARIANTS}}" aria-label="{{#mu-watch1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
