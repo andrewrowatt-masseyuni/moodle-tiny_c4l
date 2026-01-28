@@ -473,11 +473,18 @@ const handleVariantClick = (event, modal) => {
  * @returns {object} data
  */
 const getTemplateContext = async(editor, data) => {
+    // Determine clipboard button states
+    const hasComponent = isCursorInC4LComponent(editor);
+    const hasClipboard = hasClipboardContent();
+
     return Object.assign({}, {
         elementid: editor.id,
         buttons: await getButtons(editor),
         filters: await getFilters(),
         preview: previewC4L,
+        clipboardCutEnabled: hasComponent,
+        clipboardCopyEnabled: hasComponent,
+        clipboardPasteEnabled: hasClipboard,
     }, data);
 };
 
