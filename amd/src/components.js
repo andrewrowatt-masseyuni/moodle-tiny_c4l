@@ -451,7 +451,7 @@ const components = [
         type: "mu-others",
         imageClass: "c4l-mu-table-icon c4l-mu-no-variants",
         code:
-            `<p class="c4l-spacer"></p><div class="mu-c4l mu-table"
+            `<p class="c4l-spacer"></p><div class="mu-c4l mu-table c4lv-mu"
             aria-label="{{#allpurposecard}}"><table>
             <thead><tr><td>{{PLACEHOLDER}}</td><td>Heading</td><td>Heading</td></tr></thead>
             <tbody><tr><td>content</td><td>content</td><td>content</td></tr></tbody></table></div>`,
@@ -465,7 +465,7 @@ const components = [
         type: "mu-others",
         imageClass: "c4l-mu-table-icon c4l-mu-no-variants",
         code:
-            `<p class="c4l-spacer"></p><div class="mu-c4l mu-table mu-table-grey-variant"
+            `<p class="c4l-spacer"></p><div class="mu-c4l mu-table mu-table-grey-variant c4lv-mu"
             aria-label="{{#allpurposecard}}"><table>
             <thead><tr><td>{{PLACEHOLDER}}</td><td>Heading</td><td>Heading</td></tr></thead>
             <tbody><tr><td>content</td><td>content</td><td>content</td></tr></tbody></table></div>`,
