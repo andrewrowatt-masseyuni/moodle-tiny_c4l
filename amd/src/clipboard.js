@@ -17,7 +17,7 @@
  * Tiny C4L Clipboard utilities.
  *
  * @module      tiny_c4l/clipboard
- * @copyright   2022 Marc Català <reskit@gmail.com>
+ * @copyright   2026 Marc Català <reskit@gmail.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -123,19 +123,15 @@ export const copyC4LComponent = (editor) => {
  * @param {string} html The HTML to copy
  */
 const fallbackCopyToClipboard = (html) => {
-    const tempDiv = document.createElement('div');
-    tempDiv.contentEditable = true;
-    tempDiv.innerHTML = html;
-    tempDiv.style.position = 'fixed';
-    tempDiv.style.opacity = '0';
-    document.body.appendChild(tempDiv);
+    const textarea = document.createElement('textarea');
+    textarea.value = html;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
 
     // Select the content
-    const range = document.createRange();
-    range.selectNodeContents(tempDiv);
-    const selection = window.getSelection();
-    selection.removeAllRanges();
-    selection.addRange(range);
+    textarea.select();
+    textarea.setSelectionRange(0, html.length);
 
     try {
         document.execCommand('copy');
@@ -143,7 +139,7 @@ const fallbackCopyToClipboard = (html) => {
         // Ignore if execCommand fails
     }
 
-    document.body.removeChild(tempDiv);
+    document.body.removeChild(textarea);
 };
 
 /**
@@ -225,6 +221,8 @@ export const pasteC4LComponent = (editor) => {
     }
 
     // Wrap insertion in undo transaction so it can be undone
+    // Note: editor.selection.setContent() sanitizes HTML according to TinyMCE's
+    // schema and valid_elements configuration, preventing XSS attacks
     editor.undoManager.transact(() => {
         editor.selection.setContent(html);
     });

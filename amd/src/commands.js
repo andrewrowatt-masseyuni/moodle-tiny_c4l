@@ -71,6 +71,35 @@ export const getSetup = async() => {
         getButtonImage('icon', component),
     ]);
 
+    /**
+     * Helper function to set up state management for clipboard buttons
+     *
+     * @param {object} api The button/menu API
+     * @param {Function} checkState Function to check if button should be enabled
+     * @param {boolean} usePolling Whether to poll for state changes
+     * @return {Function} Cleanup function
+     */
+    const setupStateManagement = (api, checkState, usePolling = false) => {
+        const updateState = () => {
+            api.setEnabled(checkState());
+        };
+        updateState();
+        editor.on('NodeChange', updateState);
+
+        let interval = null;
+        if (usePolling) {
+            // Poll at 1 second intervals for clipboard state changes
+            interval = setInterval(updateState, 1000);
+        }
+
+        return () => {
+            editor.off('NodeChange', updateState);
+            if (interval) {
+                clearInterval(interval);
+            }
+        };
+    };
+
     return (editor) => {
         if (isC4LVisible(editor)) {
             // Register the C4L Icon.
@@ -96,14 +125,7 @@ export const getSetup = async() => {
                 icon: 'cut',
                 tooltip: c4lCutButtonNameTitle,
                 onAction: () => cutC4LComponent(editor),
-                onSetup: (buttonApi) => {
-                    const updateState = () => {
-                        buttonApi.setEnabled(isCursorInC4LComponent(editor));
-                    };
-                    updateState();
-                    editor.on('NodeChange', updateState);
-                    return () => editor.off('NodeChange', updateState);
-                },
+                onSetup: (buttonApi) => setupStateManagement(buttonApi, () => isCursorInC4LComponent(editor)),
             });
 
             // Add Cut C4L Component Menu Item
@@ -111,14 +133,7 @@ export const getSetup = async() => {
                 icon: 'cut',
                 text: c4lCutMenuItemNameTitle,
                 onAction: () => cutC4LComponent(editor),
-                onSetup: (api) => {
-                    const updateState = () => {
-                        api.setEnabled(isCursorInC4LComponent(editor));
-                    };
-                    updateState();
-                    editor.on('NodeChange', updateState);
-                    return () => editor.off('NodeChange', updateState);
-                },
+                onSetup: (api) => setupStateManagement(api, () => isCursorInC4LComponent(editor)),
             });
 
             // Register Copy C4L Component Button
@@ -126,14 +141,7 @@ export const getSetup = async() => {
                 icon: 'copy',
                 tooltip: c4lCopyButtonNameTitle,
                 onAction: () => copyC4LComponent(editor),
-                onSetup: (buttonApi) => {
-                    const updateState = () => {
-                        buttonApi.setEnabled(isCursorInC4LComponent(editor));
-                    };
-                    updateState();
-                    editor.on('NodeChange', updateState);
-                    return () => editor.off('NodeChange', updateState);
-                },
+                onSetup: (buttonApi) => setupStateManagement(buttonApi, () => isCursorInC4LComponent(editor)),
             });
 
             // Add Copy C4L Component Menu Item
@@ -141,14 +149,7 @@ export const getSetup = async() => {
                 icon: 'copy',
                 text: c4lCopyMenuItemNameTitle,
                 onAction: () => copyC4LComponent(editor),
-                onSetup: (api) => {
-                    const updateState = () => {
-                        api.setEnabled(isCursorInC4LComponent(editor));
-                    };
-                    updateState();
-                    editor.on('NodeChange', updateState);
-                    return () => editor.off('NodeChange', updateState);
-                },
+                onSetup: (api) => setupStateManagement(api, () => isCursorInC4LComponent(editor)),
             });
 
             // Register Paste C4L Component Button
@@ -156,20 +157,7 @@ export const getSetup = async() => {
                 icon: 'paste',
                 tooltip: c4lPasteButtonNameTitle,
                 onAction: () => pasteC4LComponent(editor),
-                onSetup: (buttonApi) => {
-                    const updateState = () => {
-                        buttonApi.setEnabled(hasClipboardContent());
-                    };
-                    updateState();
-                    // Update on selection change in case clipboard content changes
-                    editor.on('NodeChange', updateState);
-                    // Also check periodically for clipboard changes
-                    const interval = setInterval(updateState, 500);
-                    return () => {
-                        editor.off('NodeChange', updateState);
-                        clearInterval(interval);
-                    };
-                },
+                onSetup: (buttonApi) => setupStateManagement(buttonApi, hasClipboardContent, true),
             });
 
             // Add Paste C4L Component Menu Item
@@ -177,18 +165,7 @@ export const getSetup = async() => {
                 icon: 'paste',
                 text: c4lPasteMenuItemNameTitle,
                 onAction: () => pasteC4LComponent(editor),
-                onSetup: (api) => {
-                    const updateState = () => {
-                        api.setEnabled(hasClipboardContent());
-                    };
-                    updateState();
-                    editor.on('NodeChange', updateState);
-                    const interval = setInterval(updateState, 500);
-                    return () => {
-                        editor.off('NodeChange', updateState);
-                        clearInterval(interval);
-                    };
-                },
+                onSetup: (api) => setupStateManagement(api, hasClipboardContent, true),
             });
 
             // Inject custom CSS.
