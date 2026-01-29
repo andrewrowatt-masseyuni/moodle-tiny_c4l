@@ -21,7 +21,12 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-import {component as c4lButtonName} from './common';
+import {
+    component as c4lButtonName,
+    c4lCutButtonName,
+    c4lCopyButtonName,
+    c4lPasteButtonName,
+} from './common';
 import {addMenubarItem} from 'editor_tiny/utils';
 
 const configureMenu = (menu) => {
@@ -29,7 +34,7 @@ const configureMenu = (menu) => {
     const inserted = items.some((item, index) => {
         // Append after the link button.
         if (item.match(/(link)\b/)) {
-            items.splice(index + 1, 0, c4lButtonName);
+            items.splice(index + 1, 0, c4lButtonName, c4lCutButtonName, c4lCopyButtonName, c4lPasteButtonName);
             return true;
         }
 
@@ -40,6 +45,9 @@ const configureMenu = (menu) => {
         menu.insert.items = items.join(' ');
     } else {
         addMenubarItem(menu, 'insert', c4lButtonName);
+        addMenubarItem(menu, 'insert', c4lCutButtonName);
+        addMenubarItem(menu, 'insert', c4lCopyButtonName);
+        addMenubarItem(menu, 'insert', c4lPasteButtonName);
     }
 
     return menu;
@@ -51,8 +59,8 @@ const configureToolbar = (toolbar) => {
 
     return toolbar.map((section) => {
         if (section.name === 'content') {
-            // Insert the c4l button at the start of it.
-            section.items.unshift(c4lButtonName);
+            // Insert the c4l buttons at the start of it.
+            section.items.unshift(c4lButtonName, c4lCutButtonName, c4lCopyButtonName, c4lPasteButtonName);
         }
 
         return section;

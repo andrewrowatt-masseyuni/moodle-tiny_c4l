@@ -29,4 +29,10 @@ export default {
     icon: `${component}`,
     c4lButtonName: `${component}`,
     c4lMenuItemName: `${component}`,
+    c4lCutButtonName: `${component}_cut`,
+    c4lCutMenuItemName: `${component}_cut`,
+    c4lCopyButtonName: `${component}_copy`,
+    c4lCopyMenuItemName: `${component}_copy`,
+    c4lPasteButtonName: `${component}_paste`,
+    c4lPasteMenuItemName: `${component}_paste`,
 };

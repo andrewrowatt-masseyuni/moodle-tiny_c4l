@@ -28,23 +28,78 @@ import {
     component,
     c4lButtonName,
     c4lMenuItemName,
+    c4lCutButtonName,
+    c4lCutMenuItemName,
+    c4lCopyButtonName,
+    c4lCopyMenuItemName,
+    c4lPasteButtonName,
+    c4lPasteMenuItemName,
     icon,
 } from './common';
 import {
         isC4LVisible,
         getpreviewCSS
 } from './options';
+import {
+    isCursorInC4LComponent,
+    cutC4LComponent,
+    copyC4LComponent,
+    pasteC4LComponent,
+    hasClipboardContent,
+} from './clipboard';
 
 export const getSetup = async() => {
     const [
         c4lButtonNameTitle,
         c4lMenuItemNameTitle,
+        c4lCutButtonNameTitle,
+        c4lCutMenuItemNameTitle,
+        c4lCopyButtonNameTitle,
+        c4lCopyMenuItemNameTitle,
+        c4lPasteButtonNameTitle,
+        c4lPasteMenuItemNameTitle,
         buttonImage,
     ] = await Promise.all([
         getString('button_c4l', component),
         getString('menuitem_c4l', component),
+        getString('button_c4l_cut', component),
+        getString('menuitem_c4l_cut', component),
+        getString('button_c4l_copy', component),
+        getString('menuitem_c4l_copy', component),
+        getString('button_c4l_paste', component),
+        getString('menuitem_c4l_paste', component),
         getButtonImage('icon', component),
     ]);
+
+    /**
+     * Helper function to set up state management for clipboard buttons
+     *
+     * @param {object} editor The TinyMCE editor instance
+     * @param {object} api The button/menu API
+     * @param {Function} checkState Function to check if button should be enabled
+     * @param {boolean} usePolling Whether to poll for state changes
+     * @return {Function} Cleanup function
+     */
+    const setupStateManagement = (editor, api, checkState, usePolling = false) => {
+        const updateState = () => {
+            api.setEnabled(checkState());
+        };
+        updateState();
+        editor.on('NodeChange', updateState);
+
+        let interval = null;
+        if (usePolling) {
+            // Poll at 1 second intervals for clipboard state changes
+            interval = setInterval(updateState, 1000);
+        }
+
+        return () => {
+            editor.off('NodeChange', updateState);
+            if (interval) {
+                clearInterval(interval);
+            }
+        };
+    };
 
     return (editor) => {
         if (isC4LVisible(editor)) {
@@ -64,6 +119,54 @@ export const getSetup = async() => {
                 icon,
                 text: c4lMenuItemNameTitle,
                 onAction: () => handleAction(editor),
+            });
+
+            // Register Cut C4L Component Button
+            editor.ui.registry.addButton(c4lCutButtonName, {
+                icon: 'cut',
+                tooltip: c4lCutButtonNameTitle,
+                onAction: () => cutC4LComponent(editor),
+                onSetup: (buttonApi) => setupStateManagement(editor, buttonApi, () => isCursorInC4LComponent(editor)),
+            });
+
+            // Add Cut C4L Component Menu Item
+            editor.ui.registry.addMenuItem(c4lCutMenuItemName, {
+                icon: 'cut',
+                text: c4lCutMenuItemNameTitle,
+                onAction: () => cutC4LComponent(editor),
+                onSetup: (api) => setupStateManagement(editor, api, () => isCursorInC4LComponent(editor)),
+            });
+
+            // Register Copy C4L Component Button
+            editor.ui.registry.addButton(c4lCopyButtonName, {
+                icon: 'copy',
+                tooltip: c4lCopyButtonNameTitle,
+                onAction: () => copyC4LComponent(editor),
+                onSetup: (buttonApi) => setupStateManagement(editor, buttonApi, () => isCursorInC4LComponent(editor)),
+            });
+
+            // Add Copy C4L Component Menu Item
+            editor.ui.registry.addMenuItem(c4lCopyMenuItemName, {
+                icon: 'copy',
+                text: c4lCopyMenuItemNameTitle,
+                onAction: () => copyC4LComponent(editor),
+                onSetup: (api) => setupStateManagement(editor, api, () => isCursorInC4LComponent(editor)),
+            });
+
+            // Register Paste C4L Component Button
+            editor.ui.registry.addButton(c4lPasteButtonName, {
+                icon: 'paste',
+                tooltip: c4lPasteButtonNameTitle,
+                onAction: () => pasteC4LComponent(editor),
+                onSetup: (buttonApi) => setupStateManagement(editor, buttonApi, hasClipboardContent, true),
+            });
+
+            // Add Paste C4L Component Menu Item
+            editor.ui.registry.addMenuItem(c4lPasteMenuItemName, {
+                icon: 'paste',
+                text: c4lPasteMenuItemNameTitle,
+                onAction: () => pasteC4LComponent(editor),
+                onSetup: (api) => setupStateManagement(editor, api, hasClipboardContent, true),
             });
 
             // Inject custom CSS.
