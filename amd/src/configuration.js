@@ -30,11 +30,11 @@ import {
 import {addMenubarItem} from 'editor_tiny/utils';
 
 const configureMenu = (menu) => {
-    const items = menu.insert.items.split(' ');
-    const inserted = items.some((item, index) => {
+    let items = menu.insert.items.split(' ');
+    let inserted = items.some((item, index) => {
         // Append after the link button.
         if (item.match(/(link)\b/)) {
-            items.splice(index + 1, 0, c4lButtonName, c4lCutButtonName, c4lCopyButtonName, c4lPasteButtonName);
+            items.splice(index + 1, 0, c4lButtonName);
             return true;
         }
 
@@ -45,9 +45,25 @@ const configureMenu = (menu) => {
         menu.insert.items = items.join(' ');
     } else {
         addMenubarItem(menu, 'insert', c4lButtonName);
-        addMenubarItem(menu, 'insert', c4lCutButtonName);
-        addMenubarItem(menu, 'insert', c4lCopyButtonName);
-        addMenubarItem(menu, 'insert', c4lPasteButtonName);
+    }
+
+    items = menu.edit.items.split(' ');
+    inserted = items.some((item, index) => {
+        // Append after the select all button.
+        if (item.match(/(selectall)\b/)) {
+            items.splice(index + 1, 0, '|', c4lCutButtonName, c4lCopyButtonName, c4lPasteButtonName);
+            return true;
+        }
+
+        return false;
+    });
+
+    if (inserted) {
+        menu.edit.items = items.join(' ');
+    } else {
+        addMenubarItem(menu, 'edit', c4lCutButtonName);
+        addMenubarItem(menu, 'edit', c4lCopyButtonName);
+        addMenubarItem(menu, 'edit', c4lPasteButtonName);
     }
 
     return menu;
