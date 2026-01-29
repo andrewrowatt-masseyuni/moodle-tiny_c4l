@@ -289,7 +289,7 @@ const components = [
         type: "mu-aiassessmentscale",
         imageClass: "c4l-mu-aiassessmentscale-icon aiasl1 c4l-mu-no-variants",
         code:
-            `<p class="c4l-spacer"></p><div class="mu-fc mu-fc-aias1 mu-fc-aias-l1">
+            `<p class="c4l-spacer"></p><div class="mu-fc mu-fc-aias1 mu-fc-aias-l1 c4lv-mu">
             <div class="mu-fc-inner">
             <h5>No AI</h5>
             <p>You must not use AI at any point during the assessment. You must demonstrate your core skills and knowledge.</p>
@@ -309,7 +309,7 @@ const components = [
         type: "mu-aiassessmentscale",
         imageClass: "c4l-mu-aiassessmentscale-icon aiasl2 c4l-mu-no-variants",
         code:
-            `<p class="c4l-spacer"></p><div class="mu-fc mu-fc-aias1 mu-fc-aias-l2">
+            `<p class="c4l-spacer"></p><div class="mu-fc mu-fc-aias1 mu-fc-aias-l2 c4lv-mu">
             <div class="mu-fc-inner">
             <h5>AI Planning</h5>
             <p>You may use AI for planning, idea development and research. Your final submission should show how you have developed and refined these ideas.</p>
@@ -343,7 +343,7 @@ const components = [
         type: "mu-aiassessmentscale",
         imageClass: "c4l-mu-aiassessmentscale-icon aiasl3 c4l-mu-no-variants",
         code:
-            `<p class="c4l-spacer"></p><div class="mu-fc mu-fc-aias1 mu-fc-aias-l3">
+            `<p class="c4l-spacer"></p><div class="mu-fc mu-fc-aias1 mu-fc-aias-l3 c4lv-mu">
             <div class="mu-fc-inner">
             <h5>AI Collaboration</h5>
             <p>You may use AI to assist with specific tasks, such as drafting text, refining and evaluating your work.</p>
@@ -381,7 +381,7 @@ const components = [
         type: "mu-aiassessmentscale",
         imageClass: "c4l-mu-aiassessmentscale-icon aiasl5 c4l-mu-no-variants",
         code:
-            `<p class="c4l-spacer"></p><div class="mu-fc mu-fc-aias1 mu-fc-aias-l5 {{VARIANTS}}">
+            `<p class="c4l-spacer"></p><div class="mu-fc mu-fc-aias1 mu-fc-aias-l5 {{VARIANTS}} c4lv-mu">
             <div class="mu-fc-inner">
             <h5>AI Exploration</h5>
             <p>You should use AI creatively to solve the task, potentially co-designing new approaches with your instructor.</p>
