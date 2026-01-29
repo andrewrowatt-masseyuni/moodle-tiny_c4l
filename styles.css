@@ -98,6 +98,14 @@ button[data-type="mu-activities"], button[data-type="mu-others"] {
         }
     }
 }
+
+/* Clipboard buttons - make panel not applicable on hover */
+.modal:has(.c4l-clipboard-buttons .btn:hover) .c4l-plugin-container {
+    opacity: 0.5;
+    pointer-events: none;
+    filter: blur(1px);
+}
+
 /* End Plugin styles */
 
 /* Start mu */
@@ -392,10 +400,3 @@ div.mu-fc.mu-fc-aias1 {
 }
 
 /* End mu */
-
-/* Clipboard buttons - make panel not applicable on hover */
-.modal:has(.c4l-clipboard-buttons .btn:hover) .c4l-plugin-container {
-    opacity: 0.5;
-    pointer-events: none;
-    filter: blur(1px);
-}
