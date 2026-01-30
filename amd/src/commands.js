@@ -34,6 +34,9 @@ import {
     c4lCopyMenuItemName,
     c4lPasteButtonName,
     c4lPasteMenuItemName,
+    c4lCutIcon,
+    c4lCopyIcon,
+    c4lPasteIcon,
     icon,
 } from './common';
 import {
@@ -59,6 +62,9 @@ export const getSetup = async() => {
         c4lPasteButtonNameTitle,
         c4lPasteMenuItemNameTitle,
         buttonImage,
+        cutIconImage,
+        copyIconImage,
+        pasteIconImage,
     ] = await Promise.all([
         getString('button_c4l', component),
         getString('menuitem_c4l', component),
@@ -69,6 +75,9 @@ export const getSetup = async() => {
         getString('button_c4l_paste', component),
         getString('menuitem_c4l_paste', component),
         getButtonImage('icon', component),
+        getButtonImage('c4l_cut', component),
+        getButtonImage('c4l_copy', component),
+        getButtonImage('c4l_paste', component),
     ]);
 
     /**
@@ -105,6 +114,9 @@ export const getSetup = async() => {
         if (isC4LVisible(editor)) {
             // Register the C4L Icon.
             editor.ui.registry.addIcon(icon, buttonImage.html);
+            editor.ui.registry.addIcon(c4lCutIcon, cutIconImage.html);
+            editor.ui.registry.addIcon(c4lCopyIcon, copyIconImage.html);
+            editor.ui.registry.addIcon(c4lPasteIcon, pasteIconImage.html);
 
             // Register the C4L Toolbar Button.
             editor.ui.registry.addButton(c4lButtonName, {
@@ -123,7 +135,7 @@ export const getSetup = async() => {
 
             // Register Cut C4L Component Button
             editor.ui.registry.addButton(c4lCutButtonName, {
-                icon: 'cut',
+                icon: c4lCutIcon,
                 tooltip: c4lCutButtonNameTitle,
                 onAction: () => cutC4LComponent(editor),
                 onSetup: (buttonApi) => setupStateManagement(editor, buttonApi, () => isCursorInC4LComponent(editor)),
@@ -131,7 +143,7 @@ export const getSetup = async() => {
 
             // Add Cut C4L Component Menu Item
             editor.ui.registry.addMenuItem(c4lCutMenuItemName, {
-                icon: 'cut',
+                icon: c4lCutIcon,
                 text: c4lCutMenuItemNameTitle,
                 onAction: () => cutC4LComponent(editor),
                 onSetup: (api) => setupStateManagement(editor, api, () => isCursorInC4LComponent(editor)),
@@ -139,7 +151,7 @@ export const getSetup = async() => {
 
             // Register Copy C4L Component Button
             editor.ui.registry.addButton(c4lCopyButtonName, {
-                icon: 'copy',
+                icon: c4lCopyIcon,
                 tooltip: c4lCopyButtonNameTitle,
                 onAction: () => copyC4LComponent(editor),
                 onSetup: (buttonApi) => setupStateManagement(editor, buttonApi, () => isCursorInC4LComponent(editor)),
@@ -147,7 +159,7 @@ export const getSetup = async() => {
 
             // Add Copy C4L Component Menu Item
             editor.ui.registry.addMenuItem(c4lCopyMenuItemName, {
-                icon: 'copy',
+                icon: c4lCopyIcon,
                 text: c4lCopyMenuItemNameTitle,
                 onAction: () => copyC4LComponent(editor),
                 onSetup: (api) => setupStateManagement(editor, api, () => isCursorInC4LComponent(editor)),
@@ -155,7 +167,7 @@ export const getSetup = async() => {
 
             // Register Paste C4L Component Button
             editor.ui.registry.addButton(c4lPasteButtonName, {
-                icon: 'paste',
+                icon: c4lPasteIcon,
                 tooltip: c4lPasteButtonNameTitle,
                 onAction: () => pasteC4LComponent(editor),
                 onSetup: (buttonApi) => setupStateManagement(editor, buttonApi, hasClipboardContent, true),
@@ -163,7 +175,7 @@ export const getSetup = async() => {
 
             // Add Paste C4L Component Menu Item
             editor.ui.registry.addMenuItem(c4lPasteMenuItemName, {
-                icon: 'paste',
+                icon: c4lPasteIcon,
                 text: c4lPasteMenuItemNameTitle,
                 onAction: () => pasteC4LComponent(editor),
                 onSetup: (api) => setupStateManagement(editor, api, hasClipboardContent, true),
