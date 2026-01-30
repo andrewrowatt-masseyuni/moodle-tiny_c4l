@@ -81,13 +81,20 @@ export const getSetup = async() => {
     ]);
 
     /**
-     * Helper function to set up state management for clipboard buttons
+     * Helper function to set up state management for C4L clipboard menu items.
+     *
+     * This function handles both event-based and polling-based state updates.
+     * Polling is particularly important for the C4L Paste menu item, as it needs to detect
+     * clipboard state changes that occur outside the editor's awareness. For example, when
+     * a user copies a C4L component from one editor instance to another, the Paste menu
+     * item in the second editor won't receive a NodeChange event and wouldn't know that
+     * new content is available to paste. Polling ensures the UI stays synchronized.
      *
      * @param {object} editor The TinyMCE editor instance
-     * @param {object} api The button/menu API
-     * @param {Function} checkState Function to check if button should be enabled
-     * @param {boolean} usePolling Whether to poll for state changes
-     * @return {Function} Cleanup function
+     * @param {object} api The menu item API
+     * @param {Function} checkState Function to check if the menu item should be enabled
+     * @param {boolean} usePolling Whether to enable polling for state changes (useful for clipboard detection)
+     * @return {Function} Cleanup function to unbind listeners
      */
     const setupStateManagement = (editor, api, checkState, usePolling = false) => {
         const updateState = () => {
@@ -118,11 +125,60 @@ export const getSetup = async() => {
             editor.ui.registry.addIcon(c4lCopyIcon, copyIconImage.html);
             editor.ui.registry.addIcon(c4lPasteIcon, pasteIconImage.html);
 
-            // Register the C4L Toolbar Button.
-            editor.ui.registry.addButton(c4lButtonName, {
+            // Register the C4L Split Toolbar Button.
+            // The main button triggers the C4L insert action, and the dropdown menu
+            // provides Cut, Copy, and Paste options.
+            editor.ui.registry.addSplitButton(c4lButtonName, {
                 icon,
                 tooltip: c4lButtonNameTitle,
                 onAction: () => handleAction(editor),
+                onItemAction: (api, value) => {
+                    // Handle the selected action from the dropdown menu
+                    switch (value) {
+                        case 'cut':
+                            cutC4LComponent(editor);
+                            break;
+                        case 'copy':
+                            copyC4LComponent(editor);
+                            break;
+                        case 'paste':
+                            pasteC4LComponent(editor);
+                            break;
+                    }
+                },
+                fetch: (callback) => {
+                    const items = [
+                        {
+                            type: 'choiceitem',
+                            icon: c4lCutIcon,
+                            text: c4lCutButtonNameTitle,
+                            value: 'cut',
+                            enabled: isCursorInC4LComponent(editor),
+                        },
+                        {
+                            type: 'choiceitem',
+                            icon: c4lCopyIcon,
+                            text: c4lCopyButtonNameTitle,
+                            value: 'copy',
+                            enabled: isCursorInC4LComponent(editor),
+                        },
+                        {
+                            type: 'choiceitem',
+                            icon: c4lPasteIcon,
+                            text: c4lPasteButtonNameTitle,
+                            value: 'paste',
+                            enabled: hasClipboardContent(),
+                        },
+                    ];
+                    callback(items);
+                },
+                onSetup: (api) => {
+                    // The main C4L button should always be enabled.
+                    // Menu item availability is handled in onItemAction.
+                    api.setEnabled(true);
+
+                    return () => {};
+                },
             });
 
             // Add the C4L Menu Item.
@@ -133,14 +189,6 @@ export const getSetup = async() => {
                 onAction: () => handleAction(editor),
             });
 
-            // Register Cut C4L Component Button
-            editor.ui.registry.addButton(c4lCutButtonName, {
-                icon: c4lCutIcon,
-                tooltip: c4lCutButtonNameTitle,
-                onAction: () => cutC4LComponent(editor),
-                onSetup: (buttonApi) => setupStateManagement(editor, buttonApi, () => isCursorInC4LComponent(editor)),
-            });
-
             // Add Cut C4L Component Menu Item
             editor.ui.registry.addMenuItem(c4lCutMenuItemName, {
                 icon: c4lCutIcon,
@@ -149,28 +197,12 @@ export const getSetup = async() => {
                 onSetup: (api) => setupStateManagement(editor, api, () => isCursorInC4LComponent(editor)),
             });
 
-            // Register Copy C4L Component Button
-            editor.ui.registry.addButton(c4lCopyButtonName, {
-                icon: c4lCopyIcon,
-                tooltip: c4lCopyButtonNameTitle,
-                onAction: () => copyC4LComponent(editor),
-                onSetup: (buttonApi) => setupStateManagement(editor, buttonApi, () => isCursorInC4LComponent(editor)),
-            });
-
             // Add Copy C4L Component Menu Item
             editor.ui.registry.addMenuItem(c4lCopyMenuItemName, {
                 icon: c4lCopyIcon,
                 text: c4lCopyMenuItemNameTitle,
                 onAction: () => copyC4LComponent(editor),
                 onSetup: (api) => setupStateManagement(editor, api, () => isCursorInC4LComponent(editor)),
-            });
-
-            // Register Paste C4L Component Button
-            editor.ui.registry.addButton(c4lPasteButtonName, {
-                icon: c4lPasteIcon,
-                tooltip: c4lPasteButtonNameTitle,
-                onAction: () => pasteC4LComponent(editor),
-                onSetup: (buttonApi) => setupStateManagement(editor, buttonApi, hasClipboardContent, true),
             });
 
             // Add Paste C4L Component Menu Item
