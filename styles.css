@@ -392,9 +392,3 @@ div.mu-fc.mu-fc-aias1 {
 }
 
 /* End mu */
-
-/* Ensure TinyMCE disabled icons fade out (toolbar + menu) */
-.xtox .tox-tbtn--disabled .tox-icon svg,
-.xtox .tox-collection__item--disabled .tox-icon svg {
-    opacity: 0.4;
-}
