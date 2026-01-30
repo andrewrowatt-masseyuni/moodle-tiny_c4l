@@ -23,9 +23,9 @@
 
 import {
     component as c4lButtonName,
-    c4lCutButtonName,
-    c4lCopyButtonName,
-    c4lPasteButtonName,
+    c4lCutMenuItemName,
+    c4lCopyMenuItemName,
+    c4lPasteMenuItemName,
 } from './common';
 import {addMenubarItem} from 'editor_tiny/utils';
 
@@ -51,7 +51,7 @@ const configureMenu = (menu) => {
     inserted = items.some((item, index) => {
         // Append after the select all button.
         if (item.match(/(selectall)\b/)) {
-            items.splice(index + 1, 0, '|', c4lCutButtonName, c4lCopyButtonName, c4lPasteButtonName);
+            items.splice(index + 1, 0, '|', c4lCutMenuItemName, c4lCopyMenuItemName, c4lPasteMenuItemName);
             return true;
         }
 
@@ -61,9 +61,9 @@ const configureMenu = (menu) => {
     if (inserted) {
         menu.edit.items = items.join(' ');
     } else {
-        addMenubarItem(menu, 'edit', c4lCutButtonName);
-        addMenubarItem(menu, 'edit', c4lCopyButtonName);
-        addMenubarItem(menu, 'edit', c4lPasteButtonName);
+        addMenubarItem(menu, 'edit', c4lCutMenuItemName);
+        addMenubarItem(menu, 'edit', c4lCopyMenuItemName);
+        addMenubarItem(menu, 'edit', c4lPasteMenuItemName);
     }
 
     return menu;
@@ -75,8 +75,9 @@ const configureToolbar = (toolbar) => {
 
     return toolbar.map((section) => {
         if (section.name === 'content') {
-            // Insert the c4l buttons at the start of it.
-            section.items.unshift(c4lButtonName, c4lCutButtonName, c4lCopyButtonName, c4lPasteButtonName);
+            // Insert the C4L SplitButton at the start of it.
+            // Cut, Copy, and Paste are now available in the dropdown menu.
+            section.items.unshift(c4lButtonName);
         }
 
         return section;
