@@ -21,12 +21,17 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-import {component as c4lButtonName} from './common';
+import {
+    component as c4lButtonName,
+    c4lCutMenuItemName,
+    c4lCopyMenuItemName,
+    c4lPasteMenuItemName,
+} from './common';
 import {addMenubarItem} from 'editor_tiny/utils';
 
 const configureMenu = (menu) => {
-    const items = menu.insert.items.split(' ');
-    const inserted = items.some((item, index) => {
+    let items = menu.insert.items.split(' ');
+    let inserted = items.some((item, index) => {
         // Append after the link button.
         if (item.match(/(link)\b/)) {
             items.splice(index + 1, 0, c4lButtonName);
@@ -42,6 +47,25 @@ const configureMenu = (menu) => {
         addMenubarItem(menu, 'insert', c4lButtonName);
     }
 
+    items = menu.edit.items.split(' ');
+    inserted = items.some((item, index) => {
+        // Append after the select all button.
+        if (item.match(/(selectall)\b/)) {
+            items.splice(index + 1, 0, '|', c4lCutMenuItemName, c4lCopyMenuItemName, c4lPasteMenuItemName);
+            return true;
+        }
+
+        return false;
+    });
+
+    if (inserted) {
+        menu.edit.items = items.join(' ');
+    } else {
+        addMenubarItem(menu, 'edit', c4lCutMenuItemName);
+        addMenubarItem(menu, 'edit', c4lCopyMenuItemName);
+        addMenubarItem(menu, 'edit', c4lPasteMenuItemName);
+    }
+
     return menu;
 };
 
@@ -51,7 +75,8 @@ const configureToolbar = (toolbar) => {
 
     return toolbar.map((section) => {
         if (section.name === 'content') {
-            // Insert the c4l button at the start of it.
+            // Insert the C4L SplitButton at the start of it.
+            // Cut, Copy, and Paste are now available in the dropdown menu.
             section.items.unshift(c4lButtonName);
         }
 
