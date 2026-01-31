@@ -102,8 +102,24 @@ button[data-type="mu-activities"], button[data-type="mu-others"] {
 
 /* Start mu */
 /* Display styles */
-.path-course-view .section .summary div.mu-c4l p {
-    margin-bottom: 0!important;
+.path-course-view .section .summary {
+    div.mu-c4l {
+        margin-bottom: 1.6em; /* To match default Snap margin in the section summary*/
+
+        p {
+            margin-bottom: 0!important;
+        }
+    }
+    
+    /* To handle "legacy" C4L components i.e., those without mu-c4l */
+    :where(div, p)[class*="c4lv-"] {
+        margin-bottom: 1.6em; /* To match default Snap margin in the section summary*/
+    }
+}
+
+/* To handle "legacy" C4L components i.e., those without mu-c4l */
+:where(div, p)[class*="c4lv-"] {
+    margin-bottom: 1em; /* To match default Snap margin*/
 }
 
 div.mu-c4l {
@@ -114,6 +130,8 @@ div.mu-c4l {
     --base-color-teal: #44a4ad;
     --base-color-violet: #7561aa;
     --base-color-yellow: #c3a542;
+
+    margin-bottom: 1em; /* To match default Snap margin*/
 
 
     p {
