@@ -31,7 +31,7 @@ const components = [
         type: "contextual",
         imageClass: "c4l-keyconcept-icon",
         code:
-            '<p class="c4l-spacer"></p><div class="c4lv-keyconcept {{VARIANTS}}" aria-label="{{#keyconcept}}">' +
+            '<div class="mu-c4l c4lv-keyconcept {{VARIANTS}}" aria-label="{{#keyconcept}}">' +
             "{{PLACEHOLDER}}</div>",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempor odio vel turpis consequat sodales.",
         variants: ["full-width"],
@@ -43,7 +43,7 @@ const components = [
         type: "contextual",
         imageClass: "c4l-tip-icon",
         code:
-            `<p class="c4l-spacer"></p><div class="c4lv-tip {{VARIANTS}}" aria-label="{{#tip}}">
+            `<div class="mu-c4l c4lv-tip {{VARIANTS}}" aria-label="{{#tip}}">
             {{PLACEHOLDER}}</div>`,
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempor odio vel turpis consequat sodales.",
         variants: ["full-width"],
@@ -55,7 +55,7 @@ const components = [
         type: "contextual",
         imageClass: "c4l-reminder-icon",
         code:
-            `<p class="c4l-spacer"></p><div class="c4lv-reminder {{VARIANTS}}"
+            `<div class="mu-c4l c4lv-reminder {{VARIANTS}}"
              aria-label="{{#reminder}}">
             {{PLACEHOLDER}}</div>`,
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempor odio vel turpis consequat sodales.",
@@ -68,7 +68,7 @@ const components = [
         type: "contextual",
         imageClass: "c4l-quote-icon",
         code:
-            `<p class="c4l-spacer"></p><div class="c4lv-quote {{VARIANTS}}"
+            `<div class="mu-c4l c4lv-quote {{VARIANTS}}"
             aria-label="{{#quote}}">
             <div class="c4l-quote-body"><div class="c4l-quote-line"></div><div class="c4l-quote-text">
             <p>{{PLACEHOLDER}}</p>
@@ -87,7 +87,7 @@ const components = [
         type: "contextual",
         imageClass: "c4l-dodontcards-icon",
         code:
-            `<p class="c4l-spacer"></p><div class="c4lv-dodontcards {{VARIANTS}}"
+            `<div class="mu-c4l c4lv-dodontcards {{VARIANTS}}"
             aria-label="{{#dodontcards}}">
             <div class="c4l-dodontcards-do" aria-label="{{#do-card}}">{{PLACEHOLDER}}</div>
             <div class="c4l-dodontcards-dont" aria-label="{{#dont-card}}">
@@ -108,7 +108,7 @@ const components = [
         type: "contextual",
         imageClass: "c4l-readingcontext-icon",
         code:
-            `<p class="c4l-spacer"></p><div class="c4lv-readingcontext {{VARIANTS}}"
+            `<div class="mu-c4l c4lv-readingcontext {{VARIANTS}}"
             aria-label="{{#readingcontext}}">
             <p>{{PLACEHOLDER}}</p>{{VARIANTSHTML}}</div>`,
         text:
@@ -124,7 +124,7 @@ const components = [
         type: "contextual",
         imageClass: "c4l-example-icon",
         code:
-            `<p class="c4l-spacer"></p><div class="c4lv-example {{VARIANTS}}"
+            `<div class="mu-c4l c4lv-example {{VARIANTS}}"
             aria-label="{{#example}}"><h1>Lorem ipsum dolor sit amet</h1>
              <p>{{PLACEHOLDER}}</p></div>`,
         text:
@@ -141,7 +141,7 @@ const components = [
         type: "contextual",
         imageClass: "c4l-figure-icon",
         code:
-            `<p class="c4l-spacer"></p><figure class="c4lv-figure {{VARIANTS}}"
+            `<figure class="mu-c4l c4lv-figure {{VARIANTS}}"
             aria-label="{{#figure}}"><img src="" alt="Lorem ipsum dolor sit amet">
             {{VARIANTSHTML}}</figure>`,
         text: "Consectetur adipiscing elit.",
@@ -154,7 +154,7 @@ const components = [
         type: "contextual",
         imageClass: "c4l-tag-icon",
         code:
-            `<p class="c4l-spacer"></p><div class="c4l-display-left" aria-label="{{#tag}}">
+            `<div class="mu-c4l c4l-display-left" aria-label="{{#tag}}">
             <div class="c4lv-tag {{VARIANTS}}">{{PLACEHOLDER}}</div></div>`,
         text: "Lorem ipsum",
         variants: ["align-right"],
@@ -164,7 +164,7 @@ const components = [
         name: "inlinetag",
         type: "contextual",
         imageClass: "c4l-inlinetag-icon",
-        code: `<span class="c4lv-inlinetag {{VARIANTS}}" aria-label="{{#inlinetag}}">{{PLACEHOLDER}}</span>`,
+        code: `<span class="mu-c4l c4lv-inlinetag {{VARIANTS}}" aria-label="{{#inlinetag}}">{{PLACEHOLDER}}</span>`,
         text: "Text",
         variants: [],
     },
@@ -174,7 +174,7 @@ const components = [
         type: "procedural",
         imageClass: "c4l-attention-icon",
         code:
-            `<p class="c4l-spacer"></p><div class="c4lv-attention {{VARIANTS}}" aria-label="{{#attention}}">
+            `<div class="mu-c4l c4lv-attention {{VARIANTS}}" aria-label="{{#attention}}">
             {{PLACEHOLDER}}</div>`,
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempor odio vel turpis consequat sodales.",
         variants: ["full-width"],
@@ -186,7 +186,7 @@ const components = [
         type: "procedural",
         imageClass: "c4l-estimatedtime-icon",
         code:
-            `<p class="c4l-spacer"></p><div class="c4l-inline-group"><div class="c4lv-estimatedtime {{VARIANTS}}"
+            `<div class="mu-c4l c4l-inline-group"><div class="c4lv-estimatedtime {{VARIANTS}}"
             aria-label="{{#estimatedtime}}">{{PLACEHOLDER}} <span>{{#min}}</span></div></div>`,
         text: "15",
         variants: ["align-left"],
@@ -198,7 +198,7 @@ const components = [
         type: "procedural",
         imageClass: "c4l-duedate-icon",
         code:
-            `<p class="c4l-spacer"></p><div class="c4l-inline-group"><div class="c4lv-duedate {{VARIANTS}}"
+            `<div class="mu-c4l c4l-inline-group"><div class="c4lv-duedate {{VARIANTS}}"
             aria-label="{{#duedate}}">{{PLACEHOLDER}}</div></div>`,
         text: "November 17th",
         variants: ["align-left"],
@@ -210,7 +210,7 @@ const components = [
         type: "procedural",
         imageClass: "c4l-proceduralcontext-icon",
         code:
-            `<p class="c4l-spacer"></p><p class="c4lv-proceduralcontext {{VARIANTS}}"
+            `<p class="mu-c4l c4lv-proceduralcontext {{VARIANTS}}"
             aria-label="{{#proceduralcontext}}" >
             {{PLACEHOLDER}}</p>`,
         text:
@@ -227,8 +227,7 @@ const components = [
         type: "procedural",
         imageClass: "c4l-learningoutcomes-icon",
         code:
-            `<p class="c4l-spacer"></p>
-            <div class="c4lv-learningoutcomes {{VARIANTS}}" aria-label="{{#learningoutcomes}}">
+            `<div class="mu-c4l c4lv-learningoutcomes {{VARIANTS}}" aria-label="{{#learningoutcomes}}">
             <h6 class="c4l-learningoutcomes-title">{{#learningoutcomes}}</h6>
             <ul class="c4l-learningoutcomes-list"><li>{{PLACEHOLDER}}</li><li>Curabitur non nulla sit amet
             nisl tempus convallis quis ac lectus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.</li>
@@ -246,7 +245,7 @@ const components = [
         type: "evaluative",
         imageClass: "c4l-gradingvalue-icon",
         code:
-            `<p class="c4l-spacer"></p><div class="c4l-inline-group"><div class="c4lv-gradingvalue {{VARIANTS}}"
+            `<div class="mu-c4l c4l-inline-group"><div class="c4lv-gradingvalue {{VARIANTS}}"
              aria-label="{{#gradingvalue}}"><span>{{#gradingvalue}}: </span>{{PLACEHOLDER}}</div></div>`,
         text: "33.3%",
         variants: ["align-left"],
@@ -258,7 +257,7 @@ const components = [
         type: "evaluative",
         imageClass: "c4l-expectedfeedback-icon",
         code:
-            `<p class="c4l-spacer"></p><div class="c4lv-expectedfeedback {{VARIANTS}}"
+            `<div class="mu-c4l c4lv-expectedfeedback {{VARIANTS}}"
             aria-label="{{#expectedfeedback}}">
             <p>{{PLACEHOLDER}}</p></div>`,
         text:
@@ -273,7 +272,7 @@ const components = [
         type: "helper",
         imageClass: "c4l-allpurposecard-icon",
         code:
-            `<p class="c4l-spacer"></p><div class="c4lv-allpurposecard {{VARIANTS}}"
+            `<div class="mu-c4l c4lv-allpurposecard {{VARIANTS}}"
             aria-label="{{#allpurposecard}}"><p>{{PLACEHOLDER}}</p></div>`,
         text:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus a posuere nibh, eu mollis lacus." +
@@ -289,7 +288,7 @@ const components = [
         type: "mu-aiassessmentscale",
         imageClass: "c4l-mu-aiassessmentscale-icon aiasl1 c4l-mu-no-variants",
         code:
-            `<p class="c4l-spacer"></p><div class="mu-fc mu-fc-aias1 mu-fc-aias-l1">
+            `<div class="mu-c4l mu-fc mu-fc-aias1 mu-fc-aias-l1">
             <div class="mu-fc-inner">
             <h5>No AI</h5>
             <p>You must not use AI at any point during the assessment. You must demonstrate your core skills and knowledge.</p>
@@ -309,7 +308,7 @@ const components = [
         type: "mu-aiassessmentscale",
         imageClass: "c4l-mu-aiassessmentscale-icon aiasl2 c4l-mu-no-variants",
         code:
-            `<p class="c4l-spacer"></p><div class="mu-fc mu-fc-aias1 mu-fc-aias-l2">
+            `<div class="mu-c4l mu-fc mu-fc-aias1 mu-fc-aias-l2">
             <div class="mu-fc-inner">
             <h5>AI Planning</h5>
             <p>You may use AI for planning, idea development and research. Your final submission should show how you have developed and refined these ideas.</p>
@@ -343,7 +342,7 @@ const components = [
         type: "mu-aiassessmentscale",
         imageClass: "c4l-mu-aiassessmentscale-icon aiasl3 c4l-mu-no-variants",
         code:
-            `<p class="c4l-spacer"></p><div class="mu-fc mu-fc-aias1 mu-fc-aias-l3">
+            `<div class="mu-c4l mu-fc mu-fc-aias1 mu-fc-aias-l3">
             <div class="mu-fc-inner">
             <h5>AI Collaboration</h5>
             <p>You may use AI to assist with specific tasks, such as drafting text, refining and evaluating your work.</p>
@@ -381,7 +380,7 @@ const components = [
         type: "mu-aiassessmentscale",
         imageClass: "c4l-mu-aiassessmentscale-icon aiasl5 c4l-mu-no-variants",
         code:
-            `<p class="c4l-spacer"></p><div class="mu-fc mu-fc-aias1 mu-fc-aias-l5 {{VARIANTS}}">
+            `<div class="mu-c4l mu-fc mu-fc-aias1 mu-fc-aias-l5 {{VARIANTS}}">
             <div class="mu-fc-inner">
             <h5>AI Exploration</h5>
             <p>You should use AI creatively to solve the task, potentially co-designing new approaches with your instructor.</p>
@@ -416,34 +415,34 @@ const components = [
         moreinformation: "https://masseyuni.sharepoint.com/sites/DigitalInnovationProject/SitePages/Applying-the-Artificial-Intelligence-Assessment-Scale-(AIAS)-to-assessments.aspx",
     },
 
-{id: "31", name: "mu-watch1", type: "mu-activities", imageClass: "c4l-mu-watch-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-watch c4lv-mu-watch1 {{VARIANTS}}" aria-label="{{#mu-watch1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "32", name: "mu-watch2", type: "mu-activities", imageClass: "c4l-mu-watch-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-watch c4lv-mu-watch2 {{VARIANTS}}" aria-label="{{#mu-watch2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "33", name: "mu-read1", type: "mu-activities", imageClass: "c4l-mu-read-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-read c4lv-mu-read1 {{VARIANTS}}" aria-label="{{#mu-read1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "34", name: "mu-read2", type: "mu-activities", imageClass: "c4l-mu-read-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-read c4lv-mu-read2 {{VARIANTS}}" aria-label="{{#mu-read2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "35", name: "mu-write1", type: "mu-activities", imageClass: "c4l-mu-write-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-write c4lv-mu-write1 {{VARIANTS}}" aria-label="{{#mu-write1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "36", name: "mu-write2", type: "mu-activities", imageClass: "c4l-mu-write-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-write c4lv-mu-write2 {{VARIANTS}}" aria-label="{{#mu-write2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "37", name: "mu-explore1", type: "mu-activities", imageClass: "c4l-mu-explore-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-explore c4lv-mu-explore1 {{VARIANTS}}" aria-label="{{#mu-explore1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "38", name: "mu-explore2", type: "mu-activities", imageClass: "c4l-mu-explore-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-explore c4lv-mu-explore2 {{VARIANTS}}" aria-label="{{#mu-explore2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "39", name: "mu-listen1", type: "mu-activities", imageClass: "c4l-mu-listen-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-listen c4lv-mu-listen1 {{VARIANTS}}" aria-label="{{#mu-listen1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "40", name: "mu-listen2", type: "mu-activities", imageClass: "c4l-mu-listen-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-listen c4lv-mu-listen2 {{VARIANTS}}" aria-label="{{#mu-listen2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "41", name: "mu-group1", type: "mu-activities", imageClass: "c4l-mu-group-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-group c4lv-mu-group1 {{VARIANTS}}" aria-label="{{#mu-group1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "42", name: "mu-group2", type: "mu-activities", imageClass: "c4l-mu-group-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-group c4lv-mu-group2 {{VARIANTS}}" aria-label="{{#mu-group2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "43", name: "mu-comment1", type: "mu-activities", imageClass: "c4l-mu-comment-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-comment c4lv-mu-comment1 {{VARIANTS}}" aria-label="{{#mu-comment1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "44", name: "mu-comment2", type: "mu-activities", imageClass: "c4l-mu-comment-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-comment c4lv-mu-comment2 {{VARIANTS}}" aria-label="{{#mu-comment2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "45", name: "mu-checkmark1", type: "mu-activities", imageClass: "c4l-mu-checkmark-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-checkmark c4lv-mu-checkmark1 {{VARIANTS}}" aria-label="{{#mu-checkmark1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "46", name: "mu-checkmark2", type: "mu-activities", imageClass: "c4l-mu-checkmark-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-checkmark c4lv-mu-checkmark2 {{VARIANTS}}" aria-label="{{#mu-checkmark2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "47", name: "mu-guidance1", type: "mu-activities", imageClass: "c4l-mu-guidance-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-guidance c4lv-mu-guidance1 {{VARIANTS}}" aria-label="{{#mu-guidance1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "48", name: "mu-guidance2", type: "mu-activities", imageClass: "c4l-mu-guidance-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-guidance c4lv-mu-guidance2 {{VARIANTS}}" aria-label="{{#mu-guidance2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "49", name: "mu-process1", type: "mu-activities", imageClass: "c4l-mu-process-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-process c4lv-mu-process1 {{VARIANTS}}" aria-label="{{#mu-process1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "50", name: "mu-process2", type: "mu-activities", imageClass: "c4l-mu-process-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-process c4lv-mu-process2 {{VARIANTS}}" aria-label="{{#mu-process2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "51", name: "mu-map1", type: "mu-activities", imageClass: "c4l-mu-map-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-map c4lv-mu-map1 {{VARIANTS}}" aria-label="{{#mu-map1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "52", name: "mu-map2", type: "mu-activities", imageClass: "c4l-mu-map-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-map c4lv-mu-map2 {{VARIANTS}}" aria-label="{{#mu-map2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "53", name: "mu-questionmark1", type: "mu-activities", imageClass: "c4l-mu-questionmark-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-questionmark c4lv-mu-questionmark1 {{VARIANTS}}" aria-label="{{#mu-questionmark1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "54", name: "mu-questionmark2", type: "mu-activities", imageClass: "c4l-mu-questionmark-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-questionmark c4lv-mu-questionmark2 {{VARIANTS}}" aria-label="{{#mu-questionmark2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "55", name: "mu-important1", type: "mu-activities", imageClass: "c4l-mu-important-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-important c4lv-mu-important1 {{VARIANTS}}" aria-label="{{#mu-important1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "56", name: "mu-important2", type: "mu-activities", imageClass: "c4l-mu-important-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-important c4lv-mu-important2 {{VARIANTS}}" aria-label="{{#mu-important2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
-{id: "57", name: "mu-information1", type: "mu-activities", imageClass: "c4l-mu-information-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-information c4lv-mu-information1 {{VARIANTS}}" aria-label="{{#mu-information1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "58", name: "mu-information2", type: "mu-activities", imageClass: "c4l-mu-information-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-activities c4lv-mu-information c4lv-mu-information2 {{VARIANTS}}" aria-label="{{#mu-information2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "31", name: "mu-watch1", type: "mu-activities", imageClass: "c4l-mu-watch-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-watch c4lv-mu-watch1 {{VARIANTS}}" aria-label="{{#mu-watch1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "32", name: "mu-watch2", type: "mu-activities", imageClass: "c4l-mu-watch-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-watch c4lv-mu-watch2 {{VARIANTS}}" aria-label="{{#mu-watch2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "33", name: "mu-read1", type: "mu-activities", imageClass: "c4l-mu-read-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-read c4lv-mu-read1 {{VARIANTS}}" aria-label="{{#mu-read1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "34", name: "mu-read2", type: "mu-activities", imageClass: "c4l-mu-read-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-read c4lv-mu-read2 {{VARIANTS}}" aria-label="{{#mu-read2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "35", name: "mu-write1", type: "mu-activities", imageClass: "c4l-mu-write-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-write c4lv-mu-write1 {{VARIANTS}}" aria-label="{{#mu-write1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "36", name: "mu-write2", type: "mu-activities", imageClass: "c4l-mu-write-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-write c4lv-mu-write2 {{VARIANTS}}" aria-label="{{#mu-write2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "37", name: "mu-explore1", type: "mu-activities", imageClass: "c4l-mu-explore-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-explore c4lv-mu-explore1 {{VARIANTS}}" aria-label="{{#mu-explore1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "38", name: "mu-explore2", type: "mu-activities", imageClass: "c4l-mu-explore-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-explore c4lv-mu-explore2 {{VARIANTS}}" aria-label="{{#mu-explore2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "39", name: "mu-listen1", type: "mu-activities", imageClass: "c4l-mu-listen-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-listen c4lv-mu-listen1 {{VARIANTS}}" aria-label="{{#mu-listen1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "40", name: "mu-listen2", type: "mu-activities", imageClass: "c4l-mu-listen-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-listen c4lv-mu-listen2 {{VARIANTS}}" aria-label="{{#mu-listen2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "41", name: "mu-group1", type: "mu-activities", imageClass: "c4l-mu-group-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-group c4lv-mu-group1 {{VARIANTS}}" aria-label="{{#mu-group1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "42", name: "mu-group2", type: "mu-activities", imageClass: "c4l-mu-group-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-group c4lv-mu-group2 {{VARIANTS}}" aria-label="{{#mu-group2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "43", name: "mu-comment1", type: "mu-activities", imageClass: "c4l-mu-comment-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-comment c4lv-mu-comment1 {{VARIANTS}}" aria-label="{{#mu-comment1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "44", name: "mu-comment2", type: "mu-activities", imageClass: "c4l-mu-comment-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-comment c4lv-mu-comment2 {{VARIANTS}}" aria-label="{{#mu-comment2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "45", name: "mu-checkmark1", type: "mu-activities", imageClass: "c4l-mu-checkmark-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-checkmark c4lv-mu-checkmark1 {{VARIANTS}}" aria-label="{{#mu-checkmark1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "46", name: "mu-checkmark2", type: "mu-activities", imageClass: "c4l-mu-checkmark-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-checkmark c4lv-mu-checkmark2 {{VARIANTS}}" aria-label="{{#mu-checkmark2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "47", name: "mu-guidance1", type: "mu-activities", imageClass: "c4l-mu-guidance-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-guidance c4lv-mu-guidance1 {{VARIANTS}}" aria-label="{{#mu-guidance1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "48", name: "mu-guidance2", type: "mu-activities", imageClass: "c4l-mu-guidance-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-guidance c4lv-mu-guidance2 {{VARIANTS}}" aria-label="{{#mu-guidance2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "49", name: "mu-process1", type: "mu-activities", imageClass: "c4l-mu-process-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-process c4lv-mu-process1 {{VARIANTS}}" aria-label="{{#mu-process1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "50", name: "mu-process2", type: "mu-activities", imageClass: "c4l-mu-process-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-process c4lv-mu-process2 {{VARIANTS}}" aria-label="{{#mu-process2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "51", name: "mu-map1", type: "mu-activities", imageClass: "c4l-mu-map-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-map c4lv-mu-map1 {{VARIANTS}}" aria-label="{{#mu-map1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "52", name: "mu-map2", type: "mu-activities", imageClass: "c4l-mu-map-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-map c4lv-mu-map2 {{VARIANTS}}" aria-label="{{#mu-map2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "53", name: "mu-questionmark1", type: "mu-activities", imageClass: "c4l-mu-questionmark-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-questionmark c4lv-mu-questionmark1 {{VARIANTS}}" aria-label="{{#mu-questionmark1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "54", name: "mu-questionmark2", type: "mu-activities", imageClass: "c4l-mu-questionmark-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-questionmark c4lv-mu-questionmark2 {{VARIANTS}}" aria-label="{{#mu-questionmark2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "55", name: "mu-important1", type: "mu-activities", imageClass: "c4l-mu-important-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-important c4lv-mu-important1 {{VARIANTS}}" aria-label="{{#mu-important1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "56", name: "mu-important2", type: "mu-activities", imageClass: "c4l-mu-important-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-important c4lv-mu-important2 {{VARIANTS}}" aria-label="{{#mu-important2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "57", name: "mu-information1", type: "mu-activities", imageClass: "c4l-mu-information-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-information c4lv-mu-information1 {{VARIANTS}}" aria-label="{{#mu-information1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "58", name: "mu-information2", type: "mu-activities", imageClass: "c4l-mu-information-icon", code: `<div class="mu-c4l c4l-mu-activities c4lv-mu-information c4lv-mu-information2 {{VARIANTS}}" aria-label="{{#mu-information2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
 
     {
         id: "18",
@@ -451,7 +450,7 @@ const components = [
         type: "mu-others",
         imageClass: "c4l-mu-table-icon c4l-mu-no-variants",
         code:
-            `<p class="c4l-spacer"></p><div class="mu-c4l mu-table"
+            `<div class="mu-c4l mu-table"
             aria-label="{{#allpurposecard}}"><table>
             <thead><tr><td>{{PLACEHOLDER}}</td><td>Heading</td><td>Heading</td></tr></thead>
             <tbody><tr><td>content</td><td>content</td><td>content</td></tr></tbody></table></div>`,
@@ -465,7 +464,7 @@ const components = [
         type: "mu-others",
         imageClass: "c4l-mu-table-icon c4l-mu-no-variants",
         code:
-            `<p class="c4l-spacer"></p><div class="mu-c4l mu-table mu-table-grey-variant"
+            `<div class="mu-c4l mu-table mu-table-grey-variant"
             aria-label="{{#allpurposecard}}"><table>
             <thead><tr><td>{{PLACEHOLDER}}</td><td>Heading</td><td>Heading</td></tr></thead>
             <tbody><tr><td>content</td><td>content</td><td>content</td></tr></tbody></table></div>`,
@@ -474,8 +473,8 @@ const components = [
         variants: [],
     },
 
-{id: "59", name: "mu-emphasis1", type: "mu-others", imageClass: "c4l-mu-emphasis-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-others c4lv-mu-emphasis c4lv-mu-emphasis1 {{VARIANTS}}" aria-label="{{#mu-emphasis1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
-{id: "60", name: "mu-emphasis2", type: "mu-others", imageClass: "c4l-mu-emphasis-icon", code: `<p class="c4l-spacer"></p><div class="mu-c4l c4l-mu-others c4lv-mu-emphasis c4lv-mu-emphasis2 {{VARIANTS}}" aria-label="{{#mu-emphasis2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
+{id: "59", name: "mu-emphasis1", type: "mu-others", imageClass: "c4l-mu-emphasis-icon", code: `<div class="mu-c4l c4l-mu-others c4lv-mu-emphasis c4lv-mu-emphasis1 {{VARIANTS}}" aria-label="{{#mu-emphasis1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "60", name: "mu-emphasis2", type: "mu-others", imageClass: "c4l-mu-emphasis-icon", code: `<div class="mu-c4l c4l-mu-others c4lv-mu-emphasis c4lv-mu-emphasis2 {{VARIANTS}}" aria-label="{{#mu-emphasis2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
 
 ];
 
