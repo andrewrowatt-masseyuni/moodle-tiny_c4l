@@ -38,7 +38,8 @@ export const findNearestC4LComponent = (editor) => {
         // Check if the current node is a C4L component
         if (node.nodeType === 1) { // Element node
             const classList = Array.from(node.classList || []);
-            if (classList.some(cls => cls.startsWith('c4lv-'))) {
+            // Class c4lv- kept for backward compatibility.
+            if (classList.some(cls => cls.startsWith('c4lv-') || cls === 'mu-c4l')) {
                 return node;
             }
         }
