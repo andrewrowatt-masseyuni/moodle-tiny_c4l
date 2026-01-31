@@ -112,6 +112,7 @@ div.mu-c4l {
         table {
             font-size: 90%;
             margin-bottom: 1rem;
+            font-family: inherit;
 
             tr {
                 vertical-align: top
