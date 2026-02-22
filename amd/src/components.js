@@ -476,6 +476,9 @@ const components = [
 {id: "59", name: "mu-emphasis1", type: "mu-others", imageClass: "c4l-mu-emphasis-icon", code: `<div class="mu-c4l c4l-mu-others c4lv-mu-emphasis c4lv-mu-emphasis1 {{VARIANTS}}" aria-label="{{#mu-emphasis1}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
 {id: "60", name: "mu-emphasis2", type: "mu-others", imageClass: "c4l-mu-emphasis-icon", code: `<div class="mu-c4l c4l-mu-others c4lv-mu-emphasis c4lv-mu-emphasis2 {{VARIANTS}}" aria-label="{{#mu-emphasis2}}" ><p>{{PLACEHOLDER}}</p></div>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: ["mu-color-violet", "mu-color-yellow"],},
 
+{id: "61", name: "mu-button1", type: "mu-others", imageClass: "c4l-allpurposecard-icon", code: `<div class="mu-c4l c4l-mu-buttons c4lv-mu-button c4lv-mu-button1 {{VARIANTS}}" aria-label="{{#mu-button1}}" ><p><a href="#">{{PLACEHOLDER}}</a></p></div>`, text: "Edit this link", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
+{id: "62", name: "mu-button2", type: "mu-others", imageClass: "c4l-allpurposecard-icon", code: `<div class="mu-c4l c4l-mu-buttons c4lv-mu-button c4lv-mu-button2 {{VARIANTS}}" aria-label="{{#mu-button2}}" ><p><a href="#">{{PLACEHOLDER}}</a></p></div>`, text: "Edit this link", variants: ["mu-color-violet", "mu-color-yellow"],},
+
 ];
 
 export default {
