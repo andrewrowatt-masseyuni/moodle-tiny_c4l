@@ -47,6 +47,7 @@ import {
     pasteC4LComponent,
     hasClipboardContent,
 } from './clipboard';
+import {setupMoveControls} from './move';
 
 export const getSetup = async() => {
     const [
@@ -212,6 +213,11 @@ export const getSetup = async() => {
 
             // Inject custom CSS.
             editor.options.set('content_style', getpreviewCSS(editor));
+
+            // Hover-revealed move controls for top-level C4L components.
+            editor.on('init', () => {
+                setupMoveControls(editor);
+            });
         }
     };
 };
