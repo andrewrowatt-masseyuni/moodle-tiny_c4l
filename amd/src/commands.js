@@ -48,6 +48,7 @@ import {
     hasClipboardContent,
 } from './clipboard';
 import {setupMoveControls} from './move';
+import {setupChangeControls} from './change';
 
 export const getSetup = async() => {
     const [
@@ -218,6 +219,9 @@ export const getSetup = async() => {
             editor.on('init', () => {
                 setupMoveControls(editor);
             });
+
+            // Context toolbar "Change to" for mu-activities components.
+            setupChangeControls(editor);
         }
     };
 };

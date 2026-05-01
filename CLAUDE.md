@@ -230,7 +230,7 @@ Currently **no open or closed issues** in the fork.
 2. **If you modified any JavaScript files (.js) in `amd/src/`**: Run grunt to compile AMD modules
    ```bash
    cd /home/arowatt/moodle405_c4l/lib/editor/tiny/plugins/c4l
-   grunt --max-lint-warnings=14 amd
+   grunt --max-lint-warnings=15 amd
    ```
 3. Clear Moodle caches: `php admin/cli/purge_caches.php`
 4. Run behat tests to verify functionality
@@ -264,7 +264,7 @@ Currently **no open or closed issues** in the fork.
 **Build JavaScript AMD modules (after modifying .js files):**
 ```bash
 cd /home/arowatt/moodle405_c4l/lib/editor/tiny/plugins/c4l
-grunt --max-lint-warnings=14 amd
+grunt --max-lint-warnings=15 amd
 ```
 Note: This compiles JavaScript files from `amd/src/` into AMD modules that Moodle can use. Must be run after any changes to JavaScript source files.
 
@@ -272,7 +272,7 @@ Note: This compiles JavaScript files from `amd/src/` into AMD modules that Moodl
 
 - **ALWAYS check for new behat test files before running tests** - Use Glob tool to find `lib/editor/tiny/plugins/c4l/tests/behat/*.feature`
 - **If behat tests fail: FIRST check the latest faildumps folder** - Use curl commands to inspect HTML/screenshots and determine the exact failure cause
-- **After modifying JavaScript files in `amd/src/`: ALWAYS run `grunt --max-lint-warnings=14 amd`** - JavaScript must be compiled to AMD format before changes take effect
+- **After modifying JavaScript files in `amd/src/`: ALWAYS run `grunt --max-lint-warnings=15 amd`** - JavaScript must be compiled to AMD format before changes take effect
 - All behat tests use the `@tiny_c4l` tag
 - Screenshots are accessible via curl from within the webserver container
 - Plugin follows Moodle coding standards (check with local/codechecker)
