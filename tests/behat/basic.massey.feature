@@ -31,3 +31,33 @@ Feature: Tiny editor components for learning - Massey customisations
     And I click on "Watch" "button"
     And I press "Save and display"
     And I should see "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  @javascript @external
+  Scenario: TinyMCE can be used to embed a C4L accordion, which is saved closed
+    And I am on the PageName1 "page activity editing" page logged in as admin
+    And I click on the "C4L" button for the "Page content" TinyMCE editor
+    And I click on "button[data-filter=\"mu-others\"]" "css"
+    And I click on "Accordion (Style 1)" "button"
+    And I press "Save and display"
+    Then "details.mu-c4l.c4lv-mu-accordion.mu-style1" "css_element" should exist
+    And "details.c4lv-mu-accordion[open]" "css_element" should not exist
+    And I should see "Accordion title"
+    And I should not see "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+
+  @javascript @external
+  Scenario: A C4L accordion can be stacked and restyled from its context toolbar
+    And I am on the PageName1 "page activity editing" page logged in as admin
+    And I click on the "C4L" button for the "Page content" TinyMCE editor
+    And I click on "button[data-filter=\"mu-others\"]" "css"
+    And I click on "Accordion (Style 1)" "button"
+    # The accordion toolbar shows for a cursor; selected text shows the formatting toolbar instead.
+    And I switch to the "Page content" TinyMCE editor iframe
+    And I click on "details > summary" "css_element"
+    And I switch to the main frame
+    And I click on ".tox-pop button[aria-label=\"Insert accordion below\"]" "css_element"
+    And I switch to the "Page content" TinyMCE editor iframe
+    And I click on "details + details > summary" "css_element"
+    And I switch to the main frame
+    And I click on ".tox-pop button[aria-label=\"Accordion style\"]" "css_element"
+    And I click on "//div[@role='menuitemcheckbox'][contains(normalize-space(.), 'Style 2')]" "xpath_element"
+    And I press "Save and display"
+    Then "details.c4lv-mu-accordion.mu-style1 + details.c4lv-mu-accordion.mu-style2" "css_element" should exist

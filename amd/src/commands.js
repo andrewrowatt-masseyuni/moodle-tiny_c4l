@@ -49,6 +49,7 @@ import {
 } from './clipboard';
 import {setupMoveControls} from './move';
 import {setupChangeControls} from './change';
+import {setupAccordionControls} from './accordion';
 
 export const getSetup = async() => {
     const [
@@ -222,6 +223,9 @@ export const getSetup = async() => {
 
             // Context toolbar "Change to" for mu-activities components.
             setupChangeControls(editor);
+
+            // Context toolbar for accordions, and opening them while they are edited.
+            setupAccordionControls(editor);
         }
     };
 };

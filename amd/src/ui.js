@@ -34,6 +34,7 @@ import {
     getcustomComponents
 } from './options';
 import ModalEvents from 'core/modal_events';
+import {leaveSummary} from './accordion';
 import {
     addVariant,
     getVariantsClass,
@@ -230,7 +231,10 @@ const handleButtonClick = (event, editor, modal) => {
     // Component button.
     const component = Components.find(element => element.name == selectedButton);
     if (component != undefined) {
-        const sel = editor.selection.getContent();
+        // An accordion inside a summary would be broken HTML, so it goes after the summary's
+        // details instead, and leaves any selected summary text where it is.
+        const leftSummary = component.name.startsWith('mu-accordion') && leaveSummary(editor);
+        const sel = leftSummary ? '' : editor.selection.getContent();
         let componentCode = component.code;
         const placeholder = (sel.length > 0 ? sel : component.text);
 
