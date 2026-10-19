@@ -5,6 +5,7 @@ This file records fork-specific changes. All notable changes to this fork will b
 ## [Unreleased]
 ### Added
 - Added AI Assessment Framework options
+- Added Accordion components (native details/summary, no style, Style 1 or Style 2) with a context toolbar to change the style, stack accordions, insert space, move and delete them
 - Describe new features added in this fork. (Link to commit/PR: https://github.com/<your>/moodle-tiny_c4l/commit/abcd1234)
 
 ### Changed

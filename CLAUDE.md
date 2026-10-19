@@ -72,7 +72,7 @@ ls -la lib/editor/tiny/plugins/c4l/tests/behat/*.feature
 
 **Test scenarios:**
 1. **basic.feature**: Tests embedding a "Tip" component via the C4L button
-2. **basic.massey.feature**: Tests embedding "AI Assessment Scale" component with "No AI" option
+2. **basic.massey.feature**: Tests embedding "AI Assessment Scale" component with "No AI" option, other Massey components, and accordions (saved closed; stacked and restyled from the context toolbar)
 
 **Tags:**
 - `@editor`
@@ -152,6 +152,7 @@ lib/editor/tiny/plugins/c4l/
 │   ├── options.js           # Plugin options
 │   ├── common.js            # Common utilities
 │   ├── variants.js          # Component variants
+│   ├── accordion.js         # Accordion context toolbar and open/close filters
 │   └── variantslib.js       # Variants library
 │
 ├── scss/                    # SCSS stylesheets
@@ -195,6 +196,7 @@ The C4L (Components for Learning) plugin provides educational content components
 - **Procedural Context** - Step-by-step instructions
 - **Preview** - Content previews
 - **AI Assessment Scale** - Massey customization for AI usage guidelines (No AI, Limited AI, Full AI)
+- **Accordion** - Massey customization: native `<details class="mu-c4l c4lv-mu-accordion [mu-style1|mu-style2]">`. Context toolbar (style, stack above/below, space above/below, move, delete); always open in the editor, always saved closed. HTMLPurifier strips details/summary where Moodle cleans text (e.g. forum posts)
 
 ### Component Variants
 

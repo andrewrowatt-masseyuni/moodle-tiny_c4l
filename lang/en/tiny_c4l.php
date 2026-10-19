@@ -25,6 +25,17 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+$string['accordion_insert_above'] = 'Insert accordion above';
+$string['accordion_insert_below'] = 'Insert accordion below';
+$string['accordion_move_down'] = 'Move accordion down';
+$string['accordion_move_up'] = 'Move accordion up';
+$string['accordion_remove'] = 'Delete accordion';
+$string['accordion_space_above'] = 'Insert space above';
+$string['accordion_space_below'] = 'Insert space below';
+$string['accordion_style'] = 'Accordion style';
+$string['accordion_style1'] = 'Style 1';
+$string['accordion_style2'] = 'Style 2';
+$string['accordion_style_none'] = 'None';
 $string['additionalhtml'] = 'Additional HTML admin page';
 $string['aimedatstudents'] = 'Aimed at Students';
 $string['aimedatstudents_desc'] = 'By default, only selected components will be available for users with student capabilities when using the editor. To change the default setting, just check or uncheck you own preferred selection.';
@@ -105,6 +116,10 @@ $string['menuitem_c4l_paste'] = 'Paste C4L component';
 $string['min'] = 'min';
 $string['move_component_down'] = 'Move component down';
 $string['move_component_up'] = 'Move component up';
+$string['mu-accordion'] = 'Accordion';
+$string['mu-accordion-style1'] = 'Accordion (Style 1)';
+$string['mu-accordion-style2'] = 'Accordion (Style 2)';
+$string['mu-accordion-summary'] = 'Accordion title';
 $string['mu-activities'] = 'Activities';
 $string['mu-activity'] = 'Activity';
 $string['mu-aiasl1'] = 'No AI';

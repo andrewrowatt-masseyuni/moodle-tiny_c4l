@@ -183,6 +183,92 @@ div.mu-c4l {
         
     }
 }
+
+/* Accordions: native details/summary, optionally with mu-style1 or mu-style2 (see amd/src/accordion.js) */
+details.mu-c4l.c4lv-mu-accordion {
+    margin-bottom: 1em; /* To match div.mu-c4l */
+
+    /* Stacked details blocks sit flush against each other. */
+    &:has(+ details) {
+        margin-bottom: 0;
+    }
+
+    /* The body's first block clears the summary, and its last ends flush with the accordion. */
+    > summary + * {
+        margin-top: 0.5em;
+    }
+
+    > :last-child:not(summary) {
+        margin-bottom: 0 !important;
+    }
+
+    /* A summary does not toggle in the editor; it is edited like any other text. */
+    > summary {
+        cursor: text;
+    }
+
+    /* LMS0214 2025a */
+    &.mu-style1 > summary {
+        font-weight:400;
+    }
+
+    /* Style #2 */
+    &.mu-style2 {
+        border: 1px solid #eee;
+        padding: .5em .5em 0;
+        background-color:#eee;
+    }
+
+    &.mu-style2[open] {
+        padding: .5em;
+    }
+
+    &.mu-style2[open] > summary + p + p {
+        padding-top: .5em;
+    }
+
+    &.mu-style2 > summary {
+        margin: -.5em -.5em 0;
+        padding: .5em;
+        font-weight:400;
+        background-color:#ddd;
+    }
+    /* LMS0214 end */
+
+    /* Animation start */
+    /* Lets the content animate to and from its natural (auto) height. */
+    interpolate-size: allow-keywords;
+
+    &::details-content {
+        opacity: 0;
+        block-size: 0;
+        overflow: hidden;
+        transition: block-size 0.3s ease-out, opacity 0.3s ease-out, content-visibility 0.3s ease-out;
+        transition-behavior: allow-discrete; /* Needed for the closing animation. */
+    }
+
+    &[open]::details-content {
+        opacity: 1;
+        block-size: auto;
+    }
+
+    /* A custom marker, which can be animated, in place of the built-in one. */
+    > summary {
+        list-style: none;
+    }
+
+    > summary::before {
+        content: "\25B6\FE0E"; /* Black right-pointing triangle, as text rather than emoji. */
+        display: inline-block;
+        margin-right: 8px;
+        transition: transform 0.2s ease;
+    }
+
+    &[open] > summary::before {
+        transform: rotate(90deg);
+    }
+    /* Animation end */
+}
 /* End display styles */
 
 

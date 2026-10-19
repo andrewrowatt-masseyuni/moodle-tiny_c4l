@@ -52,6 +52,10 @@ const isTopLevelComponent = (editor, node) => {
     if (!node.classList || !node.classList.contains('mu-c4l')) {
         return false;
     }
+    // Accordions have their own move buttons, in their context toolbar (see accordion).
+    if (node.nodeName === 'DETAILS') {
+        return false;
+    }
     return node.parentNode === editor.getBody();
 };
 

@@ -479,6 +479,12 @@ const components = [
 {id: "61", name: "mu-button1", type: "mu-others", imageClass: "c4l-allpurposecard-icon", code: `<div class="mu-c4l c4l-mu-buttons c4lv-mu-button c4lv-mu-button1 {{VARIANTS}}" aria-label="{{#mu-button1}}" ><p><a href="#">{{PLACEHOLDER}}</a></p></div>`, text: "Edit this link", variants: ["mu-color-green", "mu-color-grey", "mu-color-teal"],},
 {id: "62", name: "mu-button2", type: "mu-others", imageClass: "c4l-allpurposecard-icon", code: `<div class="mu-c4l c4l-mu-buttons c4lv-mu-button c4lv-mu-button2 {{VARIANTS}}" aria-label="{{#mu-button2}}" ><p><a href="#">{{PLACEHOLDER}}</a></p></div>`, text: "Edit this link", variants: ["mu-color-violet", "mu-color-yellow"],},
 
+// Accordions use native details/summary. The open attribute only makes the modal preview show the body;
+// it is removed whenever the content is saved (see accordion.js).
+{id: "63", name: "mu-accordion", type: "mu-others", imageClass: "c4l-mu-accordion-icon c4l-mu-no-variants", code: `<details class="mu-c4l c4lv-mu-accordion" open><summary>{{#mu-accordion-summary}}</summary><p>{{PLACEHOLDER}}</p></details>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: [],},
+{id: "64", name: "mu-accordion-style1", type: "mu-others", imageClass: "c4l-mu-accordion-icon c4l-mu-no-variants", code: `<details class="mu-c4l c4lv-mu-accordion mu-style1" open><summary>{{#mu-accordion-summary}}</summary><p>{{PLACEHOLDER}}</p></details>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: [],},
+{id: "65", name: "mu-accordion-style2", type: "mu-others", imageClass: "c4l-mu-accordion-icon c4l-mu-no-variants", code: `<details class="mu-c4l c4lv-mu-accordion mu-style2" open><summary>{{#mu-accordion-summary}}</summary><p>{{PLACEHOLDER}}</p></details>`, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", variants: [],},
+
 ];
 
 export default {
