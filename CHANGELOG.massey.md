@@ -2,6 +2,10 @@
 
 This file records fork-specific changes. All notable changes to this fork will be documented in this file.
 
+## v2026102600
+### Changed
+- Renamed the "AI Assessment Scale" component group to "Massey (Legacy)" and moved it after "Massey (Other)"
+
 ## v2026102300
 ### Added
 - Added Accordion components (native details/summary, no style, Style 1 or Style 2) with a context toolbar to change the style, stack accordions, insert space, move and delete them
