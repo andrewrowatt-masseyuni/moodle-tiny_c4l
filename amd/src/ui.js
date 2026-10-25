@@ -40,6 +40,9 @@ import {
     getVariantsClass,
     getVariantHtml,
     getVariantsHtml,
+    getVariantGroupSiblings,
+    isDefaultVariant,
+    isVariantOn,
     loadVariantPreferences,
     removeVariant,
     saveVariantPreferences,
@@ -251,7 +254,8 @@ const handleButtonClick = (event, editor, modal) => {
         // Apply variants to html component.
         if (variants.length > 0) {
             componentCode = componentCode.replace('{{VARIANTS}}', variants.join(' '));
-            componentCode = componentCode.replace('{{VARIANTSHTML}}', getVariantsHtml(component.name));
+            componentCode = componentCode.replace('{{VARIANTSHTML}}',
+                expandVariantsHtml(component, getVariantsHtml(component.name)));
         } else {
             componentCode = componentCode.replace('{{VARIANTS}}', '');
             componentCode = componentCode.replace('{{VARIANTSHTML}}', '');
@@ -395,9 +399,13 @@ const getButtons = (editor) => {
                 // Apply class variants and html to html component.
                 const variantsNode = document.createElement('span');
                 variantsNode.dataset.id = 'variantHTML-' + component.id;
-                if (variants.length > 0) {
+                if (hasTableCaptionVariants(component)) {
+                    // A table caption must be the table's first child, so it can't be wrapped in a span.
                     componentCode = componentCode.replace('{{VARIANTS}}', variants.join(' '));
-                    variantsNode.innerHTML = getVariantsHtml(component.name);
+                    componentCode = componentCode.replace('{{VARIANTSHTML}}', getVariantsHtml(component.name));
+                } else if (variants.length > 0) {
+                    componentCode = componentCode.replace('{{VARIANTS}}', variants.join(' '));
+                    variantsNode.innerHTML = expandVariantsHtml(component, getVariantsHtml(component.name));
                     componentCode = componentCode.replace('{{VARIANTSHTML}}', variantsNode.outerHTML);
                 } else {
                     componentCode = componentCode.replace('{{VARIANTS}}', '');
@@ -455,7 +463,7 @@ const getVariantsState = (component, elements) => {
     }
 
     elements.forEach((variant, index) => {
-        if (variantExists(component, variant)) {
+        if (isVariantOn(component, variant)) {
             variantState = 'on';
             variantClass = 'on ';
         } else {
@@ -476,6 +484,63 @@ const getVariantsState = (component, elements) => {
 };
 
 /**
+ * Whether a component's variant HTML is a table caption, which goes straight after <table>.
+ *
+ * @param {object} component
+ * @returns {boolean}
+ */
+const hasTableCaptionVariants = (component) => /<table[^>]*>\s*{{VARIANTSHTML}}/.test(component.code ?? '');
+
+/**
+ * Expand the {{COPY}} placeholders in a component's variant HTML.
+ *
+ * A variant such as an accordion stack adds more copies of the component it is used on. Each copy
+ * has the component's default text and no variants.
+ *
+ * @param {object} component
+ * @param {string} html Variant HTML
+ * @returns {string}
+ */
+const expandVariantsHtml = (component, html) => {
+    if (!html.includes('{{COPY}}')) {
+        return html;
+    }
+    const copy = component.code
+        .replace('{{VARIANTS}}', '')
+        .replace('{{VARIANTSHTML}}', '')
+        .replace('{{PLACEHOLDER}}', component.text);
+    return applyLangStrings(html.replaceAll('{{COPY}}', copy));
+};
+
+/**
+ * Show a component's variant HTML in its preview.
+ *
+ * Variant HTML normally goes in a placeholder span. A table caption must be the table's first child
+ * and can't sit in a span, so for a table the caption itself is replaced.
+ *
+ * @param {object} component
+ * @param {HTMLElement} previewComponent
+ * @param {HTMLElement|null} variantPreview The placeholder span, if the component has one.
+ * @param {string} html
+ */
+const setVariantsPreviewHtml = (component, previewComponent, variantPreview, html) => {
+    html = expandVariantsHtml(component, html);
+    if (variantPreview) {
+        variantPreview.innerHTML = html;
+        return;
+    }
+    const table = previewComponent.querySelector('table');
+    if (table) {
+        const parsed = document.createElement('table');
+        parsed.innerHTML = html;
+        table.deleteCaption();
+        if (parsed.caption) {
+            table.caption = parsed.caption;
+        }
+    }
+};
+
+/**
  * Update a variant component UI.
  *
  * @param {obj} variant
@@ -488,53 +553,61 @@ const updateVariantComponentState = (variant, button, modal, show, updateHtml) =
     const selectedVariant = 'c4l-' + variant.dataset.variant + '-variant';
     const component = Components.find(element => element.name == button.dataset.id);
     const componentClass = button.dataset.classcomponent;
-    const previewComponent = modal.getRoot()[0]
-        .querySelector('div[data-id="code-preview-' + button.dataset.id + '"] .' + componentClass);
+    const previewContainer = modal.getRoot()[0]
+        .querySelector('div[data-id="code-preview-' + button.dataset.id + '"]');
+    // Massey components such as tables don't carry the c4lv- class, so fall back to mu-c4l.
+    const previewComponent = previewContainer?.querySelector('.' + componentClass) ??
+        previewContainer?.querySelector('.mu-c4l');
     const variantPreview = modal.getRoot()[0]
         .querySelector('span[data-id="variantHTML-' + component.id + '"]');
-    let variantsHtml = '';
+    // Variants in the same group, such as caption above and below, can't be used together.
+    const siblings = getVariantGroupSiblings(variant.dataset.variant);
+    const enabledSiblings = siblings.filter(sibling => variantExists(component.name, sibling));
 
-    if (previewComponent) {
-        if (updateHtml) {
-            if (variant.dataset.state == 'on') {
-                removeVariant(component.name, variant.dataset.variant);
-                updateVariantButtonState(variant, false);
-                previewComponent.classList.remove(selectedVariant);
-            } else {
-                addVariant(component.name, variant.dataset.variant);
-                updateVariantButtonState(variant, true);
-                previewComponent.classList.add(selectedVariant);
+    if (updateHtml) {
+        if (variant.dataset.state == 'on') {
+            // A group's default, such as blue, is on whenever nothing else is, so it can't be switched off.
+            if (isDefaultVariant(variant.dataset.variant)) {
+                return;
             }
-
-            // Update variant preview HTML.
-            if (variantPreview) {
-                variantPreview.innerHTML = getVariantsHtml(component.name);
-            }
+            removeVariant(component.name, variant.dataset.variant);
+            previewComponent?.classList.remove(selectedVariant);
         } else {
-            variantsHtml = getVariantsHtml(component.name);
-            if (show) {
-                previewComponent.classList.add(selectedVariant);
-                variantsHtml += getVariantHtml(variant.dataset.variant);
-            } else {
-                previewComponent.classList.remove(selectedVariant);
-            }
-
-            // Update variant preview HTML.
-            if (variantPreview) {
-                variantPreview.innerHTML = variantsHtml;
-            }
-        }
-    } else {
-        if (updateHtml) {
-            // Update variants preferences.
-            if (variant.dataset.state == 'on') {
-                removeVariant(component.name, variant.dataset.variant);
-                updateVariantButtonState(variant, false);
-            } else {
+            enabledSiblings.forEach(sibling => {
+                removeVariant(component.name, sibling);
+                previewComponent?.classList.remove('c4l-' + sibling + '-variant');
+            });
+            // Choosing the default just switches the others off; it is never stored.
+            if (!isDefaultVariant(variant.dataset.variant)) {
                 addVariant(component.name, variant.dataset.variant);
-                updateVariantButtonState(variant, true);
+                previewComponent?.classList.add(selectedVariant);
             }
         }
+        updateVariantButtonState(variant, isVariantOn(component.name, variant.dataset.variant));
+        siblings.forEach(sibling => {
+            const siblingButton = button.querySelector('span[data-variant="' + sibling + '"]');
+            if (siblingButton) {
+                updateVariantButtonState(siblingButton, isVariantOn(component.name, sibling));
+            }
+        });
+
+        // Update variant preview HTML.
+        if (previewComponent) {
+            setVariantsPreviewHtml(component, previewComponent, variantPreview, getVariantsHtml(component.name));
+        }
+    } else if (previewComponent) {
+        // Preview the hovered variant in place of any in its group.
+        let variantsHtml = '';
+        if (show) {
+            enabledSiblings.forEach(sibling => previewComponent.classList.remove('c4l-' + sibling + '-variant'));
+            previewComponent.classList.add(selectedVariant);
+            variantsHtml = getVariantsHtml(component.name, siblings) + getVariantHtml(variant.dataset.variant);
+        } else {
+            previewComponent.classList.remove(selectedVariant);
+            enabledSiblings.forEach(sibling => previewComponent.classList.add('c4l-' + sibling + '-variant'));
+            variantsHtml = getVariantsHtml(component.name);
+        }
+        setVariantsPreviewHtml(component, previewComponent, variantPreview, variantsHtml);
     }
 };
 

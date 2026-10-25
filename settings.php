@@ -29,7 +29,6 @@ $ADMIN->add('editortiny', new admin_category('tiny_c4l', new lang_string('plugin
 $settings = new admin_settingpage('tiny_c4l_settings', new lang_string('pluginname', 'tiny_c4l'));
 
 if ($ADMIN->fulltree) {
-
     // Custom components settings.
     $settings->add(new admin_setting_heading('tiny_c4l/generalsettings', new lang_string('generalsettings', 'tiny_c4l'), ''));
 
@@ -75,6 +74,39 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configmulticheckbox('tiny_c4l/notintendedforstudents', $name, $desc, [], $components);
     $settings->add($setting);
 
+    // Enlarge tables and images settings.
+    $name = new lang_string('enlargesettings', 'tiny_c4l');
+    $desc = new lang_string('enlargesettings_desc', 'tiny_c4l');
+    $settings->add(new admin_setting_heading('tiny_c4l/enlargesettings', $name, $desc));
+
+    $name = get_string('enlargetables', 'tiny_c4l');
+    $desc = get_string('enlargetables_desc', 'tiny_c4l');
+    $setting = new admin_setting_configcheckbox('tiny_c4l/enlargetables', $name, $desc, 1);
+    $settings->add($setting);
+
+    $name = get_string('enlargeimages', 'tiny_c4l');
+    $desc = get_string('enlargeimages_desc', 'tiny_c4l');
+    $setting = new admin_setting_configcheckbox('tiny_c4l/enlargeimages', $name, $desc, 1);
+    $settings->add($setting);
+
+    $name = get_string('enlargeminimagewidth', 'tiny_c4l');
+    $desc = get_string('enlargeminimagewidth_desc', 'tiny_c4l');
+    $default = \tiny_c4l\hook_callbacks::ENLARGE_MINIMAGEWIDTH_DEFAULT;
+    $setting = new admin_setting_configtext('tiny_c4l/enlargeminimagewidth', $name, $desc, $default, PARAM_INT);
+    $settings->add($setting);
+
+    $name = get_string('enlargeinclude', 'tiny_c4l');
+    $desc = get_string('enlargeinclude_desc', 'tiny_c4l');
+    $default = \tiny_c4l\hook_callbacks::ENLARGE_INCLUDE_DEFAULT;
+    $setting = new admin_setting_configtext('tiny_c4l/enlargeinclude', $name, $desc, $default, PARAM_RAW_TRIMMED, 80);
+    $settings->add($setting);
+
+    $name = get_string('enlargeexclude', 'tiny_c4l');
+    $desc = get_string('enlargeexclude_desc', 'tiny_c4l');
+    $default = \tiny_c4l\hook_callbacks::ENLARGE_EXCLUDE_DEFAULT;
+    $setting = new admin_setting_configtext('tiny_c4l/enlargeexclude', $name, $desc, $default, PARAM_RAW_TRIMMED, 80);
+    $settings->add($setting);
+
     // Custom components settings.
     $settings->add(new admin_setting_heading('tiny_c4l/customcomponents', new lang_string('customcomponents', 'tiny_c4l'), ''));
 
@@ -113,7 +145,6 @@ if ($ADMIN->fulltree) {
     }
 
     for ($componentindex = 1; $componentindex <= $customcompcount; $componentindex++) {
-
         // Header.
         $name = 'tiny_c4l/customcomptitle' . $componentindex;
         $title = get_string('customcomptitle', 'tiny_c4l', $componentindex);
@@ -172,5 +203,4 @@ if ($ADMIN->fulltree) {
         $setting = new admin_setting_configtext($name, $title, $description, $componentindex, PARAM_INT);
         $settings->add($setting);
     }
-
 }

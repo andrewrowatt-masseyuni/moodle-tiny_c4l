@@ -28,10 +28,10 @@
 
 import {get_string as getString} from 'core/str';
 
-const COMPONENT_SELECTOR = 'div.mu-c4l';
 const CONTROLS_CLASS = 'c4l-move-controls';
 const UP_CLASS = 'c4l-move-up';
 const DOWN_CLASS = 'c4l-move-down';
+const CONTENT_EVENTS = 'SetContent Undo Redo NodeChange';
 
 const noop = () => {
     return;
@@ -57,6 +57,23 @@ const isTopLevelComponent = (editor, node) => {
         return false;
     }
     return node.parentNode === editor.getBody();
+};
+
+/**
+ * The top-level component containing a node. Components are not all divs (the figure is a
+ * <figure>, procedural context a <p>), so this walks up to the editor body's child.
+ *
+ * @param {object} editor TinyMCE editor instance
+ * @param {Node} node
+ * @return {Element|null}
+ */
+const getTopLevelComponent = (editor, node) => {
+    const body = editor.getBody();
+    let current = node;
+    while (current && current.parentNode !== body) {
+        current = current.parentNode;
+    }
+    return isTopLevelComponent(editor, current) ? current : null;
 };
 
 const buildControlsTemplate = (upLabel, downLabel) => {
@@ -175,16 +192,18 @@ export const setupMoveControls = async(editor) => {
     const refresh = () => ensureControls(editor, controlsTemplate);
     refresh();
 
+    // NodeChange covers components added straight into the DOM rather than through SetContent,
+    // such as "Make C4L figure" and "Make C4L table", which call editor.nodeChanged() afterwards.
     const onContentChange = () => refresh();
-    editor.on('SetContent Undo Redo', onContentChange);
+    editor.on(CONTENT_EVENTS, onContentChange);
 
     const onMouseOver = (event) => {
         const target = event.target;
         if (!target || target.nodeType !== 1) {
             return;
         }
-        const component = target.closest(COMPONENT_SELECTOR);
-        if (component && isTopLevelComponent(editor, component)) {
+        const component = getTopLevelComponent(editor, target);
+        if (component) {
             updateDisabledState(component);
         }
     };
@@ -204,8 +223,8 @@ export const setupMoveControls = async(editor) => {
         if (button.disabled) {
             return;
         }
-        const componentEl = button.closest(COMPONENT_SELECTOR);
-        if (!componentEl || !isTopLevelComponent(editor, componentEl)) {
+        const componentEl = getTopLevelComponent(editor, button);
+        if (!componentEl) {
             return;
         }
         const direction = button.classList.contains(UP_CLASS) ? 'up' : 'down';
@@ -216,7 +235,7 @@ export const setupMoveControls = async(editor) => {
     body.addEventListener('click', onClick);
 
     return () => {
-        editor.off('SetContent Undo Redo', onContentChange);
+        editor.off(CONTENT_EVENTS, onContentChange);
         body.removeEventListener('mouseover', onMouseOver);
         body.removeEventListener('click', onClick);
     };

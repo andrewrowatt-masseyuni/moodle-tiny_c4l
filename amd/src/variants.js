@@ -42,7 +42,7 @@ const variants = [
         name: "caption",
         html:
             `<figcaption><em class="c4l-figure-footer">Consectetur adipiscing elit.</em>
-            <span class="c4l-figure-caption" aria-label="{{#caption}}>
+            <span class="c4l-figure-caption" aria-label="{{#caption}}">
             <strong>Source: </strong>Phasellus a posuere nibh.</span></figcaption>`,
     },
     {
@@ -71,6 +71,84 @@ const variants = [
         html:
             `<div class="c4l-embedded-caption" aria-label="{{#caption}}"><span>Marcus Tullius Cicero,</span>
              De Finibus Bonorum et Malorum</div>`,
+    },
+    // Massey variants. Their ids start at 100 so upstream can add variants without clashing with
+    // ids saved in user preferences. Variants in a group switch each other off.
+
+    // Table captions. Both add the same caption, which must come straight after <table>; the
+    // below variant's class moves it under the table.
+    {
+        id: 100,
+        name: "caption-above",
+        group: "table-caption",
+        html: `<caption>Table 1: Consectetur adipiscing elit.</caption>`,
+    },
+    {
+        id: 101,
+        name: "caption-below",
+        group: "table-caption",
+        html: `<caption>Table 1: Consectetur adipiscing elit.</caption>`,
+    },
+
+    // Colours. Blue is the default: a component with no colour class is blue, so blue is shown as
+    // chosen whenever no other colour is, and choosing it just switches the others off.
+    {
+        id: 102,
+        name: "mu-color-blue",
+        group: "mu-color",
+        isDefault: true,
+        html: "",
+    },
+    {
+        id: 103,
+        name: "mu-color-green",
+        group: "mu-color",
+        html: "",
+    },
+    {
+        id: 104,
+        name: "mu-color-grey",
+        group: "mu-color",
+        html: "",
+    },
+    {
+        id: 105,
+        name: "mu-color-teal",
+        group: "mu-color",
+        html: "",
+    },
+    {
+        id: 106,
+        name: "mu-color-violet",
+        group: "mu-color",
+        html: "",
+    },
+    {
+        id: 107,
+        name: "mu-color-yellow",
+        group: "mu-color",
+        html: "",
+    },
+
+    // Accordion stacks: more copies of the chosen accordion below it. {{COPY}} is expanded by ui.js
+    // to a copy of the component, so the copies match its style. Without one, a single accordion.
+    {
+        id: 108,
+        name: "mu-stack-2",
+        group: "mu-stack",
+        html: "{{COPY}}",
+    },
+    {
+        id: 109,
+        name: "mu-stack-3",
+        group: "mu-stack",
+        html: "{{COPY}}{{COPY}}",
+    },
+    {
+        id: 110,
+        name: "mu-stack-4",
+        group: "mu-stack",
+        html: "{{COPY}}{{COPY}}{{COPY}}",
     },
 ];
 
