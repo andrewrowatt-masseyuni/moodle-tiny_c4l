@@ -147,14 +147,18 @@ export const getVariantsClass = (component) => {
  * Return all HTML variants for a component.
  *
  * @param  {string} component Component name
+ * @param  {string[]} exclude Variant names to leave out
  * @returns {string}
  */
-export const getVariantsHtml = (component) => {
+export const getVariantsHtml = (component, exclude = []) => {
     let variantsHtml = '';
     let variantObj = {};
 
     if (variantPreferences?.[component]) {
         variantPreferences[component].forEach(variant => {
+            if (exclude.includes(variant)) {
+                return;
+            }
             variantObj = VARIANTS.find(element => element.name == variant);
             if (variantObj != undefined) {
                 variantsHtml += variantObj.html;
@@ -180,6 +184,39 @@ export const getVariantHtml = (variant) => {
     }
     return variantHtml;
 };
+
+/**
+ * Return the other variants in a variant's group, which can't be used alongside it.
+ *
+ * @param  {string} variant Variant name
+ * @returns {string[]} Variant names
+ */
+export const getVariantGroupSiblings = (variant) => {
+    const group = VARIANTS.find(element => element.name == variant)?.group;
+    if (!group) {
+        return [];
+    }
+    return VARIANTS.filter(element => element.group == group && element.name != variant).map(element => element.name);
+};
+
+/**
+ * Return whether a variant is its group's default, which applies when no other variant in the
+ * group is chosen and so is never stored.
+ *
+ * @param  {string} variant Variant name
+ * @returns {bool}
+ */
+export const isDefaultVariant = (variant) => !!VARIANTS.find(element => element.name == variant)?.isDefault;
+
+/**
+ * Returns whether a variant is on for a component: chosen, or the default with nothing else in its group chosen.
+ *
+ * @param  {string} component Component name
+ * @param  {string} variant   Variant name
+ * @returns {bool}
+ */
+export const isVariantOn = (component, variant) => variantExists(component, variant) ||
+    (isDefaultVariant(variant) && !getVariantGroupSiblings(variant).some(sibling => variantExists(component, sibling)));
 
 /**
  * Add a variant to variantPreferences

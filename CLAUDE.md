@@ -69,10 +69,16 @@ ls -la lib/editor/tiny/plugins/c4l/tests/behat/*.feature
 **Behat test files:**
 - `tests/behat/basic.feature` - Original scenario testing C4L Tip component embedding
 - `tests/behat/basic.massey.feature` - Massey customizations testing AI Assessment Scale component
+- `tests/behat/enlarge.massey.feature` - Enlarge C4L tables and figure images on view pages (content made with the page generator, no editor)
 
 **Test scenarios:**
 1. **basic.feature**: Tests embedding a "Tip" component via the C4L button
 2. **basic.massey.feature**: Tests embedding "AI Assessment Scale" component with "No AI" option, other Massey components, and accordions (saved closed; stacked and restyled from the context toolbar)
+   Also: table caption above/below switch each other off, and the saved table has a single caption below it
+   Also: the hover move buttons move a figure, procedural context (`<p>`) and tip (`<div>`) up (the step hovers the hidden button itself, as hovering the component then clicking scrolls the mouse off a short component), including a table or figure just made with "Make C4L table" / "Make C4L figure"
+3. **enlarge.massey.feature**: C4L table enlarge icon (skips plain, nested, single-column and `c4l-noexpand` tables), image icons and gallery (prev/next, counter, open original), and turning tables off
+
+**New feature files are only picked up after** `php admin/tool/behat/cli/util.php --enable` (or `init.php`).
 
 **Tags:**
 - `@editor`
@@ -136,12 +142,14 @@ lib/editor/tiny/plugins/c4l/
 ├── package.json             # NPM dependencies
 │
 ├── classes/
+│   ├── hook_callbacks.php   # Loads tiny_c4l/enlarge on every page (before_footer_html_generation)
 │   ├── plugininfo.php       # Plugin info class
 │   └── privacy/
 │       └── provider.php     # Privacy API implementation
 │
 ├── db/
-│   └── access.php           # Capability definitions
+│   ├── access.php           # Capability definitions
+│   └── hooks.php            # Hook callback registration
 │
 ├── amd/src/                 # JavaScript modules (AMD format)
 │   ├── plugin.js            # Main plugin entry point
@@ -153,6 +161,11 @@ lib/editor/tiny/plugins/c4l/
 │   ├── common.js            # Common utilities
 │   ├── variants.js          # Component variants
 │   ├── accordion.js         # Accordion context toolbar and open/close filters
+│   ├── change.js            # "Change to" context toolbar: icon (activities) and colour (activities, emphasis, buttons)
+│   ├── table.js             # C4L table colour/caption menu and "Make C4L table", merged into TinyMCE's table toolbar
+│   ├── figure.js            # "Make C4L figure" on plain images, merged into the image toolbar
+│   ├── enlarge.js           # VIEW-TIME (not editor): enlarge controls on C4L tables/figure images in rendered content
+│   ├── enlarge_modal.js     # Near full-screen core/modal subclass used by enlarge.js
 │   └── variantslib.js       # Variants library
 │
 ├── scss/                    # SCSS stylesheets
@@ -196,7 +209,13 @@ The C4L (Components for Learning) plugin provides educational content components
 - **Procedural Context** - Step-by-step instructions
 - **Preview** - Content previews
 - **AI Assessment Scale** - Massey customization for AI usage guidelines (No AI, Limited AI, Full AI)
-- **Accordion** - Massey customization: native `<details class="mu-c4l c4lv-mu-accordion [mu-style1|mu-style2]">`. Context toolbar (style, stack above/below, space above/below, move, delete); always open in the editor, always saved closed. HTMLPurifier strips details/summary where Moodle cleans text (e.g. forum posts)
+- **Accordion** - Massey customization: native `<details class="mu-c4l c4lv-mu-accordion [mu-style1|mu-style2]">`. Context toolbar (style, stack above/below, space above/below, move, delete); always open in the editor, always saved closed. "Stack of 2/3/4" variants (`mu-stack-*`, `group: "mu-stack"`, ids 108-110) insert that many accordions: their variant HTML is `{{COPY}}` placeholders, which `ui.js` (`expandVariantsHtml`) expands to copies of the chosen component so the copies match its style. HTMLPurifier strips details/summary where Moodle cleans text (e.g. forum posts)
+- **Colour variants** - Massey `mu-color-*` variants are in `variants.js` (ids 102-107, `group: "mu-color"`), so only one colour can be chosen and the choice is remembered. Component sets: blue/green/grey and teal/violet/yellow. Blue has `isDefault: true`: no colour class means blue, so the blue toggle shows on whenever no other colour is chosen, choosing it switches the others off and it is never stored (`isDefaultVariant`, `isVariantOn`). Massey variant ids start at 100 so upstream ids can't clash with saved preferences
+- **Change to (context toolbar)** - `change.js`: in a mu-activities, emphasis (`c4l-mu-others`) or button (`c4l-mu-buttons`) component, a "Change to" menu switches the colour (all six); activities can also switch the icon. Toolbars only show for the nearest ancestor with any context toolbar
+- **C4L table toolbar** - `table.js`: two context toolbars on the `<table>` element itself, so TinyMCE merges them into its own table toolbar (a toolbar on the wrapper div would never show, as the table matches first). In a C4L table (`table` in `div.mu-c4l.mu-table`): "Change to" > Colour (yellow/grey) and Caption (above/below/none, same markup and classes as the caption variants; a new caption gets selected placeholder text). In any other table: "Make C4L table" (C4L icon) wraps it as a yellow or grey C4L table
+- **C4L figure from an image** - `figure.js`: a context toolbar on any `<img>` not already in a `<figure>`, merged into tiny_media's image toolbar. "Make C4L figure" (C4L icon) > "Convert to C4L figure" / "Convert to C4L figure with caption" wraps it as a full-width figure (`mu-c4l c4lv-figure c4l-full-width-variant`, plus `c4l-caption-variant` and the caption variant's `figcaption` markup with selected placeholder text). A figure can't sit in a `<p>`, so `dom.split` splits the image's paragraph (or other phrasing ancestors, per `editor.schema.isValidChild`) around it; empty halves are dropped. An image whose parent is a link takes the link into the figure. No conversion back
+- **Table captions** - Massey customization: `mu-table` and `mu-table-grey-variant` have "Caption above" / "Caption below" variants (`variants.js` ids 100/101, Massey icons in `pix/mu_icons/variants/caption-*`). Both insert one real `<caption>` straight after `<table>` (`{{VARIANTSHTML}}`); "below" adds `c4l-caption-below-variant` to the wrapper for `caption-side: bottom`. They share `group: "table-caption"`, so the picker switches one off when the other is switched on (`getVariantGroupSiblings`). A table caption can't sit in the picker's preview span, so `ui.js` replaces the preview table's caption directly (`hasTableCaptionVariants`, `setVariantsPreviewHtml`)
+- **Enlarge tables and images** (#25) - Massey customization, view-time only, nothing stored in content (HTMLPurifier would strip buttons/ARIA). `db/hooks.php` loads `tiny_c4l/enlarge` on every page; it wraps each table, and each image shown narrower than its natural width, inside the C4L Table and Figure components (`enlargeinclude`, default `div.mu-c4l.mu-table, figure.c4lv-figure`; plain tables and images are left alone) in a `position: relative` `.tiny-c4l-enlarge-wrap` and overlays a round icon button on its top right, dimmed until the wrapper is hovered on hover-capable devices (modelled on Snap's `.snap-expand-link`, no Snap dependency; a ResizeObserver keeps the icon on the table/image corner when it is narrower than the wrapper). Image wrappers are inline-block and take over the image's float, falling back to a block wrapper if wrapping would resize the image. Enlargeable images are also clickable (mouse only; the icon is the keyboard route). Anything matching `enlargeexclude` is skipped (C4L picker previews in `.modal`, the editor UI, links, buttons, labels). Image modal steps through all enlargeable images on the page. Authors opt out with class `c4l-noexpand`. Settings: `enlargetables`, `enlargeimages`, `enlargeminimagewidth`, `enlargeinclude`, `enlargeexclude`. Re-scans on `core_filters/contentUpdated` (Snap loads Page content by AJAX)
 
 ### Component Variants
 
@@ -279,7 +298,7 @@ Note: This compiles JavaScript files from `amd/src/` into AMD modules that Moodl
 - Screenshots are accessible via curl from within the webserver container
 - Plugin follows Moodle coding standards (check with local/codechecker)
 - JavaScript uses AMD module format (not ES6 modules)
-- SCSS files are compiled by Moodle's theme system
+- `styles.css` (view pages) and `editor_styles.css` (editor iframe) are HAND-EDITED below their compressed first line; do NOT run `npm run sass`, it would wipe the Massey styles. The `scss/` sources are stale upstream copies
 - Plugin integrates with TinyMCE 6.x editor
 - Privacy API is implemented (GDPR compliance)
 

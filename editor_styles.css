@@ -149,6 +149,22 @@ div.mu-c4l {
             ul {
                 margin: 0!important;
             }
+
+            /* Caption above or below variants, styled like the figure caption. */
+            caption {
+                caption-side: top;
+                padding: 0 0 7px;
+                font-size: 13px;
+                font-weight: normal;
+                line-height: 16px;
+                color: #686d79;
+                text-align: left;
+            }
+        }
+
+        &.c4l-caption-below-variant table caption {
+            caption-side: bottom;
+            padding: 7px 0 0;
         }
 
         &.mu-table-grey-variant {
@@ -432,10 +448,12 @@ div.mu-fc.mu-fc-aias1 {
 /* End mu */
 
 /* C4L move controls: hover-revealed up/down arrows on top-level components. */
-div.mu-c4l {
+div.mu-c4l,
+figure.mu-c4l,
+p.mu-c4l {
     position: relative;
 }
-div.mu-c4l > .c4l-move-controls {
+.mu-c4l > .c4l-move-controls {
     position: absolute;
     top: 4px;
     right: 4px;
@@ -446,7 +464,7 @@ div.mu-c4l > .c4l-move-controls {
     pointer-events: none;
     z-index: 5;
 }
-div.mu-c4l:hover > .c4l-move-controls {
+.mu-c4l:hover > .c4l-move-controls {
     opacity: 1;
     pointer-events: auto;
 }

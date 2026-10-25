@@ -50,6 +50,8 @@ import {
 import {setupMoveControls} from './move';
 import {setupChangeControls} from './change';
 import {setupAccordionControls} from './accordion';
+import {setupTableControls} from './table';
+import {setupFigureControls} from './figure';
 
 export const getSetup = async() => {
     const [
@@ -226,6 +228,12 @@ export const getSetup = async() => {
 
             // Context toolbar for accordions, and opening them while they are edited.
             setupAccordionControls(editor);
+
+            // C4L table options, and making a plain table a C4L table, on TinyMCE's table toolbar.
+            setupTableControls(editor);
+
+            // Making a plain image a C4L figure, on the image toolbar.
+            setupFigureControls(editor);
         }
     };
 };

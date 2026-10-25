@@ -71,7 +71,7 @@
 
 .c4l-mu-emphasis-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/circle-exclamation]]); display: block; }
 
-.c4l-mu-accordion-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/accordion]]); display: block; }
+.c4l-mu-accordion-icon .c4l-button-text::before { content: url([[pix:tiny_c4l|mu_icons/list-dropdown-thin-full]]); display: block; }
 
 /* variants off = duotone thin, on = solid */
 .c4l-button-variant.mu-color-blue-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-blue-off]])}.c4l-button-variant.mu-color-blue-variant-on::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-blue-on]])}
@@ -80,6 +80,11 @@
 .c4l-button-variant.mu-color-teal-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-teal-off]])}.c4l-button-variant.mu-color-teal-variant-on::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-teal-on]])}
 .c4l-button-variant.mu-color-violet-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-violet-off]])}.c4l-button-variant.mu-color-violet-variant-on::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-violet-on]])}
 .c4l-button-variant.mu-color-yellow-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-yellow-off]])}.c4l-button-variant.mu-color-yellow-variant-on::before{content:url([[pix:tiny_c4l|mu_icons/variants/palette-yellow-on]])}
+.c4l-button-variant.caption-above-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/caption-above-off]])}.c4l-button-variant.caption-above-variant-on::before{content:url([[pix:tiny_c4l|mu_icons/variants/caption-above-on]])}
+.c4l-button-variant.caption-below-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/caption-below-off]])}.c4l-button-variant.caption-below-variant-on::before{content:url([[pix:tiny_c4l|mu_icons/variants/caption-below-on]])}
+.c4l-button-variant.mu-stack-2-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/stack-2-off]])}.c4l-button-variant.mu-stack-2-variant-on::before{content:url([[pix:tiny_c4l|mu_icons/variants/stack-2-on]])}
+.c4l-button-variant.mu-stack-3-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/stack-3-off]])}.c4l-button-variant.mu-stack-3-variant-on::before{content:url([[pix:tiny_c4l|mu_icons/variants/stack-3-on]])}
+.c4l-button-variant.mu-stack-4-variant-off::before{content:url([[pix:tiny_c4l|mu_icons/variants/stack-4-off]])}.c4l-button-variant.mu-stack-4-variant-on::before{content:url([[pix:tiny_c4l|mu_icons/variants/stack-4-on]])}
 
 
 button[data-type="mu-activities"], button[data-type="mu-others"] {
@@ -242,6 +247,22 @@ div.mu-c4l {
             ul {
                 margin: 0!important;
             }
+
+            /* Caption above or below variants, styled like the figure caption. */
+            caption {
+                caption-side: top;
+                padding: 0 0 7px;
+                font-size: 13px;
+                font-weight: normal;
+                line-height: 16px;
+                color: #686d79;
+                text-align: left;
+            }
+        }
+
+        &.c4l-caption-below-variant table caption {
+            caption-side: bottom;
+            padding: 7px 0 0;
         }
 
         &.mu-table-grey-variant {
@@ -286,6 +307,11 @@ details.mu-c4l.c4lv-mu-accordion {
 
     /* Stacked details blocks sit flush against each other. */
     &:has(+ details) {
+        margin-bottom: 0;
+    }
+
+    /* In the C4L picker's preview, the rest of a stack sits in the variant placeholder span. */
+    &:has(+ span[data-id^="variantHTML-"] > details:first-child) {
         margin-bottom: 0;
     }
 
@@ -524,5 +550,144 @@ div.mu-fc.mu-fc-aias1 {
         border-radius: 50%;
     }
 }
+
+/* Start mu enlarge - controls added to rendered content by amd/src/enlarge.js */
+/* Icon overlaid on the top right of a table or image, modelled on Snap's .snap-expand-link. */
+.tiny-c4l-enlarge-wrap {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+
+    &.tiny-c4l-enlarge-wrap-block {
+        display: block;
+    }
+
+    /* Set by enlarge.js when the table or image is narrower than its wrapper. */
+    > .tiny-c4l-enlarge-btn {
+        position: absolute;
+        top: calc(var(--tiny-c4l-enlarge-top, 0px) + .5rem);
+        right: calc(var(--tiny-c4l-enlarge-right, 0px) + .5rem);
+        z-index: 1;
+    }
+}
+
+.tiny-c4l-enlarge-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0;
+    border: 1px solid #fff;
+    border-radius: 100%;
+    background-color: #fff;
+    color: #1d2125;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .35);
+    line-height: 1;
+    transition: opacity .2s ease-in-out, transform .4s ease-in-out, border-color .4s ease-in-out;
+
+    .icon {
+        width: auto;
+        height: auto;
+        margin: 0;
+        font-size: .8rem;
+    }
+
+    &:hover,
+    &:focus {
+        transform: scale(1.1);
+        border-color: #8f959e;
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--primary, #0f6cbf);
+        outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}
+
+/* Dim the icon until the pointer is over the table or image, or the icon has keyboard focus.
+   Touch screens cannot hover, so they always show it in full. */
+@media (hover: hover) {
+    .tiny-c4l-enlarge-wrap > .tiny-c4l-enlarge-btn {
+        opacity: 0.5;
+    }
+
+    .tiny-c4l-enlarge-wrap:hover > .tiny-c4l-enlarge-btn,
+    .tiny-c4l-enlarge-wrap > .tiny-c4l-enlarge-btn:focus {
+        opacity: 1;
+    }
+}
+
+img.tiny-c4l-enlargeable {
+    cursor: zoom-in;
+}
+
+/* Keep a caption above a table clear of the icon on its top right. */
+.tiny-c4l-enlarge-wrap > div.mu-c4l.mu-table:not(.c4l-caption-below-variant) > table > caption,
+.tiny-c4l-enlarge-wrap > table > caption {
+    padding-right: 2.25rem;
+}
+
+.modal-dialog.tiny-c4l-enlarge-dialog {
+    max-width: min(95vw, 1600px);
+
+    .tiny-c4l-enlarge-table {
+        overflow: auto;
+
+        table {
+            min-width: 100%;
+        }
+    }
+
+    .tiny-c4l-enlarge-original {
+        display: inline-block;
+        margin-bottom: .75rem;
+
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    .tiny-c4l-enlarge-stage {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .tiny-c4l-enlarge-img {
+        display: block;
+        flex: 1 1 auto;
+        min-width: 0;
+        max-width: 100%;
+        max-height: calc(100vh - 14rem);
+        margin: 0 auto;
+        object-fit: contain;
+
+        &.tiny-c4l-enlarge-scalable {
+            width: 100%;
+        }
+    }
+
+    .tiny-c4l-enlarge-nav {
+        flex: 0 0 auto;
+        width: 3rem;
+        height: 3rem;
+        padding: 0;
+
+        .icon {
+            margin: 0;
+        }
+    }
+
+    .tiny-c4l-enlarge-position {
+        margin: .75rem 0 0;
+        text-align: center;
+    }
+}
+/* End mu enlarge */
 
 /* End mu */

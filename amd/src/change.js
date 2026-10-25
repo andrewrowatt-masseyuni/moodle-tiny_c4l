@@ -17,9 +17,10 @@
  * Tiny C4L "Change to" feature.
  *
  * Adds a context toolbar that appears when the cursor is inside a
- * mu-activities component. The toolbar exposes a "Change to" menu with two
- * submenus:
- *   - Icon: switches the activity type (e.g. c4lv-mu-watch -> c4lv-mu-read)
+ * mu-activities, emphasis (c4l-mu-others) or button component. The toolbar
+ * exposes a "Change to" menu with these submenus:
+ *   - Icon, activities only: switches the activity type (e.g. c4lv-mu-watch
+ *     -> c4lv-mu-read)
  *   - Colour: switches the colour variant (e.g. c4l-mu-color-green-variant
  *     -> c4l-mu-color-teal-variant). Blue is treated as the default when no
  *     colour-variant class is present.
@@ -36,6 +37,8 @@ import {component} from './common';
 
 const ACTIVITY_TYPE = 'mu-activities';
 const ACTIVITY_CLASS = 'c4l-mu-activities';
+// Components whose colour can be changed. Only activities also have an icon.
+const CHANGEABLE_SELECTOR = '.c4l-mu-activities, .c4l-mu-others, .c4l-mu-buttons';
 const ICON_CLASS_PREFIX = 'c4lv-mu-';
 const COLOR_CLASS_PREFIX = 'c4l-mu-color-';
 const COLOR_CLASS_SUFFIX = '-variant';
@@ -78,18 +81,18 @@ const swatchSvg = (hex) =>
     '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">' +
     `<circle cx="12" cy="12" r="9" fill="${hex}" stroke="#666" stroke-width="1"/></svg>`;
 
-const isActivityComponent = (node) => {
+const isChangeableComponent = (node) => {
     if (!node || node.nodeType !== 1 || !node.classList) {
         return false;
     }
-    return node.classList.contains(ACTIVITY_CLASS);
+    return node.matches(CHANGEABLE_SELECTOR);
 };
 
-const findActivityComponent = (editor) => {
+const findChangeableComponent = (editor) => {
     let node = editor.selection.getNode();
     const body = editor.getBody();
     while (node && node !== body) {
-        if (isActivityComponent(node)) {
+        if (isChangeableComponent(node)) {
             return node;
         }
         node = node.parentNode;
@@ -153,7 +156,7 @@ const getCurrentColorClass = (componentEl) => {
 };
 
 const changeIcon = (editor, icon, langStrings) => {
-    const componentEl = findActivityComponent(editor);
+    const componentEl = findChangeableComponent(editor);
     if (!componentEl) {
         return;
     }
@@ -169,7 +172,7 @@ const changeIcon = (editor, icon, langStrings) => {
 };
 
 const changeColor = (editor, color) => {
-    const componentEl = findActivityComponent(editor);
+    const componentEl = findChangeableComponent(editor);
     if (!componentEl) {
         return;
     }
@@ -231,7 +234,8 @@ export const setupChangeControls = async(editor) => {
         icon: 'preferences',
         tooltip: buttonText,
         fetch: (callback) => {
-            const componentEl = findActivityComponent(editor);
+            const componentEl = findChangeableComponent(editor);
+            const isActivity = !!componentEl?.classList.contains(ACTIVITY_CLASS);
             const currentIcon = componentEl ? getCurrentIconBase(componentEl) : null;
             const currentColor = componentEl ? getCurrentColorClass(componentEl) : null;
 
@@ -251,23 +255,28 @@ export const setupChangeControls = async(editor) => {
                 onAction: () => changeColor(editor, c),
             }));
 
+            const colorMenu = {
+                type: 'nestedmenuitem',
+                text: langStrings.get('change_color'),
+                getSubmenuItems: () => colorItems,
+            };
+            if (!isActivity) {
+                callback([colorMenu]);
+                return;
+            }
             callback([
                 {
                     type: 'nestedmenuitem',
                     text: langStrings.get('change_icon'),
                     getSubmenuItems: () => iconItems,
                 },
-                {
-                    type: 'nestedmenuitem',
-                    text: langStrings.get('change_color'),
-                    getSubmenuItems: () => colorItems,
-                },
+                colorMenu,
             ]);
         },
     });
 
     editor.ui.registry.addContextToolbar('tiny_c4l_activity_toolbar', {
-        predicate: isActivityComponent,
+        predicate: isChangeableComponent,
         items: 'tiny_c4l_change',
         position: 'node',
         scope: 'node',
