@@ -14,7 +14,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Near full-screen modal that shows an enlarged table or image.
+ * Near full-screen modal that shows an enlarged table, image or component.
  *
  * Bootstrap 4 has no full-screen modal, so the dialog is widened with the
  * tiny-c4l-enlarge-dialog class (see styles.css).

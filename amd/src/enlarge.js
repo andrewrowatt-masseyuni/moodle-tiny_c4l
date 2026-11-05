@@ -25,6 +25,9 @@
  * overlays an enlarge icon on its top right corner. Enlargeable images can also be clicked. The
  * image modal steps through every enlargeable image on the page.
  *
+ * Authors can make a whole div.mu-c4l component enlargeable with the c4l-expand class. Only the
+ * component then gets an icon, not the tables and images in it.
+ *
  * @module      tiny_c4l/enlarge
  * @copyright   2026 Massey University
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -42,7 +45,17 @@ const WRAP_CLASS = 'tiny-c4l-enlarge-wrap';
 const WRAP_BLOCK_CLASS = 'tiny-c4l-enlarge-wrap-block';
 const BUTTON_CLASS = 'tiny-c4l-enlarge-btn';
 
-const STRING_KEYS = ['enlarge_image', 'enlarge_image_title', 'enlarge_table', 'enlarge_table_title'];
+// Not part of the enlargeinclude setting, as sites keep the value stored when they first installed.
+const EXPAND_SELECTOR = 'div.mu-c4l.c4l-expand';
+
+const STRING_KEYS = [
+    'enlarge_content',
+    'enlarge_content_title',
+    'enlarge_image',
+    'enlarge_image_title',
+    'enlarge_table',
+    'enlarge_table_title',
+];
 
 /** @type {{tables: boolean, images: boolean, minImageWidth: number, include: string, exclude: string}} */
 let config;
@@ -50,13 +63,13 @@ let config;
 // Strings and the rendered icon buttons, loaded the first time something is enlargeable.
 let resourcesPromise = null;
 
-// Tables and images already looked at, as components can be nested or announced twice.
+// Tables, images and c4l-expand components already looked at, as they can be nested or announced twice.
 const seen = new WeakSet();
 
 // What each icon button enlarges.
 const targets = new WeakMap();
 
-// The table or image inside each wrapper.
+// The table, image or c4l-expand component inside each wrapper.
 const wrapped = new WeakMap();
 
 // Waits until a loaded image is laid out with a size, so images in closed accordions or hidden
@@ -69,18 +82,19 @@ let placementObserver = null;
 /**
  * Load the strings and the rendered icon buttons.
  *
- * @returns {Promise<{strings: object, tableButton: string, imageButton: string}>}
+ * @returns {Promise<{strings: object, tableButton: string, imageButton: string, contentButton: string}>}
  */
 const getResources = () => {
     if (!resourcesPromise) {
         resourcesPromise = getStrings(STRING_KEYS.map((key) => ({key, component: 'tiny_c4l'})))
             .then(async(values) => {
                 const strings = Object.fromEntries(STRING_KEYS.map((key, index) => [key, values[index]]));
-                const [table, image] = await Promise.all([
+                const [table, image, content] = await Promise.all([
                     Templates.renderForPromise('tiny_c4l/enlarge_trigger', {label: strings.enlarge_table}),
                     Templates.renderForPromise('tiny_c4l/enlarge_trigger', {label: strings.enlarge_image}),
+                    Templates.renderForPromise('tiny_c4l/enlarge_trigger', {label: strings.enlarge_content}),
                 ]);
-                return {strings, tableButton: table.html, imageButton: image.html};
+                return {strings, tableButton: table.html, imageButton: image.html, contentButton: content.html};
             });
     }
     return resourcesPromise;
@@ -102,7 +116,7 @@ const isValidSelector = (selector) => {
 };
 
 /**
- * Whether a table or image must be left alone.
+ * Whether a table, image or c4l-expand component must be left alone.
  *
  * @param {HTMLElement} element
  * @returns {boolean}
@@ -131,7 +145,7 @@ const escapeHtml = (text) => {
 const textOf = (element) => (element?.textContent ?? '').replace(/\s+/g, ' ').trim();
 
 /**
- * Move a wrapper's icon to the top right corner of its table or image.
+ * Move a wrapper's icon to the top right corner of what it holds.
  *
  * The wrapper can be wider than what it holds: a narrow or centred table, a centred image, or a
  * table wider than the page that scrolls sideways (the icon then stays at the visible edge).
@@ -146,10 +160,10 @@ const placeIcon = (wrap) => {
 };
 
 /**
- * Overlay an icon button on a wrapped table or image.
+ * Overlay an icon button on a wrapped table, image or c4l-expand component.
  *
- * @param {HTMLElement} wrap The wrapper, already holding the table or image.
- * @param {HTMLElement} content The table or image, whose corner the icon sits on.
+ * @param {HTMLElement} wrap The wrapper, already holding the content.
+ * @param {HTMLElement} content The table, image or component, whose corner the icon sits on.
  * @param {string} html The rendered icon button.
  * @param {object} target What the button enlarges.
  * @returns {HTMLButtonElement}
@@ -172,6 +186,42 @@ const addIcon = (wrap, content, html, target) => {
 };
 
 /**
+ * Put a block level element in a wrapper.
+ *
+ * @param {HTMLElement} element
+ * @returns {HTMLElement} The wrapper.
+ */
+const wrapBlock = (element) => {
+    const wrap = document.createElement('div');
+    wrap.className = `${WRAP_CLASS} ${WRAP_BLOCK_CLASS}`;
+    element.before(wrap);
+    wrap.append(element);
+    return wrap;
+};
+
+/**
+ * Add an enlarge icon to a div.mu-c4l component with the c4l-expand class.
+ *
+ * @param {HTMLElement} component
+ */
+const enhanceComponent = async(component) => {
+    if (seen.has(component)) {
+        return;
+    }
+    seen.add(component);
+
+    // Enlarging the outermost component already shows any others inside it.
+    if (isExcluded(component) || component.parentElement.closest(EXPAND_SELECTOR)) {
+        return;
+    }
+
+    const pending = new Pending('tiny_c4l/enlarge:enhanceComponent');
+    const {contentButton} = await getResources();
+    addIcon(wrapBlock(component), component, contentButton, {component});
+    pending.resolve();
+};
+
+/**
  * Add an enlarge icon to a table.
  *
  * @param {HTMLTableElement} table
@@ -182,7 +232,7 @@ const enhanceTable = async(table) => {
     }
     seen.add(table);
 
-    if (isExcluded(table) || table.parentElement.closest('table')) {
+    if (isExcluded(table) || table.closest(EXPAND_SELECTOR) || table.parentElement.closest('table')) {
         return;
     }
     // A single row or column is a layout box rather than data.
@@ -197,11 +247,7 @@ const enhanceTable = async(table) => {
 
     const pending = new Pending('tiny_c4l/enlarge:enhanceTable');
     const {tableButton} = await getResources();
-    const wrap = document.createElement('div');
-    wrap.className = `${WRAP_CLASS} ${WRAP_BLOCK_CLASS}`;
-    anchor.before(wrap);
-    wrap.append(anchor);
-    addIcon(wrap, table, tableButton, {table, anchor});
+    addIcon(wrapBlock(anchor), table, tableButton, {table, anchor});
     pending.resolve();
 };
 
@@ -303,7 +349,7 @@ const enhanceImage = (image) => {
     }
     seen.add(image);
 
-    if (isExcluded(image)) {
+    if (isExcluded(image) || image.closest(EXPAND_SELECTOR)) {
         return;
     }
     if (image.complete) {
@@ -320,7 +366,8 @@ const enhanceImage = (image) => {
 };
 
 /**
- * Enhance the tables and images in the enlargeable components in or around a node.
+ * Enhance the c4l-expand components, and the tables and images in the enlargeable components, in
+ * or around a node.
  *
  * @param {Node} root
  */
@@ -328,6 +375,9 @@ const enhance = (root) => {
     if (!(root instanceof Element)) {
         return;
     }
+    const expandable = root.closest(EXPAND_SELECTOR);
+    (expandable ? [expandable] : root.querySelectorAll(EXPAND_SELECTOR)).forEach(enhanceComponent);
+
     const containers = root.closest(config.include) ? [root] : root.querySelectorAll(config.include);
     containers.forEach((container) => {
         if (config.tables) {
@@ -377,6 +427,28 @@ const openTable = async(trigger, table, anchor) => {
     await EnlargeModal.create({
         title: escapeHtml(title),
         body: `<div class="tiny-c4l-enlarge-table">${copy.outerHTML}</div>`,
+        returnElement: trigger,
+    });
+    pending.resolve();
+};
+
+/**
+ * Show a c4l-expand component in the modal.
+ *
+ * @param {HTMLElement} trigger
+ * @param {HTMLElement} component
+ */
+const openComponent = async(trigger, component) => {
+    const pending = new Pending('tiny_c4l/enlarge:openComponent');
+    const {strings} = await getResources();
+    // A C4L table's wrapper has a generic aria-label, so its caption names it instead.
+    const name = component.matches('.mu-table') ? textOf(component.querySelector('caption')) :
+        component.getAttribute('aria-label');
+    const title = name || component.getAttribute('title') || strings.enlarge_content_title;
+
+    await EnlargeModal.create({
+        title: escapeHtml(title),
+        body: `<div class="tiny-c4l-enlarge-component">${cleanCopy(component).outerHTML}</div>`,
         returnElement: trigger,
     });
     pending.resolve();
@@ -497,6 +569,8 @@ export const init = (options) => {
             openTable(trigger, target.table, target.anchor);
         } else if (target?.image) {
             openImage(trigger, target.image);
+        } else if (target?.component) {
+            openComponent(trigger, target.component);
         }
     });
 

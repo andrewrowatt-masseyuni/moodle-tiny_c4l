@@ -2,6 +2,10 @@
 
 This file records fork-specific changes. All notable changes to this fork will be documented in this file.
 
+## v2026110600
+### Added
+- A `div.mu-c4l` component with the `c4l-expand` class gets the enlarge icon and opens in the large overlay as a whole, like C4L tables and figures. Only the component is enlargeable: tables and images inside it have no icon of their own, can't be clicked to enlarge and aren't part of the image gallery
+
 ## v2026102600
 ### Changed
 - Renamed the "AI Assessment Scale" component group to "Massey (Legacy)" and moved it after "Massey (Other)"

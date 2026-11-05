@@ -66,12 +66,40 @@ Feature: Students can enlarge the tables and images in C4L components
     And I should see "2 of 2" in the ".tiny-c4l-enlarge-dialog" "css_element"
 
   @javascript
+  Scenario: A C4L component with the c4l-expand class can be enlarged, but the tables and images in it cannot
+    Given the following "activities" exist:
+      | activity | name      | course | idnumber | contentformat | content |
+      | page     | PageName1 | C1     | page1    | 1             | <div id="expandable" class="mu-c4l c4l-mu-activities c4lv-mu-read c4lv-mu-read1 c4l-expand" aria-label="Read"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><div class="mu-c4l mu-table"><table id="innertable"><tbody><tr><td>a</td><td>b</td></tr><tr><td>c</td><td>d</td></tr></tbody></table></div><figure class="mu-c4l c4lv-figure"><img src="/theme/boost/pix/screenshot.png" alt="Inner screenshot" style="width: 200px;"></figure><div id="nestedexpandable" class="mu-c4l c4l-expand"><p>Nested component</p></div></div><div id="tablecomponent" class="mu-c4l mu-table c4l-expand"><table><caption>Table component</caption><tbody><tr><td>e</td><td>f</td></tr><tr><td>g</td><td>h</td></tr></tbody></table></div><div id="plaincomponent" class="mu-c4l c4lv-tip"><p>Plain tip</p></div><div class="mu-c4l mu-table c4l-expand c4l-noexpand"><table id="optedouttable"><tbody><tr><td>i</td><td>j</td></tr><tr><td>k</td><td>l</td></tr></tbody></table></div><div class="mu-c4l mu-table"><table id="regulartable"><tbody><tr><td>m</td><td>n</td></tr><tr><td>o</td><td>p</td></tr></tbody></table></div> |
+    When I am on the "PageName1" "page activity" page logged in as student1
+    Then ".tiny-c4l-enlarge-wrap > button[title='Enlarge content'] + #expandable" "css_element" should exist
+    And ".tiny-c4l-enlarge-wrap > button[title='Enlarge content'] + #tablecomponent" "css_element" should exist
+    And ".tiny-c4l-enlarge-wrap > button[title='Enlarge table'] + div.mu-table > #regulartable" "css_element" should exist
+    And "#expandable .tiny-c4l-enlarge-btn" "css_element" should not exist
+    And "#tablecomponent .tiny-c4l-enlarge-btn" "css_element" should not exist
+    And "#expandable img.tiny-c4l-enlargeable" "css_element" should not exist
+    And ".tiny-c4l-enlarge-wrap #plaincomponent" "css_element" should not exist
+    And ".tiny-c4l-enlarge-wrap #optedouttable" "css_element" should not exist
+    And I hover "#expandable" "css_element"
+    And I click on "Enlarge content" "button"
+    And I should see "Read" in the ".tiny-c4l-enlarge-dialog .modal-title" "css_element"
+    And I should see "Nested component" in the ".tiny-c4l-enlarge-dialog .modal-body" "css_element"
+    And "table" "css_element" should exist in the ".tiny-c4l-enlarge-dialog .modal-body" "css_element"
+    And "img[alt='Inner screenshot']" "css_element" should exist in the ".tiny-c4l-enlarge-dialog .modal-body" "css_element"
+    And ".tiny-c4l-enlarge-dialog .tiny-c4l-enlarge-btn" "css_element" should not exist
+    And I press the escape key
+    And ".tiny-c4l-enlarge-dialog" "css_element" should not exist
+    And I hover "#tablecomponent" "css_element"
+    And I click on "//div[@id='tablecomponent']/preceding-sibling::button" "xpath_element"
+    And I should see "Table component" in the ".tiny-c4l-enlarge-dialog .modal-title" "css_element"
+
+  @javascript
   Scenario: Enlarging tables can be turned off
     Given the following config values are set as admin:
       | enlargetables | 0 | tiny_c4l |
     And the following "activities" exist:
       | activity | name      | course | idnumber | contentformat | content |
-      | page     | PageName1 | C1     | page1    | 1             | <div class="mu-c4l mu-table"><table><tbody><tr><td>a</td><td>b</td></tr><tr><td>c</td><td>d</td></tr></tbody></table></div><figure class="mu-c4l c4lv-figure"><img src="/theme/boost/pix/screenshot.png" alt="First screenshot" style="width: 200px;"></figure> |
+      | page     | PageName1 | C1     | page1    | 1             | <div class="mu-c4l mu-table"><table><tbody><tr><td>a</td><td>b</td></tr><tr><td>c</td><td>d</td></tr></tbody></table></div><figure class="mu-c4l c4lv-figure"><img src="/theme/boost/pix/screenshot.png" alt="First screenshot" style="width: 200px;"></figure><div class="mu-c4l c4l-expand"><p>Whole component</p></div> |
     When I am on the "PageName1" "page activity" page logged in as student1
     Then "button[aria-label='Enlarge image: First screenshot']" "css_element" should exist
+    And "Enlarge content" "button" should exist
     And "Enlarge table" "button" should not exist

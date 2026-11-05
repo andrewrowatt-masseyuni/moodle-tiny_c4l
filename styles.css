@@ -626,16 +626,18 @@ img.tiny-c4l-enlargeable {
     cursor: zoom-in;
 }
 
-/* Keep a caption above a table clear of the icon on its top right. */
+/* Keep a caption above a table, or a component's opening text, clear of the icon on its top right. */
 .tiny-c4l-enlarge-wrap > div.mu-c4l.mu-table:not(.c4l-caption-below-variant) > table > caption,
-.tiny-c4l-enlarge-wrap > table > caption {
+.tiny-c4l-enlarge-wrap > table > caption,
+.tiny-c4l-enlarge-wrap > div.mu-c4l.c4l-expand > :is(p, h1, h2, h3, h4, h5, h6):first-child {
     padding-right: 2.25rem;
 }
 
 .modal-dialog.tiny-c4l-enlarge-dialog {
     max-width: min(95vw, 1600px);
 
-    .tiny-c4l-enlarge-table {
+    .tiny-c4l-enlarge-table,
+    .tiny-c4l-enlarge-component {
         overflow: auto;
 
         table {
